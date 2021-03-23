@@ -1,4 +1,4 @@
-package com.example.courstack.ui;
+package com.example.courstack.ui.classmate;
 
 import android.os.Bundle;
 
@@ -12,10 +12,10 @@ import com.example.courstack.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link NoteFragment#newInstance} factory method to
+ * Use the {@link ClassmateFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class NoteFragment extends Fragment {
+public class ClassmateFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,7 +26,7 @@ public class NoteFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public NoteFragment() {
+    public ClassmateFragment() {
         // Required empty public constructor
     }
 
@@ -36,11 +36,11 @@ public class NoteFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment NoteFragment.
+     * @return A new instance of fragment ClassmateFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static NoteFragment newInstance(String param1, String param2) {
-        NoteFragment fragment = new NoteFragment();
+    public static ClassmateFragment newInstance(String param1, String param2) {
+        ClassmateFragment fragment = new ClassmateFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -61,6 +61,6 @@ public class NoteFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_note, container, false);
+        return inflater.inflate(R.layout.fragment_classmate, container, false);
     }
 }

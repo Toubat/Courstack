@@ -2,18 +2,16 @@ package com.example.courstack;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.MenuItem;
 
-import com.example.courstack.ui.ClassmateFragment;
-import com.example.courstack.ui.NoteFragment;
-import com.example.courstack.ui.ProfileFragment;
-import com.example.courstack.ui.VideoFragment;
+import com.example.courstack.ui.classmate.ClassmateFragment;
+import com.example.courstack.ui.note.NoteFragment;
+import com.example.courstack.ui.profile.ProfileFragment;
+import com.example.courstack.ui.video.VideoFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
