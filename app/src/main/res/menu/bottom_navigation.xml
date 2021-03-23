@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_videos"
+        android:icon="@drawable/ic_baseline_video_library_24"
+        android:title="@string/videos"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/nav_notes"
+        android:icon="@drawable/ic_baseline_notes_24"
+        android:title="@string/notes"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/nav_classmate"
+        android:icon="@drawable/ic_baseline_people_alt_24"
+        android:title="@string/classmate"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/nav_profile"
+        android:icon="@drawable/ic_baseline_person_24"
+        android:title="@string/profile"
+        app:showAsAction="always" />
+</menu>
