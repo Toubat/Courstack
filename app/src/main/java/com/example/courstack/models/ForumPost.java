@@ -22,11 +22,11 @@ public class ForumPost extends ParseObject {
         put(KEY_TITLE, title);
     }
 
-    public ParseObject getCourse() {
-        return getParseObject(KEY_COURSE);
+    public String getCourse() {
+        return getString(KEY_COURSE);
     }
 
-    public void setCourse(ParseObject course) {
+    public void setCourse(String course) {
         put(KEY_COURSE, course);
     }
 
