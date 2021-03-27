@@ -1,3 +1,4 @@
+/*
 package com.example.courstack.models;
 
 import com.parse.ParseClassName;
@@ -54,3 +55,4 @@ public class Student extends ParseObject {
     }
 
 }
+*/

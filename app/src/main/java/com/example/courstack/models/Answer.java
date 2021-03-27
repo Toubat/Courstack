@@ -6,8 +6,10 @@ import com.parse.ParseUser;
 
 @ParseClassName("Answer")
 public class Answer extends ParseObject {
+
     public static final String KEY_STUDENT = "student";
     public static final String KEY_ANSWER_TEXT = "answer_text";
+    public static final String KEY_PARENT = "parent";
 
     public ParseUser getStudent() {
         return getParseUser(KEY_STUDENT);
@@ -25,4 +27,11 @@ public class Answer extends ParseObject {
         put(KEY_ANSWER_TEXT, text);
     }
 
+    public void setParent(AnswerPost answerPost) {
+        put(KEY_PARENT, answerPost);
+    }
+
+    public AnswerPost getParentAnswerPost() {
+        return (AnswerPost) getParseObject(KEY_PARENT);
+    }
 }

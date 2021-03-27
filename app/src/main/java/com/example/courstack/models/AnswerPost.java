@@ -2,30 +2,32 @@ package com.example.courstack.models;
 
 import com.parse.ParseClassName;
 import com.parse.ParseObject;
+import com.parse.ParseUser;
 
 import java.util.ArrayList;
 
 @ParseClassName("AnswerPost")
 public class AnswerPost extends ParseObject {
+
     public static final String KEY_ANSWER = "answer";
-    public static final String KEY_ANSWERS = "answers";
+    public static final String KEY_STUDENT = "student";
+    public static final String KEY_PARENT = "parent";
 
-    public ParseObject getAnswer() {
-        return getParseObject(KEY_ANSWER);
+    public ParseUser getStudent() {
+        return getParseUser(KEY_STUDENT);
     }
 
-    public void setAnswer(ParseObject answer) {
+    public void setAnswerAndStudent(Answer answer) {
         put(KEY_ANSWER, answer);
+        put(KEY_STUDENT, answer.getStudent());
     }
 
-    //TODO
-    public ArrayList<Answer> getAnswers() {
-        return null;
+    public Answer getAnswer() {
+        return (Answer) getParseObject(KEY_ANSWER);
     }
 
-    //TODO
-    public void setAnswers(){
-        return;
+    public ForumPost getParentForumPost() {
+        return (ForumPost) getParseObject(KEY_PARENT);
     }
 
 }
