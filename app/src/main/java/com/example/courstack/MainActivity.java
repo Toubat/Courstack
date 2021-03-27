@@ -18,6 +18,7 @@ import com.example.courstack.ui.profile.ProfileFragment;
 import com.example.courstack.ui.video.VideoFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.parse.FindCallback;
+import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
 
@@ -65,24 +66,33 @@ public class MainActivity extends AppCompatActivity {
         });
         // Set default selection
         bottomNavigationView.setSelectedItemId(R.id.nav_videos);
+        Log.i(TAG, "Before");
         queryAnswerPost();
+        Log.i(TAG, "After");
         queryAnswers(answerPost);
     }
 
     protected void queryAnswerPost() {
         // Specify which class to query
+        Log.i(TAG, "Before-in");
+
         ParseQuery<AnswerPost> query = ParseQuery.getQuery(AnswerPost.class);
+        query.include("answer");
         query.findInBackground(new FindCallback<AnswerPost>() {
-            @Override
-            public void done(List<AnswerPost> objects, ParseException e) {
-                if (e != null) {
-                    Log.e(TAG, "Issue with getting AnswerPost", e);
-                    Toast.makeText(MainActivity.this, "Issue with getting AnswerPost!", Toast.LENGTH_SHORT).show();
+            public void done(List<AnswerPost> items, ParseException e) {
+                if (e == null) {
+                    Log.i(TAG, "Done in");
+                    Answer answer = items.get(0).getAnswer();
+                    Log.i(TAG, answer.getText());
+                    Log.i(TAG, String.valueOf(answer));
+                    answer.setText("alibaba");
+                    Log.i(TAG,answer.getText());
                 } else {
-                    answerPost = objects.get(0);
+                    // something went wrong
                 }
             }
         });
+        Log.i(TAG, "After-in");
     }
 
     protected void queryAnswers(AnswerPost answerPost) {
