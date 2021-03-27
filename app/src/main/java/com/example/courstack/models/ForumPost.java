@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class ForumPost extends ParseObject {
     public static final String KEY_TITLE = "title";
     public static final String KEY_COURSE = "course";
-    public static final String KEY_ASKER = "asker";
+    public static final String KEY_STUDENT = "student";
     public static final String KEY_CATEGORY = "category";
     public static final String KEY_ANSWERPOSTS = "answer_posts";
 
@@ -30,12 +30,12 @@ public class ForumPost extends ParseObject {
         put(KEY_COURSE, course);
     }
 
-    public ParseUser getAsker() {
-        return getParseUser(KEY_ASKER);
+    public ParseUser getStudent() {
+        return getParseUser(KEY_STUDENT);
     }
 
-    public void setAsker(ParseUser asker) {
-        put(KEY_ASKER, asker);
+    public void setStudent(ParseUser student) {
+        put(KEY_STUDENT, student);
     }
 
     public String getCategory() {
