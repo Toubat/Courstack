@@ -18,6 +18,7 @@ import com.example.courstack.ui.profile.ProfileFragment;
 import com.example.courstack.ui.video.VideoFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.parse.FindCallback;
+import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
 
@@ -66,20 +67,20 @@ public class MainActivity extends AppCompatActivity {
         // Set default selection
         bottomNavigationView.setSelectedItemId(R.id.nav_videos);
         queryAnswerPost();
-        queryAnswers(answerPost);
     }
 
     protected void queryAnswerPost() {
         // Specify which class to query
         ParseQuery<AnswerPost> query = ParseQuery.getQuery(AnswerPost.class);
+        query.include(AnswerPost.KEY_ANSWER);
         query.findInBackground(new FindCallback<AnswerPost>() {
-            @Override
-            public void done(List<AnswerPost> objects, ParseException e) {
-                if (e != null) {
-                    Log.e(TAG, "Issue with getting AnswerPost", e);
-                    Toast.makeText(MainActivity.this, "Issue with getting AnswerPost!", Toast.LENGTH_SHORT).show();
+            public void done(List<AnswerPost> items, ParseException e) {
+                if (e == null) {
+                    answerPost = items.get(0);
+                    queryAnswers(answerPost);
                 } else {
-                    answerPost = objects.get(0);
+                    Log.e(TAG, "Issue with getting answer posts", e);
+                    Toast.makeText(MainActivity.this, "Issue with getting answer posts!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -99,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
                     Log.e(TAG, "Issue with getting answers", e);
                     Toast.makeText(MainActivity.this, "Issue with getting answers!", Toast.LENGTH_SHORT).show();
                 } else {
+                    Log.i(TAG, "All answers");
                     for (Answer answer: objects) {
                         Log.i(TAG, answer.getText());
                     }
