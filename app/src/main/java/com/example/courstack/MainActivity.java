@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Log.i(TAG, "Asdasdasdasdasd");
+
         // toolbar = findViewById(R.id.toolbar);
         // setSupportActionBar(toolbar);
         bottomNavigationView = findViewById(R.id.bottom_navigation);
@@ -65,11 +65,13 @@ public class MainActivity extends AppCompatActivity {
         });
         // Set default selection
         bottomNavigationView.setSelectedItemId(R.id.nav_videos);
-        Log.i(TAG, "Asdasdasdasdasd");
+        queryAnswerPost();
+        queryAnswers(answerPost);
+    }
+
+    protected void queryAnswerPost() {
+        // Specify which class to query
         ParseQuery<AnswerPost> query = ParseQuery.getQuery(AnswerPost.class);
-        query.include(AnswerPost.KEY_PARENT);
-        query.include(AnswerPost.KEY_ANSWER);
-        query.include(AnswerPost.KEY_STUDENT);
         query.findInBackground(new FindCallback<AnswerPost>() {
             @Override
             public void done(List<AnswerPost> objects, ParseException e) {
@@ -77,12 +79,31 @@ public class MainActivity extends AppCompatActivity {
                     Log.e(TAG, "Issue with getting AnswerPost", e);
                     Toast.makeText(MainActivity.this, "Issue with getting AnswerPost!", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(MainActivity.this, String.format("%d", objects.size()), Toast.LENGTH_LONG).show();
                     answerPost = objects.get(0);
                 }
             }
         });
-
     }
 
+    protected void queryAnswers(AnswerPost answerPost) {
+        // Specify which class to query
+        ParseQuery<Answer> query = ParseQuery.getQuery(Answer.class);
+        query.include(Answer.KEY_STUDENT);
+        query.include(Answer.KEY_ANSWER_TEXT);
+        query.include(Answer.KEY_PARENT);
+        query.whereEqualTo(Answer.KEY_PARENT, answerPost);
+        query.findInBackground(new FindCallback<Answer>() {
+            @Override
+            public void done(List<Answer> objects, ParseException e) {
+                if (e != null) {
+                    Log.e(TAG, "Issue with getting answers", e);
+                    Toast.makeText(MainActivity.this, "Issue with getting answers!", Toast.LENGTH_SHORT).show();
+                } else {
+                    for (Answer answer: objects) {
+                        Log.i(TAG, answer.getText());
+                    }
+                }
+            }
+        });
+    }
 }
