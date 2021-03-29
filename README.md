@@ -9,10 +9,10 @@
 - [ ] To be implemented.
 
 ## Model Workflow
-<img src='Model Worklow.gif' title='Model Worklow' width='' alt='Model Worklow' />
+<img src='Model Worklow.png' title='Model Worklow' width='' alt='Model Worklow' />
 
 ## Activity Layout
-<img src='Activity Layout.gif' title='Activity Layout' width='' alt='Activity Layout' />
+<img src='Activity Layout.png' title='Activity Layout' width='' alt='Activity Layout' />
 
 ## License
 
