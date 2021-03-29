@@ -9,7 +9,7 @@
 - [ ] To be implemented.
 
 ## Model Workflow
-<img src='Model Worklow.png' title='Model Worklow' width='' alt='Model Worklow' />
+<img src='Model Workflow.png' title='Model Worklow' width='' alt='Model Worklow' />
 
 ## Activity Layout
 <img src='Activity Layout.png' title='Activity Layout' width='' alt='Activity Layout' />
