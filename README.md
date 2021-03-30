@@ -74,13 +74,18 @@ List of network requests by screen
     ```
 
   * (Read/GET) forumPostQuery()
+ 
+* Video Screen
   * (Read/GET) videoPostQuery()
-  * (Read/GET) userQuery()
-  * (Create/POST) createAnswer()
-  * (Create/POST) createAnswerPost()
-  * (Create/POST) createForumPost()
+  * (Create/POST) createComment()
+  * (Create/POST) createCommentPost()
   * (Create/POST) createVideoPost()
+  
+* Login Screen
   * (Create/POST) signupUser()
+ 
+* Classmate Screen
+  * (Read/GET) userQuery()
     
 ## Optional Stories
 - [ ] User can type Markdown text to stylize their answer posts.
