@@ -17,6 +17,69 @@
     - [ ] User can filter classmate by courses they are currently taking.
     - [ ] User can view a list of classmate in certain course and read their self-description.
 
+## Networking
+
+List of network requests by screen
+
+* Forum Screen
+
+  * (Read/GET) queryAnswerPost()
+
+    ```
+    protected void queryAnswerPost() {
+            // Specify which class to query
+            ParseQuery<AnswerPost> query = ParseQuery.getQuery(AnswerPost.class);
+            query.include(AnswerPost.KEY_ANSWER);
+            query.findInBackground(new FindCallback<AnswerPost>() {
+                public void done(List<AnswerPost> items, ParseException e) {
+                    if (e == null) {
+                        answerPost = items.get(0);
+                        queryAnswers(answerPost);
+                    } else {
+                        Log.e(TAG, "Issue with getting answer posts", e);
+                        Toast.makeText(MainActivity.this, "Issue with getting answer posts!", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+        }
+    ```
+
+  * Query Answers under the Answer Post
+
+  * (Read/GET) Query Answers(AnswerPost answerPost)
+
+    ```
+    protected void queryAnswers(AnswerPost answerPost) {
+            // Specify which class to query
+            ParseQuery<Answer> query = ParseQuery.getQuery(Answer.class);
+            query.include(Answer.KEY_STUDENT);
+            query.include(Answer.KEY_ANSWER_TEXT);
+            query.include(Answer.KEY_PARENT);
+            query.whereEqualTo(Answer.KEY_PARENT, answerPost);
+            query.findInBackground(new FindCallback<Answer>() {
+                @Override
+                public void done(List<Answer> objects, ParseException e) {
+                    if (e != null) {
+                        Log.e(TAG, "Issue with getting answers", e);
+                        Toast.makeText(MainActivity.this, "Issue with getting answers!", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Log.i(TAG, "All answers");
+                        for (Answer answer: objects) {
+                            Log.i(TAG, answer.getText());
+                        }
+                    }
+                }
+            });
+        }
+    ```
+
+  * (Read/GET) forumPostQuery()
+
+    
+
+
+
+
 
 ## Optional Stories
 - [ ] User can type Markdown text to stylize their answer posts.
