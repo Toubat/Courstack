@@ -26,7 +26,7 @@
 
 ## Activity Layout
 <img src='Activity Layout.png' title='Activity Layout' width='' alt='Activity Layout' />
-<img src='login.png' title='Login Activity' width='' alt='Login Activity' />
+<img src='login.gif' title='Login Activity' width='' alt='Login Activity' />
 
 ## License
 
