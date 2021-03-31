@@ -96,6 +96,7 @@ List of network requests by screen
 ## Activity Layout
 <img src='Activity Layout.png' title='Activity Layout' width='' alt='Activity Layout' />
 <img src='login.gif' title='Login Activity' width='' alt='Login Activity' />
+<img src="https://github.com/Toubat/Courstack/blob/master/gif/1.gif" />
 
 ## License
 
