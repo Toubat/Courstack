@@ -1,7 +1,11 @@
-package com.example.courstack.ui.note;
+package com.example.courstack.ui.forum;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -12,10 +16,10 @@ import com.example.courstack.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link NoteFragment#newInstance} factory method to
+ * Use the {@link forumFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class NoteFragment extends Fragment {
+public class forumFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,7 +30,7 @@ public class NoteFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public NoteFragment() {
+    public forumFragment() {
         // Required empty public constructor
     }
 
@@ -39,8 +43,8 @@ public class NoteFragment extends Fragment {
      * @return A new instance of fragment NoteFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static NoteFragment newInstance(String param1, String param2) {
-        NoteFragment fragment = new NoteFragment();
+    public static forumFragment newInstance(String param1, String param2) {
+        forumFragment fragment = new forumFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -58,9 +62,17 @@ public class NoteFragment extends Fragment {
     }
 
     @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        Toolbar forumToolbar = getActivity().findViewById(R.id.forum_bar);
+        // videoToolbar.setNavigationIcon(R.drawable.ic_baseline_video_library_24);
+        ((AppCompatActivity) getActivity()).setSupportActionBar(forumToolbar);
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_note, container, false);
+        return inflater.inflate(R.layout.fragment_forum, container, false);
     }
 }

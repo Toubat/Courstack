@@ -13,12 +13,11 @@ import android.widget.Toast;
 import com.example.courstack.models.Answer;
 import com.example.courstack.models.AnswerPost;
 import com.example.courstack.ui.classmate.ClassmateFragment;
-import com.example.courstack.ui.note.NoteFragment;
+import com.example.courstack.ui.forum.forumFragment;
 import com.example.courstack.ui.profile.ProfileFragment;
 import com.example.courstack.ui.video.VideoFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.parse.FindCallback;
-import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
 
@@ -50,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
                         fragment = new VideoFragment();
                         break;
                     case R.id.nav_notes:
-                        fragment = new NoteFragment();
+                        fragment = new forumFragment();
                         break;
                     case R.id.nav_classmate:
                         fragment = new ClassmateFragment();

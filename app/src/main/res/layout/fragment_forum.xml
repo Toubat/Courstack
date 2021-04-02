@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.forum.forumFragment">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/forum_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#00BCD4"
+        android:fitsSystemWindows="true"
+        android:minHeight="?attr/actionBarSize"
+        app:titleTextColor="@android:color/white"
+        app:title="Forum"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_course"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/forum_bar"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="5dp" />
+
+    <!-- TODO: Update blank fragment layout -->
+
+</RelativeLayout>

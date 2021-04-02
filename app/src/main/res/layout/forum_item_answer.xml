@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_answer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="7dp">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="54dp"
+        android:layout_height="53dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_toEndOf="@+id/imageView"
+        android:textSize="20dp"
+        tools:text="Boby" />
+
+    <TextView
+        android:id="@+id/post_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/username"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="0dp"
+        android:layout_toEndOf="@+id/imageView"
+        android:textSize="15dp"
+        tools:text="In the problem Huffman's algorithm is solving, the &quot;cost&quot; is measured by the total length of the encoded data, i.e., you need to minimizing \sum_i f_i l_i. In this problem, there is an additional &quot;cost&quot; you need to consider, which is the &quot;cost&quot; c_i for each word. You need to minimize \sum_i f_i c_i l_i." />
+
+    <TextView
+        android:id="@+id/updateText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/post_text"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="79dp"
+        android:text="Last Update At:" />
+
+    <TextView
+        android:id="@+id/last_update"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/updateText"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="0dp"
+        tools:text="03/20/2021" />
+
+    <Button
+        android:id="@+id/edit_bt"
+        android:layout_width="52dp"
+        android:layout_height="38dp"
+        android:layout_below="@+id/imageView"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="0dp"
+        android:layout_toStartOf="@+id/post_text"
+        android:text="Edit"
+        android:textSize="8sp" />
+
+    <Button
+        android:id="@+id/Delete_bt"
+        android:layout_width="52dp"
+        android:layout_height="38dp"
+        android:layout_below="@+id/edit_bt"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="0dp"
+        android:layout_toStartOf="@+id/post_text"
+        android:text="Delete"
+        android:textSize="8sp" />
+
+</RelativeLayout>
