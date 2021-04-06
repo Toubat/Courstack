@@ -7,7 +7,11 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.provider.MediaStore;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -17,6 +21,13 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.courstack.R;
+import com.example.courstack.models.VideoPost;
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseQuery;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -24,6 +35,11 @@ import com.example.courstack.R;
  * create an instance of this fragment.
  */
 public class VideoFragment extends Fragment {
+
+    public static final String TAG = "VideoFragment";
+    private RecyclerView rvVideoPost;
+    protected VideoPostAdapter adapter;
+    protected List<VideoPost> videoPosts;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -79,6 +95,34 @@ public class VideoFragment extends Fragment {
         Toolbar videoToolbar = getActivity().findViewById(R.id.video_bar);
         // videoToolbar.setNavigationIcon(R.drawable.ic_baseline_video_library_24);
         ((AppCompatActivity) getActivity()).setSupportActionBar(videoToolbar);
+        rvVideoPost = view.findViewById(R.id.rvVideoPosts);
+        // 0. Create the data source
+        videoPosts = new ArrayList<>();
+        // 1. Create the adapter
+        adapter = new VideoPostAdapter(getContext(), videoPosts);
+        // 2. Set the adapter on the recycler view
+        rvVideoPost.setAdapter(adapter);
+        rvVideoPost.setLayoutManager(new LinearLayoutManager(getContext()));
+        queryVideoPosts();
+    }
+
+    private void queryVideoPosts() {
+        ParseQuery<VideoPost> query = ParseQuery.getQuery(VideoPost.class);
+        query.include(VideoPost.KEY_FRONT_IMAGE);
+        query.include(VideoPost.KEY_STUDENT);
+        query.include(VideoPost.KEY_TITLE);
+        query.findInBackground(new FindCallback<VideoPost>() {
+            @Override
+            public void done(List<VideoPost> objects, ParseException e) {
+                if (e != null) {
+                    Log.e(TAG, "Issue with getting posts", e);
+                    Toast.makeText(getContext(), "Issue with getting posts!", Toast.LENGTH_SHORT).show();
+                } else {
+                    videoPosts.addAll(objects);
+                    adapter.notifyDataSetChanged();
+                }
+            }
+        });
     }
 
     @Override

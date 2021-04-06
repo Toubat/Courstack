@@ -9,10 +9,20 @@ import java.util.ArrayList;
 
 @ParseClassName("VideoPost")
 public class VideoPost extends ParseObject {
+
     public static final String KEY_VIDEO_FILE = "video_file";
     public static final String KEY_STUDENT = "student";
     public static final String KEY_TITLE = "title";
     public static final String KEY_ANSWERPOSTS = "answerPosts";
+    public static final String KEY_FRONT_IMAGE = "front_image";
+
+    public ParseFile getFrontImage() {
+        return getParseFile(KEY_FRONT_IMAGE);
+    }
+
+    public void setFrontImage(ParseFile imageFile) {
+        put(KEY_FRONT_IMAGE, imageFile);
+    }
 
     public ParseFile getVideoFile() {
         return getParseFile(KEY_VIDEO_FILE);

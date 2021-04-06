@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.courstack.R;
 import com.example.courstack.models.ForumPost;
+import com.example.courstack.models.VideoPost;
 import com.parse.ParseFile;
 
 import java.util.List;
@@ -21,6 +22,11 @@ public class ForumPostAdapter extends RecyclerView.Adapter<ForumPostAdapter.Foru
 
     private Context context;
     private List<ForumPost> forumPosts;
+
+    public ForumPostAdapter(Context context, List<ForumPost> forumPosts) {
+        this.context = context;
+        this.forumPosts = forumPosts;
+    }
 
     @NonNull
     @Override
