@@ -100,7 +100,7 @@ List of network requests by screen
 ## Updated Progress
 <img src="https://github.com/Toubat/Courstack/blob/master/gif/2.gif" />
 <img src="https://github.com/Toubat/Courstack/blob/master/gif/3.png" />
-<img src="https://github.com/Toubat/Courstack/blob/master/gif/4.png" />
+<img src="https://github.com/Toubat/Courstack/blob/master/gif/5.png" />
 ## License
 
     Copyright [2021] [xxxxx]
