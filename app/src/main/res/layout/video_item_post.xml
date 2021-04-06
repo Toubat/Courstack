@@ -60,7 +60,6 @@
         android:layout_height="202dp"
         android:layout_below="@+id/ivProfileVideoPost"
         android:layout_marginTop="1dp"
-        android:background="#000000"
         tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
     <TextView
@@ -79,6 +78,10 @@
         android:layout_width="86dp"
         android:layout_height="78dp"
         android:layout_alignBottom="@+id/ivFrontImage"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="156dp"
+        android:layout_marginEnd="156dp"
         android:layout_marginBottom="66dp"
         android:alpha="20"
         app:srcCompat="@drawable/ic_baseline_play_circle_filled_24"

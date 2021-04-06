@@ -68,9 +68,8 @@ public class VideoPostAdapter extends RecyclerView.Adapter<VideoPostAdapter.Vide
             tvTitle.setText(videoPost.getTitle());
             // tvNumComments.setText("1324");
             ParseFile image = videoPost.getFrontImage();
-            if (image != null) {
-                Glide.with(context).load(image.getUrl()).into(ivProfile);
-            }
+            Glide.with(context).load(image.getUrl()).into(ivProfile);
+
         }
     }
 }
