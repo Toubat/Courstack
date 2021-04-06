@@ -2,7 +2,7 @@
 **Coursetack** is an Android Mobile App that help student find or share relevant multimedia learning resources for a specific course, and find classmate sharing common ground.
 
 ## User Stories
-- [ ] User can login with username and password.
+- [X] User can login with username and password.
 - [ ] User can signup by filling out basic personal information. 
 - [ ] User can choose a specfic course forum to join in.
 - [ ] Once user discover a piece of useful information he or she appreciate, he or she can offer "stack coin" to the contributor.
