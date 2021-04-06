@@ -13,7 +13,7 @@ import android.widget.Toast;
 import com.example.courstack.models.Answer;
 import com.example.courstack.models.AnswerPost;
 import com.example.courstack.ui.classmate.ClassmateFragment;
-import com.example.courstack.ui.forum.forumFragment;
+import com.example.courstack.ui.forum.ForumFragment;
 import com.example.courstack.ui.profile.ProfileFragment;
 import com.example.courstack.ui.video.VideoFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
                         fragment = new VideoFragment();
                         break;
                     case R.id.nav_notes:
-                        fragment = new forumFragment();
+                        fragment = new ForumFragment();
                         break;
                     case R.id.nav_classmate:
                         fragment = new ClassmateFragment();

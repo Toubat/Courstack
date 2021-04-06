@@ -10,7 +10,7 @@
         android:id="@+id/answer_bar"
         android:layout_width="match_parent"
         android:layout_height="44dp"
-        android:layout_below="@+id/tvAnswer"
+        android:layout_below="@+id/tvQuestion"
         android:layout_marginTop="7dp"
         android:background="#00BCD4"
         android:fitsSystemWindows="true"
@@ -30,7 +30,7 @@
         tools:text="CMPSC465" />
 
     <TextView
-        android:id="@+id/tvPostTitle"
+        android:id="@+id/tvQuestionTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/ivProfileRvAnswer"
@@ -42,10 +42,10 @@
         tools:text="I am having a very good question!" />
 
     <TextView
-        android:id="@+id/tvAnswer"
+        android:id="@+id/tvQuestion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tvPostTitle"
+        android:layout_below="@+id/tvQuestionTitle"
         android:layout_alignParentStart="true"
         android:layout_marginStart="0dp"
         android:layout_marginTop="0dp"
@@ -75,7 +75,7 @@
         tools:text="03/20/2021" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_answers"
+        android:id="@+id/rvAnswerPost"
         android:layout_width="match_parent"
         android:layout_height="429dp"
         android:layout_below="@+id/answer_bar"

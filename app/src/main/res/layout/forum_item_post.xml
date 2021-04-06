@@ -7,7 +7,7 @@
     android:layout_margin="7dp">
 
     <ImageView
-        android:id="@+id/ivProfileRvAnswer2"
+        android:id="@+id/ivProfileForumPost"
         android:layout_width="50dp"
         android:layout_height="50dp"
         tools:srcCompat="@tools:sample/avatars" />
@@ -19,15 +19,15 @@
         android:layout_marginStart="0dp"
         android:layout_marginEnd="0dp"
         android:layout_toStartOf="@+id/updateText"
-        android:layout_toEndOf="@+id/ivProfileRvAnswer2"
+        android:layout_toEndOf="@+id/ivProfileForumPost"
         android:textSize="30sp"
         tools:text="CMPSC465" />
 
     <TextView
-        android:id="@+id/tvPostTitle"
+        android:id="@+id/tvQuestionTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/ivProfileRvAnswer2"
+        android:layout_below="@+id/ivProfileForumPost"
         android:layout_alignParentStart="true"
         android:layout_marginStart="0dp"
         android:layout_marginTop="0dp"
@@ -36,10 +36,10 @@
         tools:text="I am having a very good question!" />
 
     <TextView
-        android:id="@+id/tvAnswer"
+        android:id="@+id/tvQuestion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tvPostTitle"
+        android:layout_below="@+id/tvQuestionTitle"
         android:layout_alignParentStart="true"
         android:layout_marginStart="0dp"
         android:layout_marginTop="0dp"

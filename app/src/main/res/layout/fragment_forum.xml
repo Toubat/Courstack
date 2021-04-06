@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.forum.forumFragment">
+    tools:context=".ui.forum.ForumFragment">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/forum_bar"
@@ -17,7 +17,7 @@
         app:title="Forum"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_course"
+        android:id="@+id/rvForumPosts"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/forum_bar"

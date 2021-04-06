@@ -30,7 +30,7 @@ public class LoginActivity extends AppCompatActivity {
 
         // Automatic Login
         if (ParseUser.getCurrentUser() != null) {
-            // goMainActivity();
+            goMainActivity();
         }
         etUsername = findViewById(R.id.etUsername);
         etPassword = findViewById(R.id.etPassword);
@@ -79,7 +79,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void loginUser(String username, String password) {
-        Log.i(TAG, "Attempting to login user" + username);
+        Log.i(TAG, "Attempting to login user " + username);
         // Navigate to the main activity if the user has signed properly
         ParseUser.logInInBackground(username, password, new LogInCallback() {
             @Override

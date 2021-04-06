@@ -33,7 +33,7 @@
         tools:text="Tips about Huffman's Encoding" />
 
     <TextView
-        android:id="@+id/tvAnswer"
+        android:id="@+id/tvQuestion"
         android:layout_width="297dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvAnswerTitle"
@@ -50,7 +50,7 @@
         android:id="@+id/updateText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tvAnswer"
+        android:layout_below="@+id/tvQuestion"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="216dp"
