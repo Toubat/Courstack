@@ -6,18 +6,28 @@
     android:layout_height="wrap_content"
     android:layout_margin="7dp">
 
+    <ImageView
+        android:id="@+id/ivProfileRvAnswer2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        tools:srcCompat="@tools:sample/avatars" />
+
     <TextView
-        android:id="@+id/course_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/tvCourseTitle"
+        android:layout_width="243dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        android:layout_toStartOf="@+id/updateText"
+        android:layout_toEndOf="@+id/ivProfileRvAnswer2"
         android:textSize="30sp"
         tools:text="CMPSC465" />
 
     <TextView
-        android:id="@+id/post_title"
+        android:id="@+id/tvPostTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/course_title"
+        android:layout_below="@+id/ivProfileRvAnswer2"
         android:layout_alignParentStart="true"
         android:layout_marginStart="0dp"
         android:layout_marginTop="0dp"
@@ -26,15 +36,16 @@
         tools:text="I am having a very good question!" />
 
     <TextView
-        android:id="@+id/post_text"
+        android:id="@+id/tvAnswer"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_below="@+id/post_title"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvPostTitle"
         android:layout_alignParentStart="true"
         android:layout_marginStart="0dp"
         android:layout_marginTop="0dp"
+        android:lines="3"
         android:textSize="15dp"
-        tools:text=" So I am trying to use the Huffman algorithm we did in class notes and modifying it, but I am not sure how. Doesn't the huffman alg that we did in class already do what question is asking for? i.e. doesn't solving for the codes naturally grant us the minimal cost because there would not be any reason to give a code a length greater than what was needed." />
+        tools:text="So I am trying to use the Huffman algorithm we did in class notes and modifying it, but I am not sure how. Doesn't the huffman alg that we did in class already do what question is asking for? i.e. doesn't solving for the codes naturally grant us the minimal cost because there would not be any reason to give a code a length greater than what was needed." />
 
     <TextView
         android:id="@+id/updateText"
@@ -42,17 +53,20 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="11dp"
-        android:layout_marginEnd="108dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="7dp"
         android:text="Last Update At:" />
 
     <TextView
-        android:id="@+id/last_update"
-        android:layout_width="wrap_content"
+        android:id="@+id/tvLastUpdate"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="11dp"
+        android:layout_below="@+id/updateText"
+        android:layout_alignStart="@+id/updateText"
+        android:layout_alignEnd="@+id/updateText"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="0dp"
         tools:text="03/20/2021" />
 
 </RelativeLayout>
