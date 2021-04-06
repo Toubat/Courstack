@@ -6,11 +6,11 @@
 - [ ] User can signup by filling out basic personal information. 
 - [ ] User can choose a specfic course forum to join in.
 - [ ] Once user discover a piece of useful information he or she appreciate, he or she can offer "stack coin" to the contributor.
-- [ ] User can watch a list of short video discussing about certain course content created by other students.
-    - [ ] User can leave comments or reply to other's comments.
+- [X] User can watch a list of short video discussing about certain course content created by other students.
+    - [X] User can leave comments or reply to other's comments.
     - [ ] User can swipe between videos easily.
     - [ ] User can click a video to start watching in a dialog fragment.
-- [ ] User can ask questions in different forum for specific class, or share relevant notes.
+- [X] User can ask questions in different forum for specific class, or share relevant notes.
     - [ ] User add a image along with text under each AnswerPost.
     - [ ] User can search for a specific title or course material they would like to query.
 - [ ] User can search for classmate and send private message.
