@@ -14,11 +14,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.courstack.MainActivity;
 import com.example.courstack.R;
 import com.example.courstack.models.Answer;
 import com.example.courstack.models.AnswerPost;
-import com.example.courstack.ui.video.VideoPostAdapter;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
@@ -64,7 +62,7 @@ public class AnswerPostAdapter extends RecyclerView.Adapter<AnswerPostAdapter.An
         TextView tvDescription;
         TextView tvLastUpdate;
         RecyclerView rvAnswers;
-        BriefAnswerAdapter adapter;
+        AnswerAdapter adapter;
         List<Answer> answers;
 
         public AnswerPostViewHolder(@NonNull View itemView) {
@@ -76,7 +74,7 @@ public class AnswerPostAdapter extends RecyclerView.Adapter<AnswerPostAdapter.An
             tvLastUpdate = itemView.findViewById(R.id.tvLastUpdate2);
             rvAnswers = itemView.findViewById(R.id.rvAnswers);
             answers = new ArrayList<>();
-            adapter = new BriefAnswerAdapter(context, answers);
+            adapter = new AnswerAdapter(context, answers, AnswerAdapter.BRIEF);
             // 2. Set the adapter on the recycler view
             rvAnswers.setAdapter(adapter);
             rvAnswers.setLayoutManager(new LinearLayoutManager(context));

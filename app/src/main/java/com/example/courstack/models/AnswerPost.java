@@ -11,7 +11,7 @@ public class AnswerPost extends ParseObject {
 
     public static final String KEY_ANSWER = "answer";
     public static final String KEY_STUDENT = "student";
-    public static final String KEY_PARENT = "parent";
+    public static final String KEY_PARENT_FORUM = "parent_forum";
 
     public ParseUser getStudent() {
         return getParseUser(KEY_STUDENT);
@@ -27,7 +27,7 @@ public class AnswerPost extends ParseObject {
     }
 
     public ForumPost getParentForumPost() {
-        return (ForumPost) getParseObject(KEY_PARENT);
+        return (ForumPost) getParseObject(KEY_PARENT_FORUM);
     }
 
 }

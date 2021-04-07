@@ -2,6 +2,7 @@ package com.example.courstack;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -30,7 +31,7 @@ public class LoginActivity extends AppCompatActivity {
 
         // Automatic Login
         if (ParseUser.getCurrentUser() != null) {
-            goMainActivity();
+            goSelectCourseActivity();
         }
         etUsername = findViewById(R.id.etUsername);
         etPassword = findViewById(R.id.etPassword);
@@ -88,15 +89,15 @@ public class LoginActivity extends AppCompatActivity {
                     Log.e(TAG, "Issue with login", e);
                     Toast.makeText(LoginActivity.this, "Issue with Login!", Toast.LENGTH_SHORT).show();
                 } else {
-                    goMainActivity();
+                    goSelectCourseActivity();
                     Toast.makeText(LoginActivity.this, "Success", Toast.LENGTH_SHORT).show();
                 }
             }
         });
     }
 
-    private void goMainActivity() {
-        Intent i = new Intent(this, MainActivity.class);
+    private void goSelectCourseActivity() {
+        Intent i = new Intent(this, SelectCourseActivity.class);
         startActivity(i);
         // remove activity from stack
         finish();

@@ -25,6 +25,7 @@ public class ProfileFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private String course;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -62,5 +63,9 @@ public class ProfileFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_profile, container, false);
+    }
+
+    public void setCourse(String course) {
+        this.course = course;
     }
 }

@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String TAG = "MainActivity";
     AnswerPost answerPost;
+    String course;
 
     // Toolbar toolbar;
     BottomNavigationView bottomNavigationView;
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        course = getIntent().getStringExtra("course");
         // toolbar = findViewById(R.id.toolbar);
         // setSupportActionBar(toolbar);
         bottomNavigationView = findViewById(R.id.bottom_navigation);
@@ -47,16 +49,20 @@ public class MainActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.nav_videos:
                         fragment = new VideoFragment();
+                        ((VideoFragment) fragment).setCourse(course);
                         break;
                     case R.id.nav_notes:
                         fragment = new ForumFragment();
+                        ((ForumFragment) fragment).setCourse(course);
                         break;
                     case R.id.nav_classmate:
                         fragment = new ClassmateFragment();
+                        ((ClassmateFragment) fragment).setCourse(course);
                         break;
                     case R.id.nav_profile:
                     default:
                         fragment = new ProfileFragment();
+                        ((ProfileFragment) fragment).setCourse(course);
                         break;
                 }
                 fragmentManager.beginTransaction().replace(R.id.flContainer, fragment).commit();

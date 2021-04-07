@@ -40,6 +40,7 @@ public class VideoFragment extends Fragment {
     private RecyclerView rvVideoPost;
     protected VideoPostAdapter adapter;
     protected List<VideoPost> videoPosts;
+    private String course;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -138,5 +139,9 @@ public class VideoFragment extends Fragment {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void setCourse(String course) {
+        this.course = course;
     }
 }
