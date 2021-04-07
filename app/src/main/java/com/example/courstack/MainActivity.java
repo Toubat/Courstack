@@ -65,7 +65,6 @@ public class MainActivity extends AppCompatActivity {
         });
         // Set default selection
         bottomNavigationView.setSelectedItemId(R.id.nav_videos);
-        queryAnswerPost();
     }
 
     protected void queryAnswerPost() {
@@ -76,33 +75,10 @@ public class MainActivity extends AppCompatActivity {
             public void done(List<AnswerPost> items, ParseException e) {
                 if (e == null) {
                     answerPost = items.get(0);
-                    queryAnswers(answerPost);
+                    // queryAnswers(answerPost);
                 } else {
                     Log.e(TAG, "Issue with getting answer posts", e);
                     Toast.makeText(MainActivity.this, "Issue with getting answer posts!", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-    }
-
-    protected void queryAnswers(AnswerPost answerPost) {
-        // Specify which class to query
-        ParseQuery<Answer> query = ParseQuery.getQuery(Answer.class);
-        query.include(Answer.KEY_STUDENT);
-        query.include(Answer.KEY_ANSWER_TEXT);
-        query.include(Answer.KEY_PARENT);
-        query.whereEqualTo(Answer.KEY_PARENT, answerPost);
-        query.findInBackground(new FindCallback<Answer>() {
-            @Override
-            public void done(List<Answer> objects, ParseException e) {
-                if (e != null) {
-                    Log.e(TAG, "Issue with getting answers", e);
-                    Toast.makeText(MainActivity.this, "Issue with getting answers!", Toast.LENGTH_SHORT).show();
-                } else {
-                    Log.i(TAG, "All answers");
-                    for (Answer answer: objects) {
-                        Log.i(TAG, answer.getText());
-                    }
                 }
             }
         });

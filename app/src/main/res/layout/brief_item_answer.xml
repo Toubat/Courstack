@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#EFEDED">
+
+    <ImageView
+        android:id="@+id/ivSmallProfile"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/tvBriefAnswer"
+        android:layout_width="372dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="0dp"
+        android:text="In the problem Huffman's algorithm is solving, the &quot;cost&quot; is measured by the total length of the encoded data, i.e., you need to minimizing \sum_i f_i l_i. In this problem, there is an additional &quot;cost&quot; you need to consider, which is the &quot;cost&quot; c_i for each word. You need to minimize \sum_i f_i c_i l_i."
+        app:layout_constraintStart_toEndOf="@+id/ivSmallProfile"
+        tools:layout_editor_absoluteY="0dp"
+        tools:lines="2" />
+</RelativeLayout>

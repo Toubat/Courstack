@@ -10,7 +10,7 @@
         android:id="@+id/answer_bar"
         android:layout_width="match_parent"
         android:layout_height="44dp"
-        android:layout_below="@+id/tvQuestion"
+        android:layout_below="@+id/tvDescription"
         android:layout_marginTop="7dp"
         android:background="#00BCD4"
         android:fitsSystemWindows="true"
@@ -42,7 +42,7 @@
         tools:text="I am having a very good question!" />
 
     <TextView
-        android:id="@+id/tvQuestion"
+        android:id="@+id/tvDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvQuestionTitle"

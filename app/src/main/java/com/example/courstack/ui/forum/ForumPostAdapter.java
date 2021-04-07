@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.courstack.R;
 import com.example.courstack.models.ForumPost;
-import com.example.courstack.models.VideoPost;
 import com.parse.ParseFile;
 
 import java.util.List;
@@ -56,7 +55,7 @@ public class ForumPostAdapter extends RecyclerView.Adapter<ForumPostAdapter.Foru
             super(itemView);
             ivProfile = itemView.findViewById(R.id.ivProfileForumPost);
             tvQuestionTitle = itemView.findViewById(R.id.tvQuestionTitle);
-            tvQuestion = itemView.findViewById(R.id.tvQuestion);
+            tvQuestion = itemView.findViewById(R.id.tvDescription);
             tvLateUpdate = itemView.findViewById(R.id.tvLastUpdate);
         }
 

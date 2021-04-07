@@ -10,6 +10,15 @@ public class Answer extends ParseObject {
     public static final String KEY_STUDENT = "student";
     public static final String KEY_ANSWER_TEXT = "answer_text";
     public static final String KEY_PARENT = "parent";
+    public static final String KEY_TITLE = "answer_title";
+
+    public String getTitle() {
+        return getString(KEY_TITLE);
+    }
+
+    public void setKeyTitle(String title) {
+        put(KEY_TITLE, title);
+    }
 
     public ParseUser getStudent() {
         return getParseUser(KEY_STUDENT);

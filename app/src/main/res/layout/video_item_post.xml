@@ -50,6 +50,7 @@
         android:layout_alignParentStart="true"
         android:layout_marginStart="0dp"
         android:layout_marginTop="0dp"
+        android:text="Comments:"
         android:textSize="18sp"
         android:textStyle="bold"
         tools:text="Comments:" />
@@ -70,6 +71,7 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="0dp"
         android:layout_toEndOf="@+id/textView"
+        android:text="5123"
         android:textSize="18sp"
         tools:text="5123" />
 
