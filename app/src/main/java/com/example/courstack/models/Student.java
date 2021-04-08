@@ -1,4 +1,3 @@
-/*
 package com.example.courstack.models;
 
 import com.parse.ParseClassName;
@@ -10,7 +9,7 @@ public class Student extends ParseObject {
     public static final String KEY_USERNAME = "username";
     public static final String KEY_PASSWORD = "password";
     public static final String KEY_DESCRIPTION = "self_description";
-    public static final String KEY_IMAGE = "profile_image";
+    public static final String KEY_MAJOR = "major";    public static final String KEY_IMAGE = "profile_image";
     public static final String KEY_NUM_FANS = "num_fans";
     public static final String KEY_NUM_STACK_COIN = "stack_coin";
 
@@ -38,6 +37,14 @@ public class Student extends ParseObject {
         put(KEY_DESCRIPTION, description);
     }
 
+    public String getMajor() {
+        return getString(KEY_MAJOR);
+    }
+
+    public void setMajor(String major) {
+        put(KEY_MAJOR, major);
+    }
+
     public ParseFile getImage() {
         return getParseFile(KEY_IMAGE);
     }
@@ -55,4 +62,4 @@ public class Student extends ParseObject {
     }
 
 }
-*/
+

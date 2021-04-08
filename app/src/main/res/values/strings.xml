@@ -9,4 +9,5 @@
     <string name="username" />
     <string name="password" />
     <string name="login" />
+    <string name="search">Search</string>
 </resources>

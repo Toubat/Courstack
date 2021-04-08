@@ -6,9 +6,24 @@
     tools:context=".ui.classmate.ClassmateFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <EditText
+        android:id="@+id/etSearch"
+        android:layout_width="310dp"
+        android:layout_height="wrap_content" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvStudent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_marginTop="45dp" />
+
+    <Button
+        android:id="@+id/btnSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="315dp"
+        android:layout_marginTop="0dp"
+        android:text="@string/search" />
 
 </FrameLayout>

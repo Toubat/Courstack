@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/ivHead"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:visibility="visible"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/tvUsername"
+        android:layout_width="168dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="85dp"
+        android:text="Username"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/tvMajor"
+        android:layout_width="155dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/tvUsername"
+        android:text="Major"
+        android:textSize="14sp" />
+
+    <EditText
+        android:id="@+id/tvBio"
+        android:layout_width="310dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvUsername"
+        android:layout_marginStart="85dp"
+        android:layout_marginTop="2dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        android:text="dummy text"
+        android:textSize="10sp" />
+</RelativeLayout>
