@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String TAG = "MainActivity";
     AnswerPost answerPost;
-    String course;
+    String course = "CMPSC 465";
 
     // Toolbar toolbar;
     BottomNavigationView bottomNavigationView;
@@ -35,10 +35,10 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+            super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        course = getIntent().getStringExtra("course");
+        //course = getIntent().getStringExtra("course");
         // toolbar = findViewById(R.id.toolbar);
         // setSupportActionBar(toolbar);
         bottomNavigationView = findViewById(R.id.bottom_navigation);

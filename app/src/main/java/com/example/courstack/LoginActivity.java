@@ -97,7 +97,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void goSelectCourseActivity() {
-        Intent i = new Intent(this, SelectCourseActivity.class);
+        Intent i = new Intent(this, MainActivity.class);
         startActivity(i);
         // remove activity from stack
         finish();
