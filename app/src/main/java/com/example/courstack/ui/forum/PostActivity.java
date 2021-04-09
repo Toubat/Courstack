@@ -49,6 +49,7 @@ public class PostActivity extends AppCompatActivity {
         TextView tvQuestionTitle = findViewById(R.id.tvQuestionTitle);
         TextView tvDescription = findViewById(R.id.tvDescription);
         TextView tvLastUpdate = findViewById(R.id.tvLastUpdate);
+        TextView tvName = findViewById(R.id.tvName);
         ImageView ivProfileRvAnswer = findViewById(R.id.ivProfileRvAnswer);
 
         Intent intent = getIntent();
@@ -58,6 +59,8 @@ public class PostActivity extends AppCompatActivity {
         tvDescription.setText(intent.getStringExtra("description"));
         tvQuestionTitle.setText(intent.getStringExtra("questionTitle"));
         tvLastUpdate.setText(intent.getStringExtra("update"));
+        tvName.setText(intent.getStringExtra("name"));
+
         ParseFile profile = intent.getParcelableExtra("image");
         if ( profile!= null) {
             Glide.with(PostActivity.this).load(profile.getUrl()).into(ivProfileRvAnswer);

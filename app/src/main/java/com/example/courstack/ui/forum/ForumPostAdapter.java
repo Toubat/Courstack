@@ -92,6 +92,7 @@ public class ForumPostAdapter extends RecyclerView.Adapter<ForumPostAdapter.Foru
                     i.putExtra("questionTitle", forumPost.getTitle());
                     i.putExtra("description", forumPost.getDescription());
                     i.putExtra("update", strDate);
+                    i.putExtra("name", forumPost.getStudent().getUsername());
                     if (image != null){
                         i.putExtra("image", image);
                     }

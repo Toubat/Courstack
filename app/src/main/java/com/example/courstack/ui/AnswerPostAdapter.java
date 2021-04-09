@@ -71,6 +71,7 @@ public class AnswerPostAdapter extends RecyclerView.Adapter<AnswerPostAdapter.An
             super(itemView);
             ivProfile = itemView.findViewById(R.id.ivProfile2);
             tvUsername = itemView.findViewById(R.id.tvUsernameForumPost2);
+            //normally, answerPost for reply purpose does not need title
             tvTitle = itemView.findViewById(R.id.tvAnswerTitle2);
             tvDescription = itemView.findViewById(R.id.tvDescription2);
             tvLastUpdate = itemView.findViewById(R.id.tvLastUpdate2);
@@ -116,6 +117,8 @@ public class AnswerPostAdapter extends RecyclerView.Adapter<AnswerPostAdapter.An
                     } else {
                         Log.i(TAG, "All answers");
                         answers.addAll(items);
+                        Log.i(TAG, "Alibaba"+String.format("%d", answers.size()));
+                        adapter.notifyDataSetChanged();
                     }
                 }
             });
