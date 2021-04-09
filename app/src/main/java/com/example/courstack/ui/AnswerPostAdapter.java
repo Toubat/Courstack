@@ -22,6 +22,8 @@ import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseQuery;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -84,8 +86,13 @@ public class AnswerPostAdapter extends RecyclerView.Adapter<AnswerPostAdapter.An
             tvUsername.setText(answerPost.getStudent().getUsername());
             tvTitle.setText(answerPost.getAnswer().getTitle());
             tvDescription.setText(answerPost.getAnswer().getText());
-            tvLastUpdate.setText((CharSequence) answerPost.getAnswer().getUpdatedAt());
-            ParseFile profile = answerPost.getAnswer().getStudent().getParseFile("profile_image");
+
+            //date
+            DateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy");
+            String strDate = dateFormat.format(answerPost.getAnswer().getUpdatedAt());
+            tvLastUpdate.setText(strDate);
+
+            ParseFile profile = answerPost.getStudent().getParseFile("profile_image");
             if (profile != null) {
                 Glide.with(context).load(profile.getUrl()).into(ivProfile);
             }

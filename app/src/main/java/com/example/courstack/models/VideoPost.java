@@ -5,11 +5,11 @@ import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 
-import org.parceler.Parcel;
+//import org.parceler.Parcel;
 
 import java.util.ArrayList;
 
-@Parcel
+//@Parcel
 @ParseClassName("VideoPost")
 public class VideoPost extends ParseObject {
 
