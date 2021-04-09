@@ -2,6 +2,7 @@ package com.example.courstack.ui.forum;
 
 import android.content.Context;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -15,13 +16,29 @@ import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
-public class PostAdapter{
+public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
     private final Context context;
     private final ArrayList<AnswerPost> answers;
 
     public PostAdapter(Context context, ArrayList<AnswerPost> answers) {
         this.context = context;
         this.answers = answers;
+    }
+
+    @NonNull
+    @Override
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return null;
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+
+    }
+
+    @Override
+    public int getItemCount() {
+        return 0;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
@@ -38,6 +55,10 @@ public class PostAdapter{
             tvLastUpdate = itemView.findViewById(R.id.updateText);
             rvAnswerPost = itemView.findViewById(R.id.rvAnswerPost);
             ivPostProfile = itemView.findViewById(R.id.ivProfileRvAnswer);
+        }
+
+        public void bind(AnswerPost answer){
+            tvCourseTitle.setText(answer.getAnswer().getTitle());
         }
     }
 }
