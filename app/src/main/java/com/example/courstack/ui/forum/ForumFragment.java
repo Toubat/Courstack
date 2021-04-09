@@ -41,6 +41,7 @@ public class ForumFragment extends Fragment {
     List<ForumPost> forumPosts;
     ForumPostAdapter adapter;
     RecyclerView rvForumPosts;
+    private String course;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -50,7 +51,10 @@ public class ForumFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+<<<<<<< HEAD
     private String course = "CMPSC 465";
+=======
+>>>>>>> 7e907eee5a73ff3b85438f3c9be8477aa638d69e
 
     public ForumFragment() {
         // Required empty public constructor
@@ -82,6 +86,16 @@ public class ForumFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
         setHasOptionsMenu(true);
+<<<<<<< HEAD
+=======
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_forum, container, false);
+>>>>>>> 7e907eee5a73ff3b85438f3c9be8477aa638d69e
     }
 
     @Override
@@ -103,13 +117,6 @@ public class ForumFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_forum, container, false);
-    }
-
-    @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.forum_toolbar, menu);
         super.onCreateOptionsMenu(menu, inflater);
@@ -123,7 +130,6 @@ public class ForumFragment extends Fragment {
         }
         return super.onOptionsItemSelected(item);
     }
-
 
     public void setCourse(String course) {
         this.course = course;
