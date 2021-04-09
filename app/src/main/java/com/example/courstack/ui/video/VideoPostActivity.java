@@ -56,7 +56,6 @@ public class VideoPostActivity extends AppCompatActivity {
     TextView tvTitle;
     VideoView vvVideo;
 
-    VideoPost videoPost;
     RecyclerView rvCommentPosts;
     List<AnswerPost> answerPosts;
     AnswerPostAdapter adapter;
@@ -111,7 +110,6 @@ public class VideoPostActivity extends AppCompatActivity {
         } else {
             Log.i(TAG, "not saved");
         }
-        queryMainVideoPost(objectId);
 
         // set media controller to enable full control of video
         MediaController controller = new MediaController(this);
@@ -123,7 +121,7 @@ public class VideoPostActivity extends AppCompatActivity {
         adapter = new AnswerPostAdapter(this, answerPosts);
         rvCommentPosts.setAdapter(adapter);
         rvCommentPosts.setLayoutManager(new LinearLayoutManager(this));
-        queryAnswerPosts();
+        queryMainVideoPost(objectId);
     }
 
     private void queryMainVideoPost(String objectId) {
@@ -133,8 +131,9 @@ public class VideoPostActivity extends AppCompatActivity {
             @Override
             public void done(List<VideoPost> objects, ParseException e) {
                 if (e == null) {
-                    videoPost = objects.get(0);
+                    VideoPost videoPost = objects.get(0);
                     Log.i(TAG, "Id is: " + videoPost.getObjectId());
+                    queryAnswerPosts(videoPost);
                 } else {
                     Log.e(TAG, "Issue with getting video posts", e);
                     Toast.makeText(VideoPostActivity.this, "Issue with getting video posts!", Toast.LENGTH_SHORT).show();
@@ -143,7 +142,8 @@ public class VideoPostActivity extends AppCompatActivity {
         });
     }
 
-    private void queryAnswerPosts() {
+    private void queryAnswerPosts(VideoPost videoPost) {
+        Log.i(TAG, videoPost.getObjectId());
         // Specify which class to query
         ParseQuery<AnswerPost> query = ParseQuery.getQuery(AnswerPost.class);
         query.include(AnswerPost.KEY_ANSWER);
@@ -153,8 +153,8 @@ public class VideoPostActivity extends AppCompatActivity {
         query.findInBackground(new FindCallback<AnswerPost>() {
             public void done(List<AnswerPost> items, ParseException e) {
                 if (e == null) {
-                    Log.i(TAG, String.valueOf(items));
                     answerPosts.addAll(items);
+                    Log.i(TAG, "All items: " + answerPosts);
                     adapter.notifyDataSetChanged();
                 } else {
                     Log.e(TAG, "Issue with getting answer posts", e);
