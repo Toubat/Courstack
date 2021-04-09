@@ -54,18 +54,14 @@ public class PostActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String ForumPostId = intent.getStringExtra("postId");
 
-        //here need to be changed
-//        //initialize the main question
-//        tvDescription.setText(mainForumPost.getDescription());
-//        tvQuestionTitle.setText(mainForumPost.getTitle());
-//
-//        ParseFile profile = mainForumPost.getStudent().getParseFile("profile_image");
-//        if (profile != null) {
-//            Glide.with(PostActivity.this).load(profile.getUrl()).into(ivProfileRvAnswer);
-//        }
-//        DateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy");
-//        String strDate = dateFormat.format(mainForumPost.getUpdatedAt());
-//        tvLastUpdate.setText(strDate);
+        //initialize the main question
+        tvDescription.setText(intent.getStringExtra("description"));
+        tvQuestionTitle.setText(intent.getStringExtra("questionTitle"));
+        tvLastUpdate.setText(intent.getStringExtra("update"));
+        ParseFile profile = intent.getParcelableExtra("image");
+        if ( profile!= null) {
+            Glide.with(PostActivity.this).load(profile.getUrl()).into(ivProfileRvAnswer);
+        }
 
         // 0.data source
         answers = new ArrayList<>();

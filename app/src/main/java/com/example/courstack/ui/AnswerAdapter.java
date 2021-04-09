@@ -15,6 +15,8 @@ import com.example.courstack.R;
 import com.example.courstack.models.Answer;
 import com.parse.ParseFile;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 public class AnswerAdapter extends RecyclerView.Adapter<AnswerAdapter.AnswerViewHolder> {
@@ -120,7 +122,12 @@ public class AnswerAdapter extends RecyclerView.Adapter<AnswerAdapter.AnswerView
             tvUsername.setText(answer.getStudent().getUsername());
             tvTitle.setText(answer.getTitle());
             tvDescription.setText(answer.getText());
-            tvLastUpdate.setText((CharSequence) answer.getUpdatedAt());
+
+            //date
+            DateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy");
+            String strDate = dateFormat.format(answer.getUpdatedAt());
+            tvLastUpdate.setText(strDate);
+
             ParseFile profile = answer.getStudent().getParseFile("profile_image");
             if (profile != null) {
                 Glide.with(context).load(profile.getUrl()).into(ivProfile);

@@ -89,6 +89,12 @@ public class ForumPostAdapter extends RecyclerView.Adapter<ForumPostAdapter.Foru
                 public void onClick(View v) {
                     Intent i = new Intent(context, PostActivity.class);
                     i.putExtra("postId", forumPost.getObjectId());
+                    i.putExtra("questionTitle", forumPost.getTitle());
+                    i.putExtra("description", forumPost.getDescription());
+                    i.putExtra("update", strDate);
+                    if (image != null){
+                        i.putExtra("image", image);
+                    }
                     context.startActivity(i);
                 }
             });
