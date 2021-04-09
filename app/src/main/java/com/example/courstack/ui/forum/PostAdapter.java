@@ -17,8 +17,8 @@ import org.w3c.dom.Text;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
 
+public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
     private final Context context;
     private final List<AnswerPost> answers;
 
@@ -58,6 +58,10 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             tvLastUpdate = itemView.findViewById(R.id.updateText);
             rvAnswerPost = itemView.findViewById(R.id.rvAnswerPost);
             ivPostProfile = itemView.findViewById(R.id.ivProfileRvAnswer);
+        }
+
+        public void bind(AnswerPost answer){
+            tvCourseTitle.setText(answer.getAnswer().getTitle());
         }
     }
 }
