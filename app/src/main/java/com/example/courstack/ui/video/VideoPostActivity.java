@@ -118,14 +118,12 @@ public class VideoPostActivity extends AppCompatActivity {
         controller.setMediaPlayer(vvVideo);
         vvVideo.setMediaController(controller);
 
-        // query answer posts
-        answerPosts = new ArrayList<>();
-        queryAnswerPosts();
-
         // set RecyclerView
+        answerPosts = new ArrayList<>();
         adapter = new AnswerPostAdapter(this, answerPosts);
         rvCommentPosts.setAdapter(adapter);
         rvCommentPosts.setLayoutManager(new LinearLayoutManager(this));
+        queryAnswerPosts();
     }
 
     private void queryMainVideoPost(String objectId) {
@@ -136,6 +134,7 @@ public class VideoPostActivity extends AppCompatActivity {
             public void done(List<VideoPost> objects, ParseException e) {
                 if (e == null) {
                     videoPost = objects.get(0);
+                    Log.i(TAG, "Id is: " + videoPost.getObjectId());
                 } else {
                     Log.e(TAG, "Issue with getting video posts", e);
                     Toast.makeText(VideoPostActivity.this, "Issue with getting video posts!", Toast.LENGTH_SHORT).show();
@@ -150,11 +149,13 @@ public class VideoPostActivity extends AppCompatActivity {
         query.include(AnswerPost.KEY_ANSWER);
         query.include(AnswerPost.KEY_STUDENT);
         query.include(AnswerPost.KEY_PARENT_VIDEO);
-        query.whereEqualTo(AnswerPost.KEY_PARENT_VIDEO, answerPosts);
+        query.whereEqualTo(AnswerPost.KEY_PARENT_VIDEO, videoPost);
         query.findInBackground(new FindCallback<AnswerPost>() {
             public void done(List<AnswerPost> items, ParseException e) {
                 if (e == null) {
+                    Log.i(TAG, String.valueOf(items));
                     answerPosts.addAll(items);
+                    adapter.notifyDataSetChanged();
                 } else {
                     Log.e(TAG, "Issue with getting answer posts", e);
                     Toast.makeText(VideoPostActivity.this, "Issue with getting answer posts!", Toast.LENGTH_SHORT).show();
