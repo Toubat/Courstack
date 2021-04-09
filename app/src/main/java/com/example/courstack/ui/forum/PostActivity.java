@@ -24,12 +24,8 @@ import java.util.List;
 public class PostActivity extends AppCompatActivity {
     public static final String TAG = "postActivity";
     ArrayList<AnswerPost> answers;
-<<<<<<< HEAD
-    AnswerPost mainPost;
-=======
     PostAdapter adapter;
 
->>>>>>> 6e4bd338880e1265ed02a9ac9136c4a05a9aa514
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,7 +57,7 @@ public class PostActivity extends AppCompatActivity {
                 } else {
                     Log.i(TAG, "All answers");
                     answers.addAll(items);
-                    PostAdapter.notifyDataSetChanged();
+                    //PostAdapter.notifyDataSetChanged();
                 }
             }
         });
