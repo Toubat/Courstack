@@ -22,6 +22,7 @@ import java.util.List;
 public class PostActivity extends AppCompatActivity {
     public static final String TAG = "postActivity";
     ArrayList<AnswerPost> answers;
+    PostAdapter adapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

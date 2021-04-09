@@ -25,6 +25,7 @@
         android:id="@+id/ivProfileVideoPost"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:scaleType="fitXY"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
@@ -61,6 +62,7 @@
         android:layout_height="202dp"
         android:layout_below="@+id/ivProfileVideoPost"
         android:layout_marginTop="1dp"
+        android:scaleType="fitXY"
         tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
     <TextView
@@ -85,7 +87,6 @@
         android:layout_marginStart="156dp"
         android:layout_marginEnd="156dp"
         android:layout_marginBottom="66dp"
-        android:alpha="20"
         app:srcCompat="@drawable/ic_baseline_play_circle_filled_24"
         tools:layout_centerHorizontal="true" />
 
