@@ -15,7 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Courstack"
         android:usesCleartextTraffic="true">
-        <activity android:name=".SelectCourseActivity"></activity>
+        <activity android:name=".ui.video.VideoPostActivity"></activity>
+        <activity android:name=".SelectCourseActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".LoginActivity">
             <intent-filter>

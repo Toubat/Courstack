@@ -15,10 +15,16 @@ import com.example.courstack.models.AnswerPost;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.List;
 
+public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
+
+<<<<<<< HEAD
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
+=======
+>>>>>>> 6e4bd338880e1265ed02a9ac9136c4a05a9aa514
     private final Context context;
-    private final ArrayList<AnswerPost> answers;
+    private final List<AnswerPost> answers;
 
     public PostAdapter(Context context, ArrayList<AnswerPost> answers) {
         this.context = context;
@@ -38,10 +44,15 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
 
     @Override
     public int getItemCount() {
+<<<<<<< HEAD
         return 0;
+=======
+        return answers.size();
+>>>>>>> 6e4bd338880e1265ed02a9ac9136c4a05a9aa514
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
+
         private final TextView tvCourseTitle;
         private final TextView tvQuestionTitle;
         private final TextView tvLastUpdate;

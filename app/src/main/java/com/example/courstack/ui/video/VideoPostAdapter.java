@@ -1,11 +1,13 @@
 package com.example.courstack.ui.video;
 
 import android.content.Context;
+import android.content.Intent;
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,7 +18,11 @@ import com.example.courstack.R;
 import com.example.courstack.models.VideoPost;
 import com.parse.ParseFile;
 
+import org.parceler.Parcels;
+
 import java.util.List;
+
+import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
 public class VideoPostAdapter extends RecyclerView.Adapter<VideoPostAdapter.VideoPostViewHolder> {
 
@@ -67,9 +73,25 @@ public class VideoPostAdapter extends RecyclerView.Adapter<VideoPostAdapter.Vide
             tvUsername.setText(videoPost.getStudent().getUsername());
             tvTitle.setText(videoPost.getTitle());
             // tvNumComments.setText("1324");
-            ParseFile image = videoPost.getFrontImage();
-            Glide.with(context).load(image.getUrl()).into(ivFrontImage);
-
+            int radius = 25;
+            int margin = 10;
+            Glide.with(context)
+                 .load(videoPost.getFrontImage().getUrl())
+                 .transform(new RoundedCornersTransformation(radius, margin))
+                 .into(ivFrontImage);
+            Glide.with(context)
+                 .load(videoPost.getStudent().getParseFile("profile_image").getUrl())
+                 .transform(new RoundedCornersTransformation(radius, 5))
+                 .into(ivProfile);
+            ivFrontImage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // Nevigate to a new activity on tap
+                    Intent i = new Intent(context, VideoPostActivity.class);
+                    i.putExtra("videoPost", Parcels.wrap(videoPost));
+                    context.startActivity(i);
+                }
+            });
         }
     }
 }

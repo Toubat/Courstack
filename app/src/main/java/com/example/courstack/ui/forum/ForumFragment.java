@@ -41,8 +41,6 @@ public class ForumFragment extends Fragment {
     List<ForumPost> forumPosts;
     ForumPostAdapter adapter;
     RecyclerView rvForumPosts;
-    private String course = "CMPSC 465";
-
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -52,7 +50,11 @@ public class ForumFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+<<<<<<< HEAD
 
+=======
+    private String course = "CMPSC 465";
+>>>>>>> 6e4bd338880e1265ed02a9ac9136c4a05a9aa514
 
 
     public ForumFragment() {
@@ -85,7 +87,10 @@ public class ForumFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
         setHasOptionsMenu(true);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6e4bd338880e1265ed02a9ac9136c4a05a9aa514
     }
 
     @Override
@@ -93,7 +98,10 @@ public class ForumFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_forum, container, false);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6e4bd338880e1265ed02a9ac9136c4a05a9aa514
     }
 
     @Override
