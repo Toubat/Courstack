@@ -88,7 +88,12 @@ public class VideoPostAdapter extends RecyclerView.Adapter<VideoPostAdapter.Vide
                 public void onClick(View v) {
                     // Nevigate to a new activity on tap
                     Intent i = new Intent(context, VideoPostActivity.class);
-                    i.putExtra("videoPost", Parcels.wrap(videoPost));
+                    i.putExtra("username", videoPost.getStudent().getUsername());
+                    i.putExtra("title", videoPost.getTitle());
+                    i.putExtra("profileImage", videoPost.getStudent().getParseFile("profile_image").getUrl());
+                    i.putExtra("videoUrl", videoPost.getVideoFile().getUrl());
+                    i.putExtra("frontImage", videoPost.getFrontImage().getUrl());
+                    i.putExtra("objectId", videoPost.getObjectId());
                     context.startActivity(i);
                 }
             });

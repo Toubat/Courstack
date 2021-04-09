@@ -9,7 +9,6 @@ import org.parceler.Parcel;
 
 import java.util.ArrayList;
 
-@Parcel
 @ParseClassName("VideoPost")
 public class VideoPost extends ParseObject {
 
