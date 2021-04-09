@@ -50,8 +50,13 @@ public class ForumFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+<<<<<<< HEAD
 
     private String course = "CMPSC 465";
+=======
+    private String course = "CMPSC 465";
+
+>>>>>>> 1b5e48ed973a4996146412d6b472c24cbd043455
 
 
     public ForumFragment() {
@@ -84,9 +89,12 @@ public class ForumFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
         setHasOptionsMenu(true);
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> 1b5e48ed973a4996146412d6b472c24cbd043455
     }
 
     @Override
@@ -94,8 +102,11 @@ public class ForumFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_forum, container, false);
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 1b5e48ed973a4996146412d6b472c24cbd043455
     }
 
     @Override

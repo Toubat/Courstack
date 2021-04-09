@@ -9,7 +9,10 @@ import com.parse.ParseUser;
 
 import java.util.ArrayList;
 
+<<<<<<< HEAD
 //@Parcel
+=======
+>>>>>>> 1b5e48ed973a4996146412d6b472c24cbd043455
 @ParseClassName("VideoPost")
 public class VideoPost extends ParseObject {
 

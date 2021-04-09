@@ -12,6 +12,7 @@ public class AnswerPost extends ParseObject {
     public static final String KEY_ANSWER = "answer";
     public static final String KEY_STUDENT = "student";
     public static final String KEY_PARENT_FORUM = "parent_forum";
+    public static final String KEY_PARENT_VIDEO = "parent_video";
 
     public ParseUser getStudent() {
         return getParseUser(KEY_STUDENT);

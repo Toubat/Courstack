@@ -59,7 +59,7 @@
         android:layout_width="match_parent"
         android:layout_height="209dp"
         android:layout_below="@+id/ivProfileVideoPost"
-        android:layout_marginTop="1dp" />
+        android:layout_marginTop="0dp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvCommentPost"
@@ -67,5 +67,34 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/video_bar"
         android:layout_marginTop="0dp" />
+
+    <ImageView
+        android:id="@+id/ivFrontImage2"
+        android:layout_width="385dp"
+        android:layout_height="207dp"
+        android:layout_above="@+id/video_bar"
+        android:layout_alignTop="@+id/vvVideo"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="2dp"
+        android:scaleType="fitXY"
+        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+    <ImageView
+        android:id="@+id/ivPlayIcon"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_above="@+id/video_bar"
+        android:layout_alignTop="@+id/vvVideo"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="155dp"
+        android:layout_marginTop="55dp"
+        android:layout_marginEnd="155dp"
+        android:layout_marginBottom="55dp"
+        app:srcCompat="@drawable/ic_baseline_play_circle_filled_24" />
 
 </RelativeLayout>
