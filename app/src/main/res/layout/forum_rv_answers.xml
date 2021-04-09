@@ -10,8 +10,8 @@
         android:id="@+id/answer_bar"
         android:layout_width="match_parent"
         android:layout_height="44dp"
-        android:layout_below="@+id/tvDescription"
-        android:layout_marginTop="7dp"
+        android:layout_below="@+id/tvLastUpdate"
+        android:layout_marginTop="10dp"
         android:background="#00BCD4"
         android:fitsSystemWindows="true"
         android:minHeight="?attr/actionBarSize"
@@ -19,24 +19,15 @@
         app:titleTextColor="@android:color/white" />
 
     <TextView
-        android:id="@+id/tvCourseTitle"
-        android:layout_width="243dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="0dp"
-        android:layout_marginEnd="0dp"
-        android:layout_toStartOf="@+id/updateText"
-        android:layout_toEndOf="@+id/ivProfileRvAnswer"
-        android:textSize="36sp"
-        tools:text="CMPSC465" />
-
-    <TextView
         android:id="@+id/tvQuestionTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/ivProfileRvAnswer"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="0dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="11dp"
+        android:layout_marginEnd="-3dp"
+        android:layout_toEndOf="@+id/ivProfileRvAnswer"
         android:textSize="20dp"
         android:textStyle="bold"
         tools:text="I am having a very good question!" />
@@ -47,8 +38,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvQuestionTitle"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="0dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="25dp"
         android:textSize="15dp"
         tools:text=" So I am trying to use the Huffman algorithm we did in class notes and modifying it, but I am not sure how. Doesn't the huffman alg that we did in class already do what question is asking for? i.e. doesn't solving for the codes naturally grant us the minimal cost because there would not be any reason to give a code a length greater than what was needed." />
 
@@ -56,22 +47,21 @@
         android:id="@+id/updateText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_below="@+id/tvDescription"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="7dp"
-        android:layout_marginEnd="7dp"
-        android:text="Last Update At:" />
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="89dp"
+        android:text="Last Update At:"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/tvLastUpdate"
         android:layout_width="97dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/updateText"
-        android:layout_alignStart="@+id/updateText"
-        android:layout_alignEnd="@+id/updateText"
-        android:layout_marginStart="0dp"
+        android:layout_alignTop="@+id/updateText"
+        android:layout_alignParentEnd="true"
         android:layout_marginTop="0dp"
-        android:layout_marginEnd="0dp"
+        android:layout_marginEnd="-16dp"
         tools:text="03/20/2021" />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -92,6 +82,10 @@
         android:id="@+id/ivProfileRvAnswer"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="5dp"
         tools:srcCompat="@tools:sample/avatars" />
 
 </RelativeLayout>

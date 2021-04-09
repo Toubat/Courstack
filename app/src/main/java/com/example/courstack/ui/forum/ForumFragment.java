@@ -50,7 +50,7 @@ public class ForumFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    private String course;
+    private String course = "CMPSC 465";
 
     public ForumFragment() {
         // Required empty public constructor
@@ -81,6 +81,7 @@ public class ForumFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        setHasOptionsMenu(true);
     }
 
     @Override
@@ -89,11 +90,14 @@ public class ForumFragment extends Fragment {
         Toolbar forumToolbar = getActivity().findViewById(R.id.forum_bar);
         // videoToolbar.setNavigationIcon(R.drawable.ic_baseline_video_library_24);
         ((AppCompatActivity) getActivity()).setSupportActionBar(forumToolbar);
-        rvForumPosts = view.findViewById(R.id.rvForumPosts);
 
+        rvForumPosts = view.findViewById(R.id.rvForumPosts);
+        //0. create data source
         forumPosts = new ArrayList<>();
         queryForumPost(course);
+        //1. create adapter
         adapter = new ForumPostAdapter(getContext(), forumPosts);
+        //2. set adapter
         rvForumPosts.setAdapter(adapter);
         rvForumPosts.setLayoutManager(new LinearLayoutManager(getContext()));
     }
@@ -143,6 +147,7 @@ public class ForumFragment extends Fragment {
                 } else {
                     Log.i(TAG, "All answers");
                     forumPosts.addAll(items);
+                    adapter.notifyDataSetChanged();
                 }
             }
         });
