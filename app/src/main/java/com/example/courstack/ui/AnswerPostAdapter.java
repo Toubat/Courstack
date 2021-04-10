@@ -63,24 +63,32 @@ public class AnswerPostAdapter extends RecyclerView.Adapter<AnswerPostAdapter.An
         TextView tvTitle;
         TextView tvDescription;
         TextView tvLastUpdate;
-        RecyclerView rvAnswers;
-        AnswerAdapter adapter;
+
+        List<ImageView> ivComments;
+        List<TextView> tvComments;
+
         List<Answer> answers;
 
         public AnswerPostViewHolder(@NonNull View itemView) {
             super(itemView);
             ivProfile = itemView.findViewById(R.id.ivProfile2);
             tvUsername = itemView.findViewById(R.id.tvUsernameForumPost2);
-            //normally, answerPost for reply purpose does not need title
+            // normally, answerPost for reply purpose does not need title
             tvTitle = itemView.findViewById(R.id.tvAnswerTitle2);
             tvDescription = itemView.findViewById(R.id.tvDescription2);
             tvLastUpdate = itemView.findViewById(R.id.tvLastUpdate2);
-            rvAnswers = itemView.findViewById(R.id.rvAnswers);
+            ivComments = new ArrayList<>();
+            tvComments = new ArrayList<>();
+
+            ivComments.add((ImageView) itemView.findViewById(R.id.ivBriefComment1));
+            ivComments.add((ImageView) itemView.findViewById(R.id.ivBriefComment2));
+            ivComments.add((ImageView) itemView.findViewById(R.id.ivBriefComment3));
+
+            tvComments.add((TextView) itemView.findViewById(R.id.tvBriefComment1));
+            tvComments.add((TextView) itemView.findViewById(R.id.tvBriefComment2));
+            tvComments.add((TextView) itemView.findViewById(R.id.tvBriefComment3));
+
             answers = new ArrayList<>();
-            adapter = new AnswerAdapter(context, answers, AnswerAdapter.BRIEF);
-            // 2. Set the adapter on the recycler view
-            rvAnswers.setAdapter(adapter);
-            rvAnswers.setLayoutManager(new LinearLayoutManager(context));
         }
 
         public void bind(AnswerPost answerPost) {
@@ -98,7 +106,6 @@ public class AnswerPostAdapter extends RecyclerView.Adapter<AnswerPostAdapter.An
                 Glide.with(context).load(profile.getUrl()).into(ivProfile);
             }
             queryAnswers(answerPost);
-            adapter.notifyDataSetChanged();
         }
 
         public void queryAnswers(AnswerPost answerPost) {
@@ -108,6 +115,7 @@ public class AnswerPostAdapter extends RecyclerView.Adapter<AnswerPostAdapter.An
             query.include(Answer.KEY_ANSWER_TEXT);
             query.include(Answer.KEY_PARENT);
             query.whereEqualTo(Answer.KEY_PARENT, answerPost);
+            query.setLimit(3);
             query.findInBackground(new FindCallback<Answer>() {
                 @Override
                 public void done(List<Answer> items, ParseException e) {
@@ -117,8 +125,12 @@ public class AnswerPostAdapter extends RecyclerView.Adapter<AnswerPostAdapter.An
                     } else {
                         Log.i(TAG, "All answers");
                         answers.addAll(items);
-                        Log.i(TAG, "Alibaba"+String.format("%d", answers.size()));
-                        adapter.notifyDataSetChanged();
+                        for (int i = 0; i < answers.size(); i++) {
+                            tvComments.get(i).setText(answers.get(i).getText());
+                        }
+                        for (int i = 0; i < answers.size(); i++) {
+                            Glide.with(context).load(answers.get(i).getStudent().getParseFile("profile_image").getUrl()).into(ivComments.get(i));
+                        }
                     }
                 }
             });

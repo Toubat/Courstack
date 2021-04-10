@@ -5,8 +5,7 @@
     android:id="@+id/item_answer"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="7dp"
-    android:background="#86D2DC">
+    android:layout_margin="7dp">
 
     <ImageView
         android:id="@+id/ivProfile"

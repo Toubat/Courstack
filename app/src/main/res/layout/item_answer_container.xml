@@ -1,99 +1,211 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cvCard"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="7dp"
-    android:background="#86D2DC">
+    android:layout_margin="3dp"
+    android:layout_marginTop="0dp"
+    app:cardBackgroundColor="#FFFFFF"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="10dp"
+    app:cardPreventCornerOverlap="false">
 
-    <ImageView
-        android:id="@+id/ivProfile2"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="0dp"
-        tools:srcCompat="@tools:sample/avatars" />
-
-    <TextView
-        android:id="@+id/tvUsernameForumPost2"
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="0dp"
-        android:layout_marginEnd="5dp"
-        android:layout_toEndOf="@+id/ivProfile2"
-        android:text="Username"
-        android:textSize="18sp" />
+        android:layout_margin="7dp">
 
-    <TextView
-        android:id="@+id/tvAnswerTitle2"
-        android:layout_width="355dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tvUsernameForumPost"
-        android:layout_alignBottom="@+id/ivProfile2"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="0dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginBottom="0dp"
-        android:layout_toEndOf="@+id/ivProfile2"
-        android:textSize="18sp"
-        android:textStyle="bold|italic"
-        tools:text="Tips about Huffman's Encoding" />
+        <ImageView
+            android:id="@+id/ivProfile2"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            tools:srcCompat="@tools:sample/avatars" />
 
-    <TextView
-        android:id="@+id/tvDescription2"
-        android:layout_width="406dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/ivProfile2"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="0dp"
-        android:layout_marginEnd="5dp"
-        android:textSize="15dp"
-        tools:text="In the problem Huffman's algorithm is solving, the &quot;cost&quot; is measured by the total length of the encoded data, i.e., you need to minimizing \sum_i f_i l_i. In this problem, there is an additional &quot;cost&quot; you need to consider, which is the &quot;cost&quot; c_i for each word. You need to minimize \sum_i f_i c_i l_i." />
+        <TextView
+            android:id="@+id/tvUsernameForumPost2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="5dp"
+            android:layout_toEndOf="@+id/ivProfile2"
+            android:text="Username"
+            android:textSize="18sp" />
 
-    <TextView
-        android:id="@+id/updateText2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tvDescription2"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="201dp"
-        android:layout_marginTop="4dp"
-        android:text="Last Update At:"
-        android:textStyle="bold" />
+        <TextView
+            android:id="@+id/tvAnswerTitle2"
+            android:layout_width="355dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvUsernameForumPost"
+            android:layout_alignBottom="@+id/ivProfile2"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="0dp"
+            android:layout_toEndOf="@+id/ivProfile2"
+            android:textSize="18sp"
+            android:textStyle="bold|italic"
+            tools:text="Tips about Huffman's Encoding" />
 
-    <TextView
-        android:id="@+id/tvLastUpdate2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/updateText"
-        android:layout_alignBottom="@+id/updateText2"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="0dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginBottom="0dp"
-        android:layout_toEndOf="@+id/updateText2"
-        tools:text="03/20/2021" />
+        <TextView
+            android:id="@+id/tvDescription2"
+            android:layout_width="339dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ivProfile2"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="5dp"
+            android:layout_toEndOf="@+id/ivProfile2"
+            android:textSize="15dp"
+            tools:text="In the problem Huffman's algorithm is solving, the &quot;cost&quot; is measured by the total length of the encoded data, i.e., you need to minimizing \sum_i f_i l_i. In this problem, there is an additional &quot;cost&quot; you need to consider, which is the &quot;cost&quot; c_i for each word. You need to minimize \sum_i f_i c_i l_i." />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="149dp"
-        android:layout_below="@+id/updateText2"
-        android:layout_marginTop="0dp"
-        android:background="#FFFFFF"
-        android:orientation="vertical">
+        <TextView
+            android:id="@+id/updateText2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/tvUsernameForumPost2"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="210dp"
+            android:layout_marginBottom="0dp"
+            android:text="@string/last_update_at"
+            android:textSize="12sp"
+            android:textStyle="bold" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvAnswers"
+        <TextView
+            android:id="@+id/tvLastUpdate2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/updateText2"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="0dp"
+            android:layout_toEndOf="@+id/updateText2"
+            android:textSize="12sp"
+            tools:text="03-20-2021" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/imageView5"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="0dp"
+            android:layout_toEndOf="@+id/imageView5"
+            app:srcCompat="@drawable/ic_baseline_comment_24"
+            app:tint="#00BCD4" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvDescription2"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="7dp"
+            android:layout_toEndOf="@+id/ivProfile2"
+            app:srcCompat="@drawable/ic_baseline_thumb_up_24"
+            app:tint="#00BCD4" />
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/imageView4"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="0dp"
+            android:layout_toEndOf="@+id/imageView4"
+            app:srcCompat="@drawable/ic_baseline_thumb_down_24"
+            app:tint="#00BCD4" />
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="7dp" />
-    </LinearLayout>
-</RelativeLayout>
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imageView4"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="5dp"
+            android:layout_toEndOf="@+id/ivProfile2"
+            android:background="#EDEDED">
+
+            <ImageView
+                android:id="@+id/ivBriefComment3"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_below="@+id/ivBriefComment2"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="15dp"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/tvBriefComment3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/ivBriefComment3"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_toEndOf="@+id/ivBriefComment1"
+                android:lines="2"
+                tools:text="@string/note_that_the_card_view_cardelevation_is_used_to_determine_the_size_and_softness_of_the_shadow_so_as_to_realistically_depict_the_depth_these_properties_can_be_set_programmatically_as_well" />
+
+            <ImageView
+                android:id="@+id/ivBriefComment2"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_below="@+id/ivBriefComment1"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="15dp"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/tvBriefComment2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/ivBriefComment2"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="5dp"
+                android:layout_toEndOf="@+id/ivBriefComment1"
+                android:lines="2"
+                tools:text="@string/overview_android_7_0_introduces_a_new_widget_called_cardview_which_essentially_can_be_thought_of_as_a_framelayout_with_rounded_corners_and_shadow_based_on_its_elevation_note_that_a_cardview_wraps_a_layout_and_will_often_be_the_container_used_in_a_layout_for_each_item_within_a_listview_or_recyclerview_cardview_should_be_used_when_displaying_heterogenous_content_using_a_list_or_a_grid_of_tiles_non_cards_for_homogenous_content_is_preferred_since_the_boundaries_in_a_card_can_distract_the_user_from_quickly_scanning_a_list_using_cardview_lets_assume_your_layout_looks_something_like_this_framelayout_xmlns_app_http_schemas_android_com_apk_res_auto_xmlns_android_http_schemas_android_com_apk_res_android_android_layout_width_match_parent_android_layout_height_wrap_content_main_content_view" />
+
+            <ImageView
+                android:id="@+id/ivBriefComment1"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/tvBriefComment1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/ivBriefComment1"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="5dp"
+                android:layout_toEndOf="@+id/ivBriefComment1"
+                android:lines="2"
+                tools:text="@string/cardview_should_be_used_when_displaying_heterogenous_content_using_a_list_or_a_grid_of_tiles_non_cards_for_homogenous_content_is_preferred_since_the_boundaries_in_a_card_can_distract_the_user_from_quickly_scanning_a_list" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>
