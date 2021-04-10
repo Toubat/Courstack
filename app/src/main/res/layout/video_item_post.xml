@@ -1,93 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cvCard"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="7dp"
-    android:background="#DCDADA">
+    android:layout_margin="5dp"
+    android:layout_marginTop="0dp"
+    app:cardBackgroundColor="#FFFFFF"
+    app:cardElevation="7dp"
+    app:cardCornerRadius="8dp"
+    app:cardPreventCornerOverlap="false">
 
-    <TextView
-        android:id="@+id/tvVideoTitle"
-        android:layout_width="347dp"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/ivFrontImage"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginBottom="0dp"
-        android:layout_toStartOf="@+id/updateText"
-        android:layout_toEndOf="@+id/ivProfileVideoPost"
-        android:textSize="18sp"
-        android:textStyle="bold|italic"
-        tools:text="Reverse LinkedList Implementation" />
-
-    <ImageView
-        android:id="@+id/ivProfileVideoPost"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:scaleType="fitXY"
-        tools:srcCompat="@tools:sample/avatars" />
-
-    <TextView
-        android:id="@+id/tvUserNameVideoPost"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/tvVideoTitle"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="0dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginBottom="0dp"
-        android:layout_toEndOf="@+id/ivProfileVideoPost"
-        android:textSize="18sp"
-        tools:text="username" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/ivFrontImage"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="0dp"
-        android:text="Comments:"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        tools:text="Comments:" />
-
-    <ImageView
-        android:id="@+id/ivFrontImage"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="202dp"
-        android:layout_below="@+id/ivProfileVideoPost"
-        android:layout_marginTop="1dp"
-        android:scaleType="fitXY"
-        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/tvNumComments"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/ivFrontImage"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="0dp"
-        android:layout_toEndOf="@+id/textView"
-        android:text="5123"
-        android:textSize="18sp"
-        tools:text="5123" />
+        <TextView
+            android:id="@+id/tvVideoTitle"
+            android:layout_width="347dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/ivFrontImage"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginBottom="0dp"
+            android:layout_toStartOf="@+id/updateText"
+            android:layout_toEndOf="@+id/ivProfileVideoPost"
+            android:textSize="18sp"
+            android:textStyle="bold|italic"
+            tools:text="Reverse LinkedList Implementation" />
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="86dp"
-        android:layout_height="78dp"
-        android:layout_alignBottom="@+id/ivFrontImage"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="156dp"
-        android:layout_marginEnd="156dp"
-        android:layout_marginBottom="66dp"
-        app:srcCompat="@drawable/ic_baseline_play_circle_filled_24"
-        tools:layout_centerHorizontal="true" />
+        <ImageView
+            android:id="@+id/ivProfileVideoPost"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:scaleType="fitXY"
+            tools:srcCompat="@tools:sample/avatars" />
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/tvUserNameVideoPost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/tvVideoTitle"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginBottom="0dp"
+            android:layout_toEndOf="@+id/ivProfileVideoPost"
+            android:textSize="18sp"
+            tools:text="username" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ivFrontImage"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:text="Comments:"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            tools:text="Comments:" />
+
+        <ImageView
+            android:id="@+id/ivFrontImage"
+            android:layout_width="match_parent"
+            android:layout_height="202dp"
+            android:layout_below="@+id/ivProfileVideoPost"
+            android:layout_marginTop="1dp"
+            android:scaleType="fitXY"
+            tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+        <TextView
+            android:id="@+id/tvNumComments"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ivFrontImage"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="0dp"
+            android:layout_toEndOf="@+id/textView"
+            android:text="5123"
+            android:textSize="18sp"
+            tools:text="5123" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="86dp"
+            android:layout_height="78dp"
+            android:layout_alignBottom="@+id/ivFrontImage"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="156dp"
+            android:layout_marginEnd="156dp"
+            android:layout_marginBottom="66dp"
+            app:srcCompat="@drawable/ic_baseline_play_circle_filled_24"
+            tools:layout_centerHorizontal="true" />
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>
+
+
+
+

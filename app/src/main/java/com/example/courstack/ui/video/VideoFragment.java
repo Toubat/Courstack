@@ -1,11 +1,13 @@
 package com.example.courstack.ui.video;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -37,9 +39,9 @@ import java.util.List;
 public class VideoFragment extends Fragment {
 
     public static final String TAG = "VideoFragment";
-    private RecyclerView rvVideoPost;
-    protected VideoPostAdapter adapter;
-    protected List<VideoPost> videoPosts;
+    RecyclerView rvVideoPost;
+    VideoPostAdapter adapter;
+    List<VideoPost> videoPosts;
     private String course;
 
     // TODO: Rename parameter arguments, choose names that match
