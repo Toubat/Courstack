@@ -4,18 +4,25 @@
 ## User Stories
 - [X] User can login with username and password.
 - [ ] User can signup by filling out basic personal information. 
-- [ ] User can choose a specfic course forum to join in.
+- [x] User can choose a specfic course forum to join in.
 - [ ] Once user discover a piece of useful information he or she appreciate, he or she can offer "stack coin" to the contributor.
 - [X] User can watch a list of short video discussing about certain course content created by other students.
     - [X] User can leave comments or reply to other's comments.
     - [ ] User can swipe between videos easily.
-    - [ ] User can click a video to start watching in a dialog fragment.
+    - [x] User can click a video to start watching in a separate activity.
+    - [x] Under each video, use can view a list of comments and follow-up of comments, and can give each comment a thumb-up, thumb-down, reward coins, and subscribe.
 - [X] User can ask questions in different forum for specific class, or share relevant notes.
-    - [ ] User add a image along with text under each AnswerPost.
-    - [ ] User can search for a specific title or course material they would like to query.
-- [ ] User can search for classmate and send private message.
+    - [x] User add a image along with text under each AnswerPost.
+    - [x] User can search for a specific title or course material they would like to query.
+    - [x] Under each question post, use can view a list of comments and follow-up of comments, and can give each comment a thumb-up, thumb-down, reward coins, and subscribe.
+- [x] User can search for classmate and send private message.
     - [ ] User can filter classmate by courses they are currently taking.
     - [ ] User can view a list of classmate in certain course and read their self-description.
+
+## Optional Stories
+- [ ] User can type Markdown text to stylize their answer posts.
+- [ ] User can schedule a meeting position with other classmate on a specific location in campus using Google Map.
+- [ ] User can chat with other classmate.
 
 ## Networking
 
@@ -86,9 +93,6 @@ List of network requests by screen
  
 * Classmate Screen
   * (Read/GET) userQuery()
-    
-## Optional Stories
-- [ ] User can type Markdown text to stylize their answer posts.
 
 ## Model Workflow
 <img src='Model Workflow.png' title='Model Worklow' width='' alt='Model Worklow' />
