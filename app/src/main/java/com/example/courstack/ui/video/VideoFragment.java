@@ -23,6 +23,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.courstack.R;
+import com.example.courstack.models.Course;
 import com.example.courstack.models.VideoPost;
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -42,7 +43,7 @@ public class VideoFragment extends Fragment {
     RecyclerView rvVideoPost;
     VideoPostAdapter adapter;
     List<VideoPost> videoPosts;
-    private String course;
+    private Course course;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -114,6 +115,7 @@ public class VideoFragment extends Fragment {
         query.include(VideoPost.KEY_FRONT_IMAGE);
         query.include(VideoPost.KEY_STUDENT);
         query.include(VideoPost.KEY_TITLE);
+        query.whereEqualTo(VideoPost.KEY_COURSE, course);
         query.findInBackground(new FindCallback<VideoPost>() {
             @Override
             public void done(List<VideoPost> objects, ParseException e) {
@@ -143,7 +145,7 @@ public class VideoFragment extends Fragment {
         return super.onOptionsItemSelected(item);
     }
 
-    public void setCourse(String course) {
+    public void setCourse(Course course) {
         this.course = course;
     }
 }

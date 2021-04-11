@@ -22,6 +22,7 @@ import android.widget.Toast;
 import com.example.courstack.R;
 import com.example.courstack.models.Answer;
 import com.example.courstack.models.AnswerPost;
+import com.example.courstack.models.Course;
 import com.example.courstack.models.ForumPost;
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -51,7 +52,7 @@ public class ForumFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private String course = "CMPSC 465";
+    private Course course;
 
 
     public ForumFragment() {
@@ -126,11 +127,11 @@ public class ForumFragment extends Fragment {
         return super.onOptionsItemSelected(item);
     }
 
-    public void setCourse(String course) {
+    public void setCourse(Course course) {
         this.course = course;
     }
 
-    public void queryForumPost(String course) {
+    public void queryForumPost(Course course) {
         // Specify which class to query
         ParseQuery<ForumPost> query = ParseQuery.getQuery(ForumPost.class);
         query.include(ForumPost.KEY_STUDENT);

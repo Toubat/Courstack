@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.courstack.R;
+import com.example.courstack.models.Course;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,7 +26,7 @@ public class ClassmateFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    private String course;
+    private Course course;
 
     public ClassmateFragment() {
         // Required empty public constructor
@@ -65,7 +66,7 @@ public class ClassmateFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_classmate, container, false);
     }
 
-    public void setCourse(String course) {
+    public void setCourse(Course course) {
         this.course = course;
     }
 }

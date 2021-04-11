@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.example.courstack.models.Answer;
 import com.example.courstack.models.AnswerPost;
+import com.example.courstack.models.Course;
 import com.example.courstack.models.ForumPost;
 import com.example.courstack.models.VideoPost;
 import com.parse.Parse;
@@ -19,6 +20,7 @@ public class ParseApplication extends Application {
         ParseObject.registerSubclass(AnswerPost.class);
         ParseObject.registerSubclass(ForumPost.class);
         ParseObject.registerSubclass(VideoPost.class);
+        ParseObject.registerSubclass(Course.class);
 
         Parse.initialize(new Parse.Configuration.Builder(this)
                 .applicationId("2MWgHMk9KvqaZPEZeyQux036CxYwsA1BLOs8vTuD")
