@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -14,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.courstack.R;
 import com.example.courstack.models.Answer;
 import com.example.courstack.models.AnswerPost;
+import com.example.courstack.models.Course;
 import com.example.courstack.models.ForumPost;
 import com.parse.ParseException;
 import com.parse.ParseUser;
@@ -26,7 +28,7 @@ public class ComposeActivity extends AppCompatActivity {
     public static final String TAG = "ComposeActivity";
     public static final int MAX_LENGTH = 6000;
     Button btnCompose;
-    EditText etCourse;
+    TextView tvCourse;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -34,15 +36,17 @@ public class ComposeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_compose);
 
         Intent intent = getIntent();
-        String course = intent.getStringExtra("course");
+        Course course = intent.getParcelableExtra("course");
 
         etTitle = findViewById(R.id.etTitle);
         etCompose = findViewById(R.id.etCompose);
         btnCompose = findViewById(R.id.btnCompose);
         etCategory = findViewById(R.id.etCategory);
-        etCourse = findViewById(R.id.etCourse);
+        tvCourse = findViewById(R.id.tvCourse);
 
-        etCourse.setText(course);
+        tvCourse.setText(course.getCourseTitle());
+
+        Log.i(TAG, String.format("course: %s", course));
 
         btnCompose.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -50,7 +54,6 @@ public class ComposeActivity extends AppCompatActivity {
                 String composeContent = etCompose.getText().toString();
                 String composeTitle = etTitle.getText().toString();
                 String composeCategory = etCategory.getText().toString();
-                String composeCourse = etCourse.getText().toString();
 
                 if (composeContent.isEmpty() || composeTitle.isEmpty()) {
                     Toast.makeText(ComposeActivity.this, "Sorry, your content cannot be empty", Toast.LENGTH_LONG).show();
@@ -65,13 +68,15 @@ public class ComposeActivity extends AppCompatActivity {
                     return;
                 }
                 ParseUser currentUser = ParseUser.getCurrentUser();
-                saveForumPost(composeTitle, composeContent, composeCategory, composeCourse, currentUser);
+                saveForumPost(composeTitle, composeContent, course, composeCategory, currentUser);
+                Intent intent = new Intent();
+                setResult(RESULT_OK, intent);
                 finish();
             }
         });
     }
 
-    public void saveForumPost(String title, String content, String category, String course,ParseUser currentUser){
+    public void saveForumPost(String title, String content, Course course, String category,ParseUser currentUser){
         ForumPost forumPost = new ForumPost();
         forumPost.setTitle(title);
         forumPost.setStudent(currentUser);

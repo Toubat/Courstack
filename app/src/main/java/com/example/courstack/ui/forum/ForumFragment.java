@@ -10,6 +10,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -30,7 +31,11 @@ import com.parse.ParseException;
 import com.parse.ParseQuery;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+
+import static android.app.Activity.RESULT_OK;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -43,7 +48,7 @@ public class ForumFragment extends Fragment {
     List<ForumPost> forumPosts;
     ForumPostAdapter adapter;
     RecyclerView rvForumPosts;
-
+    SwipeRefreshLayout swipeContainer;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -54,7 +59,7 @@ public class ForumFragment extends Fragment {
     private String mParam2;
 
     private Course course;
-
+    private final int REQUEST_CODE = 20;
 
     public ForumFragment() {
         // Required empty public constructor
@@ -111,7 +116,30 @@ public class ForumFragment extends Fragment {
         //2. set adapter
         rvForumPosts.setAdapter(adapter);
         rvForumPosts.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        //configure swipeContainer
+        swipeContainer = getActivity().findViewById(R.id.swipe_container);
+        // Scheme colors for animation
+        swipeContainer.setColorSchemeColors(
+                getResources().getColor(android.R.color.holo_green_light),
+                getResources().getColor(android.R.color.holo_orange_light),
+                getResources().getColor(android.R.color.holo_red_light));
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                Log.i(TAG, "fetching new data");
+                populatePosts();
+                swipeContainer.setRefreshing(false);
+            }
+        });
     }
+
+    public void populatePosts() {
+        forumPosts.clear();
+        queryForumPost(course);
+    }
+
+
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
@@ -124,10 +152,21 @@ public class ForumFragment extends Fragment {
         if (item.getItemId() == R.id.action_compose) {
             Intent i = new Intent(getContext(), ComposeActivity.class);
             i.putExtra("course", course);
-            getContext().startActivity(i);
+            Log.i(TAG, String.format("COOOO: %s", course.getCourseTitle()));
+            startActivityForResult(i, REQUEST_CODE);
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if (requestCode == REQUEST_CODE && resultCode == RESULT_OK) {
+            Log.i(TAG, "Success to return to the rv");
+            populatePosts();
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+
     }
 
     public void setCourse(Course course) {
@@ -143,6 +182,7 @@ public class ForumFragment extends Fragment {
         query.include(ForumPost.KEY_CATEGORY);
         query.include("updatedAt");
         query.whereEqualTo(ForumPost.KEY_COURSE, course);
+        query.orderByAscending("updatedAt");
         query.findInBackground(new FindCallback<ForumPost>() {
             @Override
             public void done(List<ForumPost> items, ParseException e) {

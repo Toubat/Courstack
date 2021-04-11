@@ -6,6 +6,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.forum.ForumFragment">
 
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/forum_bar">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvForumPosts"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp" />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/forum_bar"
         android:layout_width="match_parent"
@@ -15,15 +29,6 @@
         android:minHeight="?attr/actionBarSize"
         app:titleTextColor="@android:color/white"
         app:title="Forum"/>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvForumPosts"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/forum_bar"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="0dp" />
 
     <!-- TODO: Update blank fragment layout -->
 

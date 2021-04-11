@@ -1,8 +1,3 @@
-	
-
-
-
-
 package com.example.courstack.models;
 
 import com.parse.ParseClassName;
@@ -35,8 +30,12 @@ public class ForumPost extends ParseObject {
         put(KEY_DESCRIPTION, description);
     }
 
-    public Course getCourse() {
-        return (Course) getParseObject(KEY_COURSE);
+    public String getCourse() {
+        return getString(KEY_COURSE);
+    }
+
+    public void setCourse(Course course) {
+        put(KEY_COURSE, course);
     }
 
     public ParseUser getStudent() {
