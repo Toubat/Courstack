@@ -16,7 +16,12 @@ public class VideoPost extends ParseObject {
     public static final String KEY_STUDENT = "student";
     public static final String KEY_TITLE = "title";
     public static final String KEY_ANSWERPOSTS = "answerPosts";
+    public static final String KEY_COURSE = "course";
     public static final String KEY_FRONT_IMAGE = "front_image";
+
+    public Course getCourse() {
+        return (Course) getParseObject(KEY_COURSE);
+    }
 
     public ParseFile getFrontImage() {
         return getParseFile(KEY_FRONT_IMAGE);

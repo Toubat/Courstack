@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.example.courstack.models.Answer;
 import com.example.courstack.models.AnswerPost;
+import com.example.courstack.models.Course;
 import com.example.courstack.ui.classmate.ClassmateFragment;
 import com.example.courstack.ui.forum.ForumFragment;
 import com.example.courstack.ui.profile.ProfileFragment;
@@ -27,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String TAG = "MainActivity";
     AnswerPost answerPost;
-    String course = "CMPSC 465";
 
     // Toolbar toolbar;
     BottomNavigationView bottomNavigationView;
@@ -38,9 +38,8 @@ public class MainActivity extends AppCompatActivity {
             super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //course = getIntent().getStringExtra("course");
-        // toolbar = findViewById(R.id.toolbar);
-        // setSupportActionBar(toolbar);
+        Course course = getIntent().getParcelableExtra("course");
+
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
