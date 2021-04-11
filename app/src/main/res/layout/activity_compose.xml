@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:counterEnabled="true"
+    tools:context=".ui.forum.ComposeActivity">
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textLayout3"
+        android:layout_width="194dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/textLayout0"
+        android:layout_alignStart="@+id/textLayout0"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="5dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etCourse"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Course"
+            tools:text="CMPSC 467" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/typeUrQuestion"
+        android:layout_width="178dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1"
+        android:text="Type Your Question"
+        android:textSize="20sp"
+        android:textStyle="bold|italic" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textLayout1"
+        android:layout_width="194dp"
+        android:layout_height="50dp"
+        android:layout_alignBottom="@+id/textLayout0"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="7dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="0dp"
+        android:layout_toEndOf="@+id/textLayout0">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etCategory"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="0dp"
+            android:hint="Question Category"
+            tools:text="alibaba" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textLayout0"
+        android:layout_width="194dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/typeUrQuestion"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="9dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etTitle"
+            android:layout_width="202dp"
+            android:layout_height="match_parent"
+            android:hint="Question Title" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textLayout"
+        android:layout_width="match_parent"
+        android:layout_height="471dp"
+        android:layout_below="@+id/textLayout3"
+        android:layout_marginTop="13dp"
+        app:counterEnabled="true"
+        app:counterMaxLength="6000"
+        app:counterOverflowTextAppearance="@style/TextAppearance.AppCompat.Body1"
+        app:counterTextAppearance="@style/TextAppearance.AppCompat.Body1">
+
+        <EditText
+            android:id="@+id/etCompose"
+            android:layout_width="match_parent"
+            android:layout_height="496dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="3dp"
+            android:ems="10"
+            android:hint="Your question..." />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btnCompose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textLayout"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="19dp"
+        android:text="Post Your Question" />
+
+</RelativeLayout>

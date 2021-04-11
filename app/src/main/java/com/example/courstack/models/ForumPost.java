@@ -54,15 +54,5 @@ public class ForumPost extends ParseObject {
         put(KEY_CATEGORY, category);
     }
 
-    //TODO
-    public ArrayList<AnswerPost> getAnswerPosts() {
-        return null;
-    }
-
-    //TODO
-    public void setAnswerposts() {
-        return;
-    }
-
 
 }

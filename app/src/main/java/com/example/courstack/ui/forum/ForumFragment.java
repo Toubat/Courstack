@@ -1,5 +1,6 @@
 package com.example.courstack.ui.forum;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -120,7 +121,9 @@ public class ForumFragment extends Fragment {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.action_compose) {
-            Toast.makeText(getContext(), "Menu item was clicked", Toast.LENGTH_SHORT).show();
+            Intent i = new Intent(getContext(), ComposeActivity.class);
+            i.putExtra("course", course);
+            getContext().startActivity(i);
             return true;
         }
         return super.onOptionsItemSelected(item);
