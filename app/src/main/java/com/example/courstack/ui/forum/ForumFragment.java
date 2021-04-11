@@ -22,8 +22,6 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.courstack.R;
-import com.example.courstack.models.Answer;
-import com.example.courstack.models.AnswerPost;
 import com.example.courstack.models.Course;
 import com.example.courstack.models.ForumPost;
 import com.parse.FindCallback;
@@ -31,8 +29,6 @@ import com.parse.ParseException;
 import com.parse.ParseQuery;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 import static android.app.Activity.RESULT_OK;
@@ -118,7 +114,7 @@ public class ForumFragment extends Fragment {
         rvForumPosts.setLayoutManager(new LinearLayoutManager(getContext()));
 
         //configure swipeContainer
-        swipeContainer = getActivity().findViewById(R.id.swipe_container);
+        swipeContainer = getActivity().findViewById(R.id.swipe_container_forum);
         // Scheme colors for animation
         swipeContainer.setColorSchemeColors(
                 getResources().getColor(android.R.color.holo_green_light),
@@ -182,7 +178,7 @@ public class ForumFragment extends Fragment {
         query.include(ForumPost.KEY_CATEGORY);
         query.include("updatedAt");
         query.whereEqualTo(ForumPost.KEY_COURSE, course);
-        query.orderByAscending("updatedAt");
+        query.orderByDescending("updatedAt");
         query.findInBackground(new FindCallback<ForumPost>() {
             @Override
             public void done(List<ForumPost> items, ParseException e) {

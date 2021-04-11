@@ -15,9 +15,9 @@
         android:layout_height="25dp"
         android:layout_alignTop="@+id/typeUrQuestion"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="36dp"
+        android:layout_marginStart="35dp"
         android:layout_marginTop="0dp"
-        android:layout_marginEnd="6dp"
+        android:layout_marginEnd="10dp"
         android:layout_toEndOf="@+id/typeUrQuestion"
         android:textSize="20sp"
         android:textStyle="bold" />
@@ -26,6 +26,8 @@
         android:id="@+id/typeUrQuestion"
         android:layout_width="193dp"
         android:layout_height="25dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_weight="1"
         android:text="Type Your Question:"
@@ -38,8 +40,10 @@
         android:layout_height="50dp"
         android:layout_below="@+id/textLayout0"
         android:layout_alignStart="@+id/textLayout0"
+        android:layout_alignParentEnd="true"
         android:layout_marginStart="0dp"
-        android:layout_marginTop="0dp">
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="10dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etCategory"
@@ -56,8 +60,11 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_below="@id/typeUrQuestion"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="20dp">
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etTitle"
@@ -69,10 +76,14 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textLayout"
-        android:layout_width="match_parent"
-        android:layout_height="510dp"
+        android:layout_width="421dp"
+        android:layout_height="386dp"
         android:layout_below="@+id/textLayout1"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
+        android:layout_marginEnd="10dp"
         app:counterEnabled="true"
         app:counterMaxLength="6000"
         app:counterOverflowTextAppearance="@style/TextAppearance.AppCompat.Body1"
@@ -81,7 +92,7 @@
         <EditText
             android:id="@+id/etCompose"
             android:layout_width="match_parent"
-            android:layout_height="472dp"
+            android:layout_height="352dp"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:layout_marginTop="3dp"
@@ -92,13 +103,18 @@
 
     <Button
         android:id="@+id/btnCompose"
-        android:layout_width="222dp"
-        android:layout_height="50dp"
+        android:layout_width="228dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textLayout"
+        android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="5dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginStart="215dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="10dp"
+        android:backgroundTint="#03A9F4"
         android:text="Post Your Question"
-        android:textSize="10sp" />
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        android:textStyle="bold" />
 
 </RelativeLayout>

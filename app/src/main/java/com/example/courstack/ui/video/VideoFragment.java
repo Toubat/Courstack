@@ -11,6 +11,7 @@ import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.provider.MediaStore;
 import android.util.Log;
@@ -43,6 +44,7 @@ public class VideoFragment extends Fragment {
     RecyclerView rvVideoPost;
     VideoPostAdapter adapter;
     List<VideoPost> videoPosts;
+    SwipeRefreshLayout swipeContainer;
     private Course course;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -107,6 +109,26 @@ public class VideoFragment extends Fragment {
         // 2. Set the adapter on the recycler view
         rvVideoPost.setAdapter(adapter);
         rvVideoPost.setLayoutManager(new LinearLayoutManager(getContext()));
+        //configure swipeContainer
+        swipeContainer = getActivity().findViewById(R.id.swipe_container_video);
+        // Scheme colors for animation
+        swipeContainer.setColorSchemeColors(
+                getResources().getColor(android.R.color.holo_green_light),
+                getResources().getColor(android.R.color.holo_orange_light),
+                getResources().getColor(android.R.color.holo_red_light));
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                Log.i(TAG, "fetching new data");
+                populateVideoPosts();
+                swipeContainer.setRefreshing(false);
+            }
+        });
+        queryVideoPosts();
+    }
+
+    private void populateVideoPosts() {
+        videoPosts.clear();
         queryVideoPosts();
     }
 
@@ -116,6 +138,8 @@ public class VideoFragment extends Fragment {
         query.include(VideoPost.KEY_STUDENT);
         query.include(VideoPost.KEY_TITLE);
         query.whereEqualTo(VideoPost.KEY_COURSE, course);
+        query.include("updatedAt");
+        query.orderByDescending("updatedAt");
         query.findInBackground(new FindCallback<VideoPost>() {
             @Override
             public void done(List<VideoPost> objects, ParseException e) {

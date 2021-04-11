@@ -20,6 +20,8 @@ import com.parse.ParseFile;
 
 import org.parceler.Parcels;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
@@ -59,6 +61,7 @@ public class VideoPostAdapter extends RecyclerView.Adapter<VideoPostAdapter.Vide
         private TextView tvTitle;
         private ImageView ivFrontImage;
         private TextView tvNumComments;
+        private TextView tvLastUpdate;
 
         public VideoPostViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -67,11 +70,15 @@ public class VideoPostAdapter extends RecyclerView.Adapter<VideoPostAdapter.Vide
             tvTitle = itemView.findViewById(R.id.tvVideoTitle);
             ivFrontImage = itemView.findViewById(R.id.ivFrontImage);
             tvNumComments = itemView.findViewById(R.id.tvNumComments);
+            tvLastUpdate = itemView.findViewById(R.id.tvLastUpdateVideo);
         }
 
         public void bind(VideoPost videoPost) {
             tvUsername.setText(videoPost.getStudent().getUsername());
             tvTitle.setText(videoPost.getTitle());
+            DateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy");
+            String strDate = dateFormat.format(videoPost.getUpdatedAt());
+            tvLastUpdate.setText(strDate);
             // tvNumComments.setText("1324");
             int radius = 25;
             int margin = 10;

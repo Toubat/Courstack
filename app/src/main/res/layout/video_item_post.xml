@@ -44,14 +44,37 @@
             android:layout_height="wrap_content"
             android:layout_above="@+id/tvVideoTitle"
             android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
             android:layout_marginStart="5dp"
             android:layout_marginTop="0dp"
-            android:layout_marginEnd="0dp"
             android:layout_marginBottom="0dp"
             android:layout_toEndOf="@+id/ivProfileVideoPost"
             android:textSize="18sp"
             tools:text="username" />
+
+        <TextView
+            android:id="@+id/updateText3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/tvLastUpdateVideo"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="5dp"
+            android:layout_toStartOf="@+id/tvLastUpdateVideo"
+            android:text="Last Update At:"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvLastUpdateVideo"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/tvVideoTitle"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginBottom="0dp"
+            android:textSize="12sp"
+            tools:text="03-20-2021" />
 
         <TextView
             android:id="@+id/textView"

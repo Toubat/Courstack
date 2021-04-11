@@ -7,7 +7,7 @@
     tools:context=".ui.forum.ForumFragment">
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/swipe_container"
+        android:id="@+id/swipe_container_forum"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/forum_bar">

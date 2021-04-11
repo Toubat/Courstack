@@ -16,14 +16,23 @@
         app:titleTextColor="@android:color/white"
         app:title="Videos"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvVideoPosts"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_container_video"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/video_bar"
-        android:clipToPadding="false"
-        android:paddingBottom="10dp"
-        android:layout_marginTop="0dp" />
+        android:layout_below="@id/video_bar">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvVideoPosts"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/video_bar"
+            android:clipToPadding="false"
+            android:paddingBottom="10dp"
+            android:layout_marginTop="0dp" />
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
 
 
 </RelativeLayout>
