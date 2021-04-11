@@ -26,6 +26,7 @@ import android.widget.Toast;
 import com.example.courstack.R;
 import com.example.courstack.models.Course;
 import com.example.courstack.models.VideoPost;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
@@ -45,6 +46,7 @@ public class VideoFragment extends Fragment {
     VideoPostAdapter adapter;
     List<VideoPost> videoPosts;
     SwipeRefreshLayout swipeContainer;
+    FloatingActionButton floatingActionButton;
     private Course course;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -102,6 +104,7 @@ public class VideoFragment extends Fragment {
         // videoToolbar.setNavigationIcon(R.drawable.ic_baseline_video_library_24);
         ((AppCompatActivity) getActivity()).setSupportActionBar(videoToolbar);
         rvVideoPost = view.findViewById(R.id.rvVideoPosts);
+        floatingActionButton =  view.findViewById(R.id.floatingButton);
         // 0. Create the data source
         videoPosts = new ArrayList<>();
         // 1. Create the adapter

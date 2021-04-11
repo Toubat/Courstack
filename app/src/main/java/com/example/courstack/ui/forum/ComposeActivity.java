@@ -13,8 +13,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.courstack.R;
-import com.example.courstack.models.Answer;
-import com.example.courstack.models.AnswerPost;
 import com.example.courstack.models.Course;
 import com.example.courstack.models.ForumPost;
 import com.parse.ParseException;
@@ -38,8 +36,8 @@ public class ComposeActivity extends AppCompatActivity {
         Intent intent = getIntent();
         Course course = intent.getParcelableExtra("course");
 
-        etTitle = findViewById(R.id.etTitle);
-        etCompose = findViewById(R.id.etCompose);
+        etTitle = findViewById(R.id.etVideoTitle);
+        etCompose = findViewById(R.id.etDescription);
         btnCompose = findViewById(R.id.btnCompose);
         etCategory = findViewById(R.id.etCategory);
         tvCourse = findViewById(R.id.tvCourse);

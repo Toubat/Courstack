@@ -67,7 +67,7 @@
         android:layout_marginEnd="10dp">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etTitle"
+            android:id="@+id/etVideoTitle"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="Question Title" />
@@ -90,7 +90,7 @@
         app:counterTextAppearance="@style/TextAppearance.AppCompat.Body1">
 
         <EditText
-            android:id="@+id/etCompose"
+            android:id="@+id/etDescription"
             android:layout_width="match_parent"
             android:layout_height="352dp"
             android:layout_centerHorizontal="true"
