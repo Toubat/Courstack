@@ -30,7 +30,6 @@
             android:id="@+id/etTitle2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:visibility="invisible" />
             android:hint="Title" />
 
     </com.google.android.material.textfield.TextInputLayout>
