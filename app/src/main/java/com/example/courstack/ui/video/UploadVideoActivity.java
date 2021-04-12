@@ -1,6 +1,7 @@
 package com.example.courstack.ui.video;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.FileProvider;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -9,6 +10,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,6 +27,8 @@ public class UploadVideoActivity extends AppCompatActivity {
 
     public static final String TAG = "UploadVideoActivity";
     private static final int VIDEO_CAPTURE = 101;
+    private String videoFileName = "video.mp4";
+    private File videoFile;
     Uri videoUri;
 
     EditText etTitle;
@@ -71,11 +75,27 @@ public class UploadVideoActivity extends AppCompatActivity {
     public void startRecordingVideo() {
         if (getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_FRONT)) {
             Intent intent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
-            File mediaFile = new File(
-                    Environment.getExternalStorageDirectory().getAbsolutePath() + "/myvideo.mp4");
-            videoUri = Uri.fromFile(mediaFile);
-            intent.putExtra(MediaStore.EXTRA_OUTPUT, videoUri);
-            startActivityForResult(intent, VIDEO_CAPTURE);
+            File mediaStorageDir = new File(getExternalFilesDir(Environment.DIRECTORY_DCIM), TAG);
+
+            // Create the storage directory if it does not exist
+            if (!mediaStorageDir.exists() && !mediaStorageDir.mkdirs()){
+                Log.d(TAG, "failed to create directory");
+                Toast.makeText(this, "Failed to create directory", Toast.LENGTH_LONG).show();
+            }
+            videoFile = new File(mediaStorageDir.getPath() + File.separator + videoFileName);
+
+            // wrap File object into a content provider
+            // required for API >= 24
+            // See https://guides.codepath.com/android/Sharing-Content-with-Intents#sharing-files-with-api-24-or-higher
+            Uri fileProvider = FileProvider.getUriForFile(this, "com.codepath.fileprovider", videoFile);
+            intent.putExtra(MediaStore.EXTRA_OUTPUT, fileProvider);
+
+            // If you call startActivityForResult() using an intent that no app can handle, your app will crash.
+            // So as long as the result is not null, it's safe to use the intent.
+            if (intent.resolveActivity(getPackageManager()) != null) {
+                // Start the image capture intent to take photo
+                startActivityForResult(intent, VIDEO_CAPTURE);
+            }
         } else {
             Toast.makeText(this, "No camera on device", Toast.LENGTH_LONG).show();
         }
@@ -99,6 +119,7 @@ public class UploadVideoActivity extends AppCompatActivity {
     }
 
     public void playbackRecordedVideo() {
+        videoUri = Uri.fromFile(videoFile);
         vvVideoUpload.setVideoURI(videoUri);
         vvVideoUpload.setMediaController(new MediaController(this));
         vvVideoUpload.requestFocus();

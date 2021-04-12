@@ -40,16 +40,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PostActivity extends AppCompatActivity implements ResponseDialogFragment.MyDialogCloseListener {
+
     public static final String TAG = "postActivity";
+
     List<AnswerPost> answers;
     AnswerPostAdapter adapter;
+    RecyclerView rvAnswerPosts;
     ForumPost mainForumPost;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.forum_rv_answers);
-        RecyclerView rvAnswerPosts = findViewById(R.id.rvAnswerPost);
+        rvAnswerPosts = findViewById(R.id.rvAnswerPost);
 
         // Answer bar
         Toolbar answerBar = findViewById(R.id.answer_bar);
@@ -116,8 +119,11 @@ public class PostActivity extends AppCompatActivity implements ResponseDialogFra
 
     //execute when dialog dismisses
     @Override
-    public void handleDialogClose() {
-        populateAnswerPosts();
+    public void handleDialogClose(AnswerPost answerPost) {
+        answers.add(0, answerPost);
+        adapter.notifyItemInserted(0);
+        // scroll to top of view
+        rvAnswerPosts.smoothScrollToPosition(0);
     }
 
     public void queryAnswerPosts(ForumPost forumPost) {
@@ -129,6 +135,7 @@ public class PostActivity extends AppCompatActivity implements ResponseDialogFra
         query.include("objectId");
         query.include("updatedAt");
         query.whereEqualTo(AnswerPost.KEY_PARENT_FORUM, forumPost);
+        query.orderByDescending("updatedAt");
         query.findInBackground(new FindCallback<AnswerPost>() {
             @Override
             public void done(List<AnswerPost> items, ParseException e) {

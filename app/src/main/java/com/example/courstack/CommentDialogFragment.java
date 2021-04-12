@@ -2,12 +2,16 @@ package com.example.courstack;
 
 import android.app.Activity;
 import android.content.DialogInterface;
+import android.graphics.Point;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.Log;
+import android.view.Display;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -27,7 +31,7 @@ import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
 public class CommentDialogFragment extends DialogFragment {
-    private static final int MAX_LENGTH = 3000;
+    private static final int MAX_LENGTH = 200;
     private EditText etResponse;
     private EditText etTitle;
     private Button btSend;
@@ -39,6 +43,12 @@ public class CommentDialogFragment extends DialogFragment {
         // Empty constructor is required for DialogFragment
         // Make sure not to add arguments to the constructor
         // Use `newInstance` instead as shown below
+    }
+
+    // result return purpose interface
+    public interface MyDialogCloseListener
+    {
+        void handleDialogClose(AnswerPost answerPost);
     }
 
     public static CommentDialogFragment newInstance(AnswerPost answerPost, int titleDisabled) {
@@ -91,7 +101,7 @@ public class CommentDialogFragment extends DialogFragment {
 
     }
 
-    public void saveAnswerPost(String dialogContent, AnswerPost answerPost,ParseUser user) {
+    public void saveAnswerPost(String dialogContent, AnswerPost answerPost, ParseUser user) {
         Answer answer = new Answer();
         answer.setText(dialogContent);
         answer.setParent(answerPost);
@@ -108,10 +118,25 @@ public class CommentDialogFragment extends DialogFragment {
 
                 //dismiss and refresh
                 Activity activity = getActivity();
-                if(activity instanceof ResponseDialogFragment.MyDialogCloseListener)
-                    ((ResponseDialogFragment.MyDialogCloseListener)activity).handleDialogClose();
+                if(activity instanceof CommentDialogFragment.MyDialogCloseListener)
+                    ((CommentDialogFragment.MyDialogCloseListener)activity).handleDialogClose(answerPost);
                 dismiss();
             }
         });
+    }
+
+    @Override
+    public void onResume() {
+        // Store access variables for window and blank point
+        Window window = getDialog().getWindow();
+        Point size = new Point();
+        // Store dimensions of the screen in `size`
+        Display display = window.getWindowManager().getDefaultDisplay();
+        display.getSize(size);
+        // Set the width of the dialog proportional to 75% of the screen width
+        window.setLayout((int) (size.x * 0.95), (int) (size.y * 0.6));
+        window.setGravity(Gravity.CENTER);
+        // Call super onResume after sizing
+        super.onResume();
     }
 }

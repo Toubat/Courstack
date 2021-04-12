@@ -61,7 +61,7 @@ public class AnswerPostAdapter extends RecyclerView.Adapter<AnswerPostAdapter.An
         return answerPosts.size();
     }
 
-    class AnswerPostViewHolder extends RecyclerView.ViewHolder {
+    class AnswerPostViewHolder extends RecyclerView.ViewHolder implements CommentDialogFragment.MyDialogCloseListener {
 
         ImageView ivProfile;
         TextView tvUsername;
@@ -71,11 +71,9 @@ public class AnswerPostAdapter extends RecyclerView.Adapter<AnswerPostAdapter.An
 
         List<ImageView> ivComments;
         List<TextView> tvComments;
-
         List<Answer> answers;
 
         ImageView ivCommentButton;
-
 
         public AnswerPostViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -131,12 +129,14 @@ public class AnswerPostAdapter extends RecyclerView.Adapter<AnswerPostAdapter.An
         }
 
         public void queryAnswers(AnswerPost answerPost) {
+            answers.clear();
             // Specify which class to query
             ParseQuery<Answer> query = ParseQuery.getQuery(Answer.class);
             query.include(Answer.KEY_STUDENT);
             query.include(Answer.KEY_ANSWER_TEXT);
             query.include(Answer.KEY_PARENT);
             query.whereEqualTo(Answer.KEY_PARENT, answerPost);
+            query.orderByDescending("updatedAt");
             query.setLimit(3);
             query.findInBackground(new FindCallback<Answer>() {
                 @Override
@@ -158,6 +158,10 @@ public class AnswerPostAdapter extends RecyclerView.Adapter<AnswerPostAdapter.An
             });
         }
 
+        @Override
+        public void handleDialogClose(AnswerPost answerPost) {
+            queryAnswers(answerPost);
+        }
     }
 
 }

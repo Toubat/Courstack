@@ -106,7 +106,7 @@ public class ResponseDialogFragment extends DialogFragment {
     // result return purpose interface
     public interface MyDialogCloseListener
     {
-        public void handleDialogClose();
+        void handleDialogClose(AnswerPost answerPost);
     }
 
 //    //call handleDialogClose()
@@ -148,13 +148,14 @@ public class ResponseDialogFragment extends DialogFragment {
                 if (e != null) {
                     Log.e("Dialog", "ERROR when saving answerPost");
                     Toast.makeText(getActivity(), "Post saving failed", Toast.LENGTH_SHORT).show();
+                } else {
+                    Log.i("Dialog", "answerpost saving success");
+                    Toast.makeText(getActivity(), "Post saving success", Toast.LENGTH_SHORT).show();
+                    Activity activity = getActivity();
+                    if(activity instanceof MyDialogCloseListener)
+                        ((MyDialogCloseListener)activity).handleDialogClose(answerPost);
+                    dismiss();
                 }
-                Log.i("Dialog", "answerpost saving success");
-                Toast.makeText(getActivity(), "Post saving success", Toast.LENGTH_SHORT).show();
-                Activity activity = getActivity();
-                if(activity instanceof MyDialogCloseListener)
-                    ((MyDialogCloseListener)activity).handleDialogClose();
-                dismiss();
             }
         });
     }
