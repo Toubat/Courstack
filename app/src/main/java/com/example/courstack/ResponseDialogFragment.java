@@ -1,7 +1,6 @@
 package com.example.courstack;
 
 import android.app.Activity;
-import android.content.DialogInterface;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,8 +16,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.DialogFragment;
 
 import com.example.courstack.models.Answer;
@@ -104,9 +101,9 @@ public class ResponseDialogFragment extends DialogFragment {
     }
 
     // result return purpose interface
-    public interface MyDialogCloseListener
+    public interface ResponseDialogListener
     {
-        void handleDialogClose(AnswerPost answerPost);
+        void onFinishResponseDialog(AnswerPost answerPost);
     }
 
 //    //call handleDialogClose()
@@ -152,8 +149,8 @@ public class ResponseDialogFragment extends DialogFragment {
                     Log.i("Dialog", "answerpost saving success");
                     Toast.makeText(getActivity(), "Post saving success", Toast.LENGTH_SHORT).show();
                     Activity activity = getActivity();
-                    if(activity instanceof MyDialogCloseListener)
-                        ((MyDialogCloseListener)activity).handleDialogClose(answerPost);
+                    if(activity instanceof ResponseDialogListener)
+                        ((ResponseDialogListener)activity).onFinishResponseDialog(answerPost);
                     dismiss();
                 }
             }

@@ -1,10 +1,7 @@
 package com.example.courstack;
 
-import android.app.Activity;
-import android.content.DialogInterface;
 import android.graphics.Point;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.util.Log;
 import android.view.Display;
 import android.view.Gravity;
@@ -18,13 +15,10 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.DialogFragment;
 
 import com.example.courstack.models.Answer;
 import com.example.courstack.models.AnswerPost;
-import com.example.courstack.models.ForumPost;
 import com.google.android.material.textfield.TextInputLayout;
 import com.parse.ParseException;
 import com.parse.ParseUser;
@@ -46,9 +40,9 @@ public class CommentDialogFragment extends DialogFragment {
     }
 
     // result return purpose interface
-    public interface MyDialogCloseListener
+    public interface CommentDialogListener
     {
-        void handleDialogClose(AnswerPost answerPost);
+        void onFinishCommentDialog(AnswerPost answerPost);
     }
 
     public static CommentDialogFragment newInstance(AnswerPost answerPost, int titleDisabled) {
@@ -117,9 +111,8 @@ public class CommentDialogFragment extends DialogFragment {
                 Toast.makeText(getActivity(), "Post saving successes", Toast.LENGTH_SHORT).show();
 
                 //dismiss and refresh
-                Activity activity = getActivity();
-                if(activity instanceof CommentDialogFragment.MyDialogCloseListener)
-                    ((CommentDialogFragment.MyDialogCloseListener)activity).handleDialogClose(answerPost);
+                CommentDialogListener listener = (CommentDialogListener) getActivity();
+                listener.onFinishCommentDialog(answerPost);
                 dismiss();
             }
         });

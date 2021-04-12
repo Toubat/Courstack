@@ -12,16 +12,13 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.courstack.CommentDialogFragment;
 import com.example.courstack.R;
-import com.example.courstack.ResponseDialogFragment;
 import com.example.courstack.models.Answer;
 import com.example.courstack.models.AnswerPost;
-import com.example.courstack.ui.forum.PostActivity;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
@@ -61,7 +58,7 @@ public class AnswerPostAdapter extends RecyclerView.Adapter<AnswerPostAdapter.An
         return answerPosts.size();
     }
 
-    class AnswerPostViewHolder extends RecyclerView.ViewHolder implements CommentDialogFragment.MyDialogCloseListener {
+    class AnswerPostViewHolder extends RecyclerView.ViewHolder {
 
         ImageView ivProfile;
         TextView tvUsername;
@@ -119,8 +116,6 @@ public class AnswerPostAdapter extends RecyclerView.Adapter<AnswerPostAdapter.An
             ivCommentButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    answers.clear();
-                    notifyDataSetChanged();
                     FragmentManager fm =  ((AppCompatActivity) context).getSupportFragmentManager();
                     CommentDialogFragment frag = CommentDialogFragment.newInstance(answerPost, 1);
                     frag.show(fm, "fragment_dialog");
@@ -129,7 +124,6 @@ public class AnswerPostAdapter extends RecyclerView.Adapter<AnswerPostAdapter.An
         }
 
         public void queryAnswers(AnswerPost answerPost) {
-            answers.clear();
             // Specify which class to query
             ParseQuery<Answer> query = ParseQuery.getQuery(Answer.class);
             query.include(Answer.KEY_STUDENT);
@@ -146,21 +140,25 @@ public class AnswerPostAdapter extends RecyclerView.Adapter<AnswerPostAdapter.An
                         Toast.makeText(context, "Issue with getting answers!", Toast.LENGTH_LONG).show();
                     } else {
                         Log.i(TAG, "All answers");
+                        answers.clear();
                         answers.addAll(items);
-                        for (int i = 0; i < answers.size(); i++) {
-                            tvComments.get(i).setText(answers.get(i).getText());
+                        for (int i = 0; i < tvComments.size(); i++) {
+                            if (i < answers.size()) {
+                                tvComments.get(i).setText(answers.get(i).getText());
+                            } else {
+                                tvComments.get(i).setText("");
+                            }
                         }
-                        for (int i = 0; i < answers.size(); i++) {
-                            Glide.with(context).load(answers.get(i).getStudent().getParseFile("profile_image").getUrl()).into(ivComments.get(i));
+                        for (int i = 0; i < ivComments.size(); i++) {
+                            if (i < answers.size()) {
+                                Glide.with(context).load(answers.get(i).getStudent().getParseFile("profile_image").getUrl()).into(ivComments.get(i));
+                            } else {
+                                ivComments.get(i).setImageResource(0);
+                            }
                         }
                     }
                 }
             });
-        }
-
-        @Override
-        public void handleDialogClose(AnswerPost answerPost) {
-            queryAnswers(answerPost);
         }
     }
 
