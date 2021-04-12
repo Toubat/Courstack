@@ -2,11 +2,15 @@ package com.example.courstack;
 
 import android.app.Activity;
 import android.content.DialogInterface;
+import android.graphics.Point;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Display;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -132,6 +136,7 @@ public class ResponseDialogFragment extends DialogFragment {
             }
         });
     }
+
     public void subSaveAnswerPost(Answer currentAnswer){
         AnswerPost answerPost = new AnswerPost();
         answerPost.setAnswerAndStudent(currentAnswer);
@@ -152,5 +157,20 @@ public class ResponseDialogFragment extends DialogFragment {
                 dismiss();
             }
         });
+    }
+
+    @Override
+    public void onResume() {
+        // Store access variables for window and blank point
+        Window window = getDialog().getWindow();
+        Point size = new Point();
+        // Store dimensions of the screen in `size`
+        Display display = window.getWindowManager().getDefaultDisplay();
+        display.getSize(size);
+        // Set the width of the dialog proportional to 75% of the screen width
+        window.setLayout((int) (size.x * 0.95), (int) (size.y * 0.6));
+        window.setGravity(Gravity.CENTER);
+        // Call super onResume after sizing
+        super.onResume();
     }
 }
