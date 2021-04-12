@@ -10,13 +10,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.courstack.CommentDialogFragment;
 import com.example.courstack.R;
+import com.example.courstack.ResponseDialogFragment;
 import com.example.courstack.models.Answer;
 import com.example.courstack.models.AnswerPost;
+import com.example.courstack.ui.forum.PostActivity;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
@@ -69,6 +74,9 @@ public class AnswerPostAdapter extends RecyclerView.Adapter<AnswerPostAdapter.An
 
         List<Answer> answers;
 
+        ImageView ivCommentButton;
+
+
         public AnswerPostViewHolder(@NonNull View itemView) {
             super(itemView);
             ivProfile = itemView.findViewById(R.id.ivProfile2);
@@ -89,6 +97,8 @@ public class AnswerPostAdapter extends RecyclerView.Adapter<AnswerPostAdapter.An
             tvComments.add((TextView) itemView.findViewById(R.id.tvBriefComment3));
 
             answers = new ArrayList<>();
+
+            ivCommentButton = itemView.findViewById(R.id.ivComposeComment);
         }
 
         public void bind(AnswerPost answerPost) {
@@ -106,6 +116,18 @@ public class AnswerPostAdapter extends RecyclerView.Adapter<AnswerPostAdapter.An
                 Glide.with(context).load(profile.getUrl()).into(ivProfile);
             }
             queryAnswers(answerPost);
+
+            //click comment button
+            ivCommentButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    answers.clear();
+                    notifyDataSetChanged();
+                    FragmentManager fm =  ((AppCompatActivity) context).getSupportFragmentManager();
+                    CommentDialogFragment frag = CommentDialogFragment.newInstance(answerPost, 1);
+                    frag.show(fm, "fragment_dialog");
+                }
+            });
         }
 
         public void queryAnswers(AnswerPost answerPost) {

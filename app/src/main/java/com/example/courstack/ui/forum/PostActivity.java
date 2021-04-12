@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -60,7 +61,6 @@ public class PostActivity extends AppCompatActivity implements ResponseDialogFra
         TextView tvLastUpdate = findViewById(R.id.tvLastUpdate);
         TextView tvName = findViewById(R.id.tvName);
         ImageView ivProfileRvAnswer = findViewById(R.id.ivProfileRvAnswer);
-
         Intent intent = getIntent();
         String ForumPostId = intent.getStringExtra("postId");
 
@@ -74,6 +74,8 @@ public class PostActivity extends AppCompatActivity implements ResponseDialogFra
         if ( profile!= null) {
             Glide.with(PostActivity.this).load(profile.getUrl()).into(ivProfileRvAnswer);
         }
+
+
 
         // 0.data source
         answers = new ArrayList<>();
@@ -99,15 +101,15 @@ public class PostActivity extends AppCompatActivity implements ResponseDialogFra
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.action_reply) {
-            showReplyDialog();
+            showReplyDialog(0);
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
 
-    private void showReplyDialog() {
+    public void showReplyDialog(int titleDisabled) {
         FragmentManager fm = getSupportFragmentManager();
-        ResponseDialogFragment frag = ResponseDialogFragment.newInstance(mainForumPost);
+        ResponseDialogFragment frag = ResponseDialogFragment.newInstance(mainForumPost, titleDisabled);
         frag.show(fm, "fragment_dialog");
     }
 
@@ -174,10 +176,6 @@ public class PostActivity extends AppCompatActivity implements ResponseDialogFra
         answers.clear();
         queryAnswerPosts(mainForumPost);
         adapter.notifyDataSetChanged();
-        Log.i(TAG, "HERE");
-        for(AnswerPost i: answers){
-            Log.i(TAG, String.format("id: %d", i.getObjectId()));
-        }
     }
 
 }

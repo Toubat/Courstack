@@ -3,6 +3,7 @@ package com.example.courstack;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,28 +21,30 @@ import androidx.fragment.app.DialogFragment;
 import com.example.courstack.models.Answer;
 import com.example.courstack.models.AnswerPost;
 import com.example.courstack.models.ForumPost;
+import com.google.android.material.textfield.TextInputLayout;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
-public class ResponseDialogFragment extends DialogFragment {
+public class CommentDialogFragment extends DialogFragment {
     private static final int MAX_LENGTH = 3000;
     private EditText etResponse;
     private EditText etTitle;
     private Button btSend;
-    private ForumPost forumPost;
     private int titleDisabled;
+    private AnswerPost answerPost;
+    private TextInputLayout textLayout;
 
-    public ResponseDialogFragment() {
+    public CommentDialogFragment() {
         // Empty constructor is required for DialogFragment
         // Make sure not to add arguments to the constructor
         // Use `newInstance` instead as shown below
     }
 
-    public static ResponseDialogFragment newInstance(ForumPost forumPost, int titleDisabled) {
-        ResponseDialogFragment frag = new ResponseDialogFragment();
+    public static CommentDialogFragment newInstance(AnswerPost answerPost, int titleDisabled) {
+        CommentDialogFragment frag = new CommentDialogFragment();
         Bundle bundle = new Bundle();
-        bundle.putParcelable("forumPost", forumPost);
+        bundle.putParcelable("answerPost", answerPost);
         bundle.putInt("titleDisabled", titleDisabled);
         frag.setArguments(bundle);
         return frag;
@@ -51,7 +54,7 @@ public class ResponseDialogFragment extends DialogFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        forumPost = getArguments().getParcelable("forumPost");
+        answerPost = getArguments().getParcelable("answerPost");
         titleDisabled = getArguments().getInt("titleDisabled");
         return inflater.inflate(R.layout.fragment_dialog, container, false);
     }
@@ -61,64 +64,37 @@ public class ResponseDialogFragment extends DialogFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-
-//
-//        Toolbar dialogToolbar = getActivity().findViewById(R.id.answer_bar);
-//        // videoToolbar.setNavigationIcon(R.drawable.ic_baseline_video_library_24);
-//        ((AppCompatActivity) getActivity()).setSupportActionBar(dialogToolbar);
-
-
         etResponse = view.findViewById(R.id.etResponse2);
         etTitle = view.findViewById(R.id.etTitle2);
         btSend = view.findViewById(R.id.btSend2);
+        textLayout = view.findViewById(R.id.textLayout1);
         if(titleDisabled == 1){
             etTitle.setVisibility(View.INVISIBLE);
+            textLayout.setVisibility(View.INVISIBLE);
         }
         btSend.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 String dialogContent = etResponse.getText().toString();
-                String dialogTitle = etTitle.getText().toString();
 
-                if (dialogContent.isEmpty() || dialogTitle.isEmpty()) {
+                if (dialogContent.isEmpty()) {
                     Toast.makeText(getActivity(), "Sorry, your content cannot be empty", Toast.LENGTH_LONG).show();
-                    return;
-                }
-                if (dialogTitle.length() > 100) {
-                    Toast.makeText(getActivity(), "Sorry, your title is too long", Toast.LENGTH_LONG).show();
                     return;
                 }
                 if (dialogContent.length() > MAX_LENGTH) {
                     Toast.makeText(getActivity(), "Sorry, your content is too long", Toast.LENGTH_LONG).show();
                     return;
                 }
-                saveAnswerPost(dialogTitle, dialogContent, forumPost, ParseUser.getCurrentUser());
-
+                saveAnswerPost(dialogContent, answerPost, ParseUser.getCurrentUser());
             }
         });
 
     }
 
-    // result return purpose interface
-    public interface MyDialogCloseListener
-    {
-        public void handleDialogClose();
-    }
-
-//    //call handleDialogClose()
-//    public void onDismiss(DialogInterface dialog)
-//    {
-//        dismiss();
-//        Activity activity = getActivity();
-//        if(activity instanceof MyDialogCloseListener)
-//            ((MyDialogCloseListener)activity).handleDialogClose();
-//    }
-
-    public void saveAnswerPost(String dialogTitle, String dialogContent, ForumPost forumPost,ParseUser user) {
+    public void saveAnswerPost(String dialogContent, AnswerPost answerPost,ParseUser user) {
         Answer answer = new Answer();
-
         answer.setText(dialogContent);
-        answer.setKeyTitle(dialogTitle);
+        answer.setParent(answerPost);
         answer.setStudent(user);
         answer.saveInBackground(new SaveCallback() {
             @Override
@@ -128,27 +104,12 @@ public class ResponseDialogFragment extends DialogFragment {
                     Toast.makeText(getActivity(), "Post saving failed", Toast.LENGTH_SHORT).show();
                 }
                 Log.i("Dialog", "answer saving success");
-                subSaveAnswerPost(answer);
-            }
-        });
-    }
-    public void subSaveAnswerPost(Answer currentAnswer){
-        AnswerPost answerPost = new AnswerPost();
-        answerPost.setAnswerAndStudent(currentAnswer);
-        answerPost.setParentForumPost(forumPost);
+                Toast.makeText(getActivity(), "Post saving successes", Toast.LENGTH_SHORT).show();
 
-        answerPost.saveInBackground(new SaveCallback() {
-            @Override
-            public void done(ParseException e) {
-                if (e != null) {
-                    Log.e("Dialog", "ERROR when saving answerPost");
-                    Toast.makeText(getActivity(), "Post saving failed", Toast.LENGTH_SHORT).show();
-                }
-                Log.i("Dialog", "answerpost saving success");
-                Toast.makeText(getActivity(), "Post saving success", Toast.LENGTH_SHORT).show();
+                //dismiss and refresh
                 Activity activity = getActivity();
-                if(activity instanceof MyDialogCloseListener)
-                    ((MyDialogCloseListener)activity).handleDialogClose();
+                if(activity instanceof ResponseDialogFragment.MyDialogCloseListener)
+                    ((ResponseDialogFragment.MyDialogCloseListener)activity).handleDialogClose();
                 dismiss();
             }
         });
