@@ -26,6 +26,7 @@ import android.widget.Toast;
 import android.widget.VideoView;
 
 import com.bumptech.glide.Glide;
+import com.example.courstack.CommentDialogFragment;
 import com.example.courstack.MainActivity;
 import com.example.courstack.R;
 import com.example.courstack.ResponseDialogFragment;
@@ -45,7 +46,7 @@ import java.util.List;
 
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
-public class VideoPostActivity extends AppCompatActivity {
+public class VideoPostActivity extends AppCompatActivity implements ResponseDialogFragment.ResponseDialogListener, CommentDialogFragment.CommentDialogListener  {
 
     public static final String TAG = "VideoPostActivity";
     public static final String PLAYBACK_TIME = "play_time";
@@ -154,6 +155,25 @@ public class VideoPostActivity extends AppCompatActivity {
 
         ResponseDialogFragment frag = ResponseDialogFragment.newInstance(videoPost, titleDisabled, "VideoPost");
         frag.show(fm, "fragment_dialog");
+    }
+
+    //execute when dialog dismisses
+    @Override
+    public void onFinishResponseDialog(AnswerPost answerPost) {
+        answerPosts.add(0, answerPost);
+        adapter.notifyItemInserted(0);
+        // scroll to top of view
+        rvCommentPosts.smoothScrollToPosition(0);
+    }
+
+    @Override
+    public void onFinishCommentDialog(AnswerPost answerPost) {
+        int position = answerPosts.indexOf(answerPost);
+        if (position == -1) {
+            Log.e(TAG, "Index out of bound error");
+            throw new IllegalArgumentException("Index not exist");
+        }
+        adapter.notifyItemChanged(position);
     }
 
     private void queryMainVideoPost(String objectId) {
