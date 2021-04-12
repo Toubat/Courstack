@@ -1,13 +1,10 @@
 package com.example.courstack.ui.forum;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,36 +17,35 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.courstack.CommentDialogFragment;
 import com.example.courstack.R;
 import com.example.courstack.ResponseDialogFragment;
-import com.example.courstack.models.Answer;
 import com.example.courstack.models.AnswerPost;
 import com.example.courstack.models.ForumPost;
 import com.example.courstack.ui.AnswerPostAdapter;
 import com.parse.FindCallback;
-import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseQuery;
 
-import org.w3c.dom.Text;
-
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PostActivity extends AppCompatActivity implements ResponseDialogFragment.MyDialogCloseListener {
+public class PostActivity extends AppCompatActivity implements ResponseDialogFragment.ResponseDialogListener, CommentDialogFragment.CommentDialogListener  {
+
     public static final String TAG = "postActivity";
+
     List<AnswerPost> answers;
     AnswerPostAdapter adapter;
+    RecyclerView rvAnswerPosts;
     ForumPost mainForumPost;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.forum_rv_answers);
-        RecyclerView rvAnswerPosts = findViewById(R.id.rvAnswerPost);
+        rvAnswerPosts = findViewById(R.id.rvAnswerPost);
+
         // Answer bar
         Toolbar answerBar = findViewById(R.id.answer_bar);
         this.setSupportActionBar(answerBar);
@@ -112,11 +108,23 @@ public class PostActivity extends AppCompatActivity implements ResponseDialogFra
         frag.show(fm, "fragment_dialog");
     }
 
-
     //execute when dialog dismisses
     @Override
-    public void handleDialogClose() {
-        populateAnswerPosts();
+    public void onFinishResponseDialog(AnswerPost answerPost) {
+        answers.add(0, answerPost);
+        adapter.notifyItemInserted(0);
+        // scroll to top of view
+        rvAnswerPosts.smoothScrollToPosition(0);
+    }
+
+    @Override
+    public void onFinishCommentDialog(AnswerPost answerPost) {
+        int position = answers.indexOf(answerPost);
+        if (position == -1) {
+            Log.e(TAG, "Index out of bound error");
+            throw new IllegalArgumentException("Index not exist");
+        }
+        adapter.notifyItemChanged(position);
     }
 
     public void queryAnswerPosts(ForumPost forumPost) {
@@ -128,6 +136,7 @@ public class PostActivity extends AppCompatActivity implements ResponseDialogFra
         query.include("objectId");
         query.include("updatedAt");
         query.whereEqualTo(AnswerPost.KEY_PARENT_FORUM, forumPost);
+        query.orderByDescending("updatedAt");
         query.findInBackground(new FindCallback<AnswerPost>() {
             @Override
             public void done(List<AnswerPost> items, ParseException e) {
@@ -176,5 +185,4 @@ public class PostActivity extends AppCompatActivity implements ResponseDialogFra
         queryAnswerPosts(mainForumPost);
         adapter.notifyDataSetChanged();
     }
-
 }
