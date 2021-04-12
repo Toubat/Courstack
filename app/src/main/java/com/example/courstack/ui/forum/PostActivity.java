@@ -1,19 +1,26 @@
 package com.example.courstack.ui.forum;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.courstack.R;
+import com.example.courstack.ResponseDialogFragment;
 import com.example.courstack.models.Answer;
 import com.example.courstack.models.AnswerPost;
 import com.example.courstack.models.ForumPost;
@@ -31,19 +38,21 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PostActivity extends AppCompatActivity {
+public class PostActivity extends AppCompatActivity implements ResponseDialogFragment.MyDialogCloseListener {
     public static final String TAG = "postActivity";
     List<AnswerPost> answers;
     AnswerPostAdapter adapter;
     ForumPost mainForumPost;
 
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.forum_rv_answers);
-
         RecyclerView rvAnswerPosts = findViewById(R.id.rvAnswerPost);
+
+        // Answer bar
+        Toolbar answerBar = findViewById(R.id.answer_bar);
+        this.setSupportActionBar(answerBar);
 
         // set the main question of the forumPost
         TextView tvQuestionTitle = findViewById(R.id.tvQuestionTitle);
@@ -78,8 +87,35 @@ public class PostActivity extends AppCompatActivity {
 
         // 3.Set the layout manager on the rv
         rvAnswerPosts.setLayoutManager(new LinearLayoutManager(this));
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.forum_dialog_toolbar, menu);
+        super.onCreateOptionsMenu(menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.action_reply) {
+            showReplyDialog();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void showReplyDialog() {
+        FragmentManager fm = getSupportFragmentManager();
+        ResponseDialogFragment frag = ResponseDialogFragment.newInstance(mainForumPost);
+        frag.show(fm, "fragment_dialog");
+    }
 
 
+    //execute when dialog dismisses
+    @Override
+    public void handleDialogClose() {
+        populateAnswerPosts();
     }
 
     public void queryAnswerPosts(ForumPost forumPost) {
@@ -132,6 +168,16 @@ public class PostActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public void populateAnswerPosts() {
+        answers.clear();
+        queryAnswerPosts(mainForumPost);
+        adapter.notifyDataSetChanged();
+        Log.i(TAG, "HERE");
+        for(AnswerPost i: answers){
+            Log.i(TAG, String.format("id: %d", i.getObjectId()));
+        }
     }
 
 }

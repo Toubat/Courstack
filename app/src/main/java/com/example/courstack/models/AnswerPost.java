@@ -31,4 +31,7 @@ public class AnswerPost extends ParseObject {
         return (ForumPost) getParseObject(KEY_PARENT_FORUM);
     }
 
+    public void setParentForumPost(ForumPost forumPost) {
+        put(KEY_PARENT_FORUM, forumPost);
+    }
 }
