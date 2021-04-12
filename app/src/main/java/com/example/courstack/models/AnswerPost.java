@@ -34,4 +34,8 @@ public class AnswerPost extends ParseObject {
     public void setParentForumPost(ForumPost forumPost) {
         put(KEY_PARENT_FORUM, forumPost);
     }
+
+    public void setParentVideoPost(VideoPost videoPost) {
+        put(KEY_PARENT_VIDEO, videoPost);
+    }
 }

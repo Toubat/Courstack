@@ -3,6 +3,8 @@ package com.example.courstack.ui.video;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -14,6 +16,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.MediaController;
@@ -24,6 +28,7 @@ import android.widget.VideoView;
 import com.bumptech.glide.Glide;
 import com.example.courstack.MainActivity;
 import com.example.courstack.R;
+import com.example.courstack.ResponseDialogFragment;
 import com.example.courstack.models.Answer;
 import com.example.courstack.models.AnswerPost;
 import com.example.courstack.models.VideoPost;
@@ -55,7 +60,7 @@ public class VideoPostActivity extends AppCompatActivity {
     TextView tvUsername;
     TextView tvTitle;
     VideoView vvVideo;
-
+    VideoPost videoPost;
     RecyclerView rvCommentPosts;
     List<AnswerPost> answerPosts;
     AnswerPostAdapter adapter;
@@ -64,6 +69,10 @@ public class VideoPostActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video_post);
+
+        // Answer bar
+        Toolbar video_bar = findViewById(R.id.video_bar);
+        this.setSupportActionBar(video_bar);
 
         // get intent
         String username = getIntent().getStringExtra("username");
@@ -124,6 +133,29 @@ public class VideoPostActivity extends AppCompatActivity {
         queryMainVideoPost(objectId);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.forum_dialog_toolbar, menu);
+        super.onCreateOptionsMenu(menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.action_reply) {
+            showReplyDialog(0);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    public void showReplyDialog(int titleDisabled) {
+        FragmentManager fm = getSupportFragmentManager();
+
+        ResponseDialogFragment frag = ResponseDialogFragment.newInstance(videoPost, titleDisabled, "VideoPost");
+        frag.show(fm, "fragment_dialog");
+    }
+
     private void queryMainVideoPost(String objectId) {
         ParseQuery<VideoPost> query = ParseQuery.getQuery(VideoPost.class);
         query.whereEqualTo("objectId", objectId);
@@ -131,7 +163,7 @@ public class VideoPostActivity extends AppCompatActivity {
             @Override
             public void done(List<VideoPost> objects, ParseException e) {
                 if (e == null) {
-                    VideoPost videoPost = objects.get(0);
+                    videoPost = objects.get(0);
                     Log.i(TAG, "Id is: " + videoPost.getObjectId());
                     queryAnswerPosts(videoPost);
                 } else {

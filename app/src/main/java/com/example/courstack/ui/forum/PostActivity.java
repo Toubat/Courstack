@@ -50,7 +50,6 @@ public class PostActivity extends AppCompatActivity implements ResponseDialogFra
         super.onCreate(savedInstanceState);
         setContentView(R.layout.forum_rv_answers);
         RecyclerView rvAnswerPosts = findViewById(R.id.rvAnswerPost);
-
         // Answer bar
         Toolbar answerBar = findViewById(R.id.answer_bar);
         this.setSupportActionBar(answerBar);
@@ -109,7 +108,7 @@ public class PostActivity extends AppCompatActivity implements ResponseDialogFra
 
     public void showReplyDialog(int titleDisabled) {
         FragmentManager fm = getSupportFragmentManager();
-        ResponseDialogFragment frag = ResponseDialogFragment.newInstance(mainForumPost, titleDisabled);
+        ResponseDialogFragment frag = ResponseDialogFragment.newInstance(mainForumPost, titleDisabled, "ForumPost");
         frag.show(fm, "fragment_dialog");
     }
 
