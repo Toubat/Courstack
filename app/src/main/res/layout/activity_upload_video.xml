@@ -64,20 +64,6 @@
         android:textSize="24sp"
         android:textStyle="bold|italic" />
 
-    <ImageView
-        android:id="@+id/ivVideoUploader"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/vvVideoUpload"
-        android:layout_alignBottom="@+id/vvVideoUpload"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="0dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="0dp"
-        tools:srcCompat="?attr/colorButtonNormal" />
-
     <VideoView
         android:id="@+id/vvVideoUpload"
         android:layout_width="wrap_content"
@@ -102,6 +88,20 @@
         app:srcCompat="@drawable/ic_baseline_camera_alt_24" />
 
     <ImageView
+        android:id="@+id/ivVideoUploader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/vvVideoUpload"
+        android:layout_alignBottom="@+id/vvVideoUpload"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="0dp"
+        tools:srcCompat="@color/purple_200" />
+
+    <ImageView
         android:id="@+id/ivVideoIcon"
         android:layout_width="185dp"
         android:layout_height="124dp"
@@ -123,12 +123,23 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/vvVideoUpload"
         android:layout_alignEnd="@+id/vvVideoUpload"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="262dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="0dp"
         android:backgroundTint="#03A9F4"
         android:text="Upload"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnCancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ivVideoUploader"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="15dp"
+        android:layout_toStartOf="@+id/btnUpload"
+        android:backgroundTint="#03A9F4"
+        android:text="cancel"
         android:textColor="#FFFFFF"
         android:textStyle="bold" />
 </RelativeLayout>

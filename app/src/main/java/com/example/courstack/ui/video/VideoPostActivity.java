@@ -122,7 +122,12 @@ public class VideoPostActivity extends AppCompatActivity implements ResponseDial
         }
 
         // set media controller to enable full control of video
-        MediaController controller = new MediaController(this);
+        MediaController controller = new MediaController(this) {
+            @Override
+            public void show() {
+                super.show(0);//Default no auto hide timeout
+            }
+        };;
         controller.setMediaPlayer(vvVideo);
         vvVideo.setMediaController(controller);
 
