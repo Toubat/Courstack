@@ -1,5 +1,6 @@
 package com.example.courstack.ui.video;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -34,6 +35,8 @@ import com.parse.ParseQuery;
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.app.Activity.RESULT_OK;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link VideoFragment#newInstance} factory method to
@@ -42,6 +45,8 @@ import java.util.List;
 public class VideoFragment extends Fragment {
 
     public static final String TAG = "VideoFragment";
+
+    public final int REQUEST_CODE = 20;
     RecyclerView rvVideoPost;
     VideoPostAdapter adapter;
     List<VideoPost> videoPosts;
@@ -127,7 +132,23 @@ public class VideoFragment extends Fragment {
                 swipeContainer.setRefreshing(false);
             }
         });
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getContext(), UploadVideoActivity.class);
+                startActivityForResult(i, REQUEST_CODE);
+            }
+        });
         queryVideoPosts();
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if (requestCode == REQUEST_CODE && resultCode == RESULT_OK) {
+            Log.i(TAG, "Success to return to the rv");
+            populateVideoPosts();
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     private void populateVideoPosts() {
