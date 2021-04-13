@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.parse.LogInCallback;
@@ -22,7 +23,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText etUsername;
     private EditText etPassword;
     private Button btnLogin;
-    private Button btnSignup;
+    private TextView btnRegister;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,36 +46,15 @@ public class LoginActivity extends AppCompatActivity {
                 loginUser(username, password);
             }
         });
-        btnSignup = findViewById(R.id.btnSignup);
-        btnSignup.setOnClickListener(new View.OnClickListener() {
+        btnRegister = findViewById(R.id.btnRegister);
+        btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.i(TAG, "onClick signup button");
-                String username = etUsername.getText().toString();
-                String password = etPassword.getText().toString();
-                signupUser(username, password);
-            }
-        });
-    }
-
-    private void signupUser(String username, String password) {
-        Log.i(TAG, "Attempting to signup user" + username);
-        // Create the ParseUser
-        ParseUser user = new ParseUser();
-        // Set core properties
-        user.setUsername(username);
-        user.setPassword(password);
-        user.signUpInBackground(new SignUpCallback() {
-            @Override
-            public void done(ParseException e) {
-                if (e != null) {
-                    Log.e(TAG, "Issue with signup", e);
-                    Toast.makeText(LoginActivity.this, "Issue with Signup!", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(LoginActivity.this, "Signup successful!", Toast.LENGTH_SHORT).show();
-                    etUsername.setText("");
-                    etPassword.setText("");
-                }
+                Intent i = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(i);
+                // remove activity from stack
+                finish();
             }
         });
     }

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/background2"
+    android:foregroundTint="@color/black"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:text="Create User"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        android:textSize="100px" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layout1"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/text"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="30dp"
+        android:textColorHint="@color/white"
+        app:boxBackgroundColor="@color/white"
+        app:endIconTint="#FFFFFF"
+        app:hintTextColor="@color/white"
+        app:placeholderTextColor="@color/white"
+        app:prefixTextColor="@color/white"
+        app:suffixTextColor="@color/white">
+
+        <EditText
+            android:id="@+id/etUsername"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginRight="0dp"
+            android:background="@android:color/transparent"
+            android:drawableStart="@drawable/ic_baseline_account_circle_24"
+            android:drawablePadding="5dp"
+            android:foregroundTint="@color/white"
+            android:gravity="start"
+            android:hint="username"
+            android:inputType="text"
+            android:textColor="@color/white"
+            android:textColorHighlight="@color/white"
+            android:textColorHint="@color/white"
+            android:textColorLink="@color/white" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layout2"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/layout1"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="30dp"
+        android:textColorHint="@color/white"
+        app:boxBackgroundColor="@color/white"
+        app:helperTextTextColor="@color/white"
+        app:placeholderTextColor="@color/white"
+        app:prefixTextColor="@color/white"
+        app:suffixTextColor="@color/white">
+
+        <EditText
+            android:id="@+id/etPassword"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginRight="0dp"
+            android:background="@android:color/transparent"
+            android:drawableStart="@drawable/ic_baseline_vpn_key_24"
+            android:drawablePadding="5dp"
+            android:gravity="start"
+            android:hint="password"
+            android:inputType="text|textPassword"
+            android:textColor="@color/white"
+            android:textColorHighlight="#FFFFFF"
+            android:textColorHint="@color/white"
+            android:textColorLink="@color/white"
+            android:textCursorDrawable="@null"
+            app:boxBackgroundColor="@null" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btCreate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="550dp"
+        android:layout_marginRight="40dp"
+        android:gravity="center"
+        android:text="CREATE"
+        android:textAllCaps="false"
+        android:textColor="#d3d8e3"
+        android:textColorHighlight="@color/white"
+        android:textColorHint="@color/white"
+        android:textColorLink="@color/white"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/btReturn"
+        android:layout_width="wrap_content"
+        android:layout_height="23dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="125dp"
+        android:layout_marginTop="620dp"
+        android:focusable="true"
+        android:fontFamily="sans-serif"
+        android:text="Sign in?"
+        android:textColor="#d3d8e3"
+        android:textSize="18sp" />
+
+
+</RelativeLayout>

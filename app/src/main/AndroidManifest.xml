@@ -40,6 +40,7 @@
         <activity android:name=".ui.forum.PostActivity" />
         <activity android:name=".SelectCourseActivity" />
         <activity android:name=".MainActivity" />
+        <activity android:name=".RegisterActivity"/>
         <activity android:name=".ui.forum.ComposeActivity" />
         <activity android:name=".LoginActivity">
             <intent-filter>

@@ -1,15 +1,21 @@
 package com.example.courstack.ui.profile;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
+import com.example.courstack.LoginActivity;
 import com.example.courstack.R;
 import com.example.courstack.models.Course;
+import com.parse.ParseUser;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -27,6 +33,7 @@ public class ProfileFragment extends Fragment {
     private String mParam1;
     private String mParam2;
     private Course course;
+    private Button btnLogout;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -57,6 +64,21 @@ public class ProfileFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        btnLogout = view.findViewById(R.id.btnLogout);
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ParseUser.logOut();
+                Intent i = new Intent(getContext(), LoginActivity.class);
+                startActivity(i);
+                getActivity().getFragmentManager().popBackStack();
+            }
+        });
     }
 
     @Override
