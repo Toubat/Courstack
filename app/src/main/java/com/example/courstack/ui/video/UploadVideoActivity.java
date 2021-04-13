@@ -41,8 +41,8 @@ public class UploadVideoActivity extends AppCompatActivity {
     public static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 1034;
     private String videoFileName = "video.mp4";
     private String photoFileName = "photo.jpg";
-    Uri videoUri;
-    Bitmap imageBitmap;
+    File photoFile;
+    File videoFile;
     private boolean uploaded = false;
 
     EditText etTitle;
@@ -86,7 +86,7 @@ public class UploadVideoActivity extends AppCompatActivity {
         ivVideoUploader.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onLaunchVideoRecording();
+                onLaunchVideo(v);
             }
         });
         ivVideoIcon.setOnClickListener(new View.OnClickListener() {
@@ -97,14 +97,14 @@ public class UploadVideoActivity extends AppCompatActivity {
                     ivVideoIcon.setVisibility(View.INVISIBLE);
                     vvVideoUpload.start();
                 } else {
-                    onLaunchVideoRecording();
+                    onLaunchVideo(v);
                 }
             }
         });
         ivCameraIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onLaunchPhotoTaking();
+                onLaunchCamera(v);
             }
         });
         btnUpload.setOnClickListener(new View.OnClickListener() {
@@ -114,7 +114,7 @@ public class UploadVideoActivity extends AppCompatActivity {
                 String title = etTitle.getText().toString();
                 if (title.isEmpty() || description.isEmpty()) {
                     Toast.makeText(UploadVideoActivity.this, "Description or title cannot be empty!", Toast.LENGTH_LONG).show();
-                } else if (videoUri == null || imageBitmap == null) {
+                } else if (videoFile == null || photoFile == null) {
                     Toast.makeText(UploadVideoActivity.this, "Video or image source cannot be empty!", Toast.LENGTH_LONG).show();
                 } else {
                     ParseUser user = ParseUser.getCurrentUser();
@@ -135,10 +135,10 @@ public class UploadVideoActivity extends AppCompatActivity {
         post.setStudent(user);
         post.setTitle(title);
         Log.i(TAG, "Front Image");
-        post.setFrontImage(fromImageBitmap());
+        post.setFrontImage(new ParseFile(photoFile));
         Log.i(TAG, "Video");
-        post.setVideoFile(fromVideoUri());
-        // post.setCourse(course);
+        post.setVideoFile(new ParseFile(videoFile));
+        post.setCourse(course);
         Log.i(TAG, "Attempting to upload video post");
         post.saveInBackground(new SaveCallback() {
             @Override
@@ -159,8 +159,8 @@ public class UploadVideoActivity extends AppCompatActivity {
 
     private void resetMediaSource() {
         uploaded = false;
-        imageBitmap = null;
-        videoUri = null;
+        videoFile = null;
+        photoFile = null;
         // reset VideoView
         vvVideoUpload.stopPlayback();
         vvVideoUpload.setVideoURI(null);
@@ -175,32 +175,64 @@ public class UploadVideoActivity extends AppCompatActivity {
         controller.setVisibility(View.INVISIBLE);
     }
 
-    public ParseFile fromImageBitmap(){
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        imageBitmap.compress(Bitmap.CompressFormat.PNG,100,byteArrayOutputStream);
-        byte[] imageByte = byteArrayOutputStream.toByteArray();
-
-        return new ParseFile("image_file.png", imageByte);
-    }
-
-    public ParseFile fromVideoUri() {
-        File file = new File(videoUri.getPath());
-
-        return new ParseFile(file);
-    }
-
-    public void onLaunchPhotoTaking() {
+    public void onLaunchCamera(View view) {
+        // create Intent to take a picture and return control to the calling application
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        // Create a File reference for future access
+        photoFile = getPhotoFileUri(photoFileName);
+
+        // wrap File object into a content provider
+        // required for API >= 24
+        // See https://guides.codepath.com/android/Sharing-Content-with-Intents#sharing-files-with-api-24-or-higher
+        Uri fileProvider = FileProvider.getUriForFile(UploadVideoActivity.this, "com.codepath.fileprovider", photoFile);
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, fileProvider);
+
+        // If you call startActivityForResult() using an intent that no app can handle, your app will crash.
+        // So as long as the result is not null, it's safe to use the intent.
         if (intent.resolveActivity(getPackageManager()) != null) {
+            // Start the image capture intent to take photo
             startActivityForResult(intent, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
         }
     }
 
-    public void onLaunchVideoRecording() {
+    private File getPhotoFileUri(String photoFileName) {
+        File mediaStorageDir = new File(getExternalFilesDir(Environment.DIRECTORY_PICTURES), TAG);
+        if (!mediaStorageDir.exists() && !mediaStorageDir.mkdirs()){
+            Log.d(TAG, "failed to create directory");
+        }
+        File file = new File(mediaStorageDir.getPath() + File.separator + photoFileName);
+
+        return file;
+    }
+
+    public void onLaunchVideo(View view) {
+        // create Intent to take a picture and return control to the calling application
         Intent intent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
+        // Create a File reference for future access
+        videoFile = getVideoFileUri(videoFileName);
+
+        // wrap File object into a content provider
+        // required for API >= 24
+        // See https://guides.codepath.com/android/Sharing-Content-with-Intents#sharing-files-with-api-24-or-higher
+        Uri fileProvider = FileProvider.getUriForFile(UploadVideoActivity.this, "com.codepath.fileprovider", videoFile);
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, fileProvider);
+
+        // If you call startActivityForResult() using an intent that no app can handle, your app will crash.
+        // So as long as the result is not null, it's safe to use the intent.
         if (intent.resolveActivity(getPackageManager()) != null) {
+            // Start the image capture intent to take photo
             startActivityForResult(intent, CAPTURE_VIDEO_ACTIVITY_REQUEST_CODE);
         }
+    }
+
+    private File getVideoFileUri(String videoFileName) {
+        File mediaStorageDir = new File(getExternalFilesDir(Environment.DIRECTORY_PICTURES), TAG);
+        if (!mediaStorageDir.exists() && !mediaStorageDir.mkdirs()){
+            Log.d(TAG, "failed to create directory");
+        }
+        File file = new File(mediaStorageDir.getPath() + File.separator + videoFileName);
+
+        return file;
     }
 
     @Override
@@ -209,9 +241,17 @@ public class UploadVideoActivity extends AppCompatActivity {
         if (requestCode == CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) {
             if (resultCode == RESULT_OK) {
                 Toast.makeText(UploadVideoActivity.this, "Front Page Uploaded", Toast.LENGTH_LONG).show();
+                /*
                 Bundle extras = data.getExtras();
                 imageBitmap = (Bitmap) extras.get("data");
                 ivCameraIcon.setImageBitmap(imageBitmap);
+                 */
+                // by this point we have the camera photo on disk
+                Log.i(TAG, photoFile.getAbsolutePath());
+                Bitmap takenImage = BitmapFactory.decodeFile(photoFile.getAbsolutePath());
+                // RESIZE BITMAP, see section below
+                // Load the taken image into a preview
+                ivCameraIcon.setImageBitmap(takenImage);
 
                 uploaded = true;
                 btnCancel.setVisibility(View.VISIBLE);
@@ -223,8 +263,12 @@ public class UploadVideoActivity extends AppCompatActivity {
             if (resultCode == RESULT_OK) {
                 Toast.makeText(UploadVideoActivity.this, "Video Uploaded", Toast.LENGTH_LONG).show();
                 ivVideoUploader.setVisibility(View.INVISIBLE);
+                /*
                 videoUri = data.getData();
                 vvVideoUpload.setVideoURI(videoUri);
+                 */
+                Log.i(TAG, videoFile.getAbsolutePath());
+                vvVideoUpload.setVideoURI(Uri.fromFile(videoFile));
                 initializePlayer();
                 vvVideoUpload.setBackgroundResource(0);
                 ivCameraIcon.setVisibility(View.VISIBLE);

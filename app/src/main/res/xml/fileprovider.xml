@@ -4,6 +4,9 @@
     <external-files-path
         name="images"
         path="Pictures" />
+    <external-files-path
+        name="videos"
+        path="Pictures" />
 
     <!--Uncomment below to share the entire application specific directory -->
     <!--<external-path name="all_dirs" path="."/>-->
