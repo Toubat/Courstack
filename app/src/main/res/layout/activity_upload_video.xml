@@ -115,7 +115,7 @@
         android:layout_marginBottom="45dp"
         android:layout_weight="1"
         app:srcCompat="@drawable/ic_baseline_videocam_24"
-        app:tint="#FFFFFF" />
+        app:tint="#D6D6D6" />
 
     <Button
         android:id="@+id/btnUpload"

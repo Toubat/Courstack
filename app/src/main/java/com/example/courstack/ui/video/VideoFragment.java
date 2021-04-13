@@ -136,6 +136,7 @@ public class VideoFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getContext(), UploadVideoActivity.class);
+                i.putExtra("course", course);
                 startActivityForResult(i, REQUEST_CODE);
             }
         });

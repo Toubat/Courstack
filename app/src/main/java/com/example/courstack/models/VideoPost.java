@@ -23,6 +23,10 @@ public class VideoPost extends ParseObject {
         return (Course) getParseObject(KEY_COURSE);
     }
 
+    public void setCourse(Course course) {
+        put(KEY_COURSE, course);
+    }
+
     public ParseFile getFrontImage() {
         return getParseFile(KEY_FRONT_IMAGE);
     }
