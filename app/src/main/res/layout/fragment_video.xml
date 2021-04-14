@@ -12,7 +12,7 @@
         android:layout_height="match_parent">
 
         <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/appBar"
+            android:id="@+id/appBarForum"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:theme="@style/ThemeOverlay.AppCompat.ActionBar">
@@ -35,7 +35,7 @@
             android:id="@+id/swipe_container_video"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/appBar"
+            android:layout_below="@id/appBarForum"
             android:layout_gravity="bottom">
 
             <androidx.recyclerview.widget.RecyclerView

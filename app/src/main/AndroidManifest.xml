@@ -6,9 +6,13 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-feature android:name="android.hardware.camera" android:required="true" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
 
     <queries>
+
         <!-- Camera -->
         <intent>
             <action android:name="android.media.action.IMAGE_CAPTURE" />
@@ -35,12 +39,12 @@
                 android:resource="@xml/fileprovider" />
         </provider>
 
-        <activity android:name=".ui.video.UploadVideoActivity"></activity>
+        <activity android:name=".ui.video.UploadVideoActivity" />
         <activity android:name=".ui.video.VideoPostActivity" />
         <activity android:name=".ui.forum.PostActivity" />
         <activity android:name=".SelectCourseActivity" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".RegisterActivity"/>
+        <activity android:name=".RegisterActivity" />
         <activity android:name=".ui.forum.ComposeActivity" />
         <activity android:name=".LoginActivity">
             <intent-filter>

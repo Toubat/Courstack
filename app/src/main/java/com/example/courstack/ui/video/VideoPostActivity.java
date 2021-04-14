@@ -2,6 +2,7 @@ package com.example.courstack.ui.video;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentManager;
@@ -66,6 +67,7 @@ public class VideoPostActivity extends AppCompatActivity implements ResponseDial
     List<AnswerPost> answerPosts;
     AnswerPostAdapter adapter;
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -122,20 +124,30 @@ public class VideoPostActivity extends AppCompatActivity implements ResponseDial
         }
 
         // set media controller to enable full control of video
-        MediaController controller = new MediaController(this) {
-            @Override
-            public void show() {
-                super.show(0);//Default no auto hide timeout
-            }
-        };;
+        MediaController controller = new MediaController(this);
         controller.setMediaPlayer(vvVideo);
+        controller.setAnchorView(rvCommentPosts);
         vvVideo.setMediaController(controller);
+        vvVideo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                controller.setVisibility(View.VISIBLE);
+            }
+        });
 
         // set RecyclerView
         answerPosts = new ArrayList<>();
         adapter = new AnswerPostAdapter(this, answerPosts);
         rvCommentPosts.setAdapter(adapter);
         rvCommentPosts.setLayoutManager(new LinearLayoutManager(this));
+        rvCommentPosts.setOnScrollChangeListener(new View.OnScrollChangeListener() {
+            @Override
+            public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+                if (scrollX != oldScrollX || scrollY != oldScrollY) {
+                    controller.setVisibility(View.INVISIBLE);
+                }
+            }
+        });
         queryMainVideoPost(objectId);
     }
 
