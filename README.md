@@ -97,20 +97,10 @@ List of network requests by screen
 ## Model Workflow
 <img src='Model Workflow.png' title='Model Worklow' width='' alt='Model Worklow' />
 
-## Activity Layout
-<img src='Activity Layout.png' title='Activity Layout' width='' alt='Activity Layout' />
-<img src='login.gif' title='Login Activity' width='' alt='Login Activity' />
-<img src="https://github.com/Toubat/Courstack/blob/master/gif/1.gif" />
-
-## Updated Progress
-<img src="https://github.com/Toubat/Courstack/blob/master/gif/2.gif" />
-<img src="https://github.com/Toubat/Courstack/blob/master/gif/3.png" />
-<img src="https://github.com/Toubat/Courstack/blob/master/gif/4.png" />
-
-## More Updated Progress
-<img src="https://github.com/Toubat/Courstack/blob/master/gif/5.gif" />
-<img src="https://github.com/Toubat/Courstack/blob/master/gif/6.gif" />
-<img src="https://github.com/Toubat/Courstack/blob/master/gif/7.gif" />
+## Latest Updated Progress
+<img src="https://github.com/Toubat/Courstack/blob/master/gif/login.gif" />
+<img src="https://github.com/Toubat/Courstack/blob/master/gif/video.gif" />
+<img src="https://github.com/Toubat/Courstack/blob/master/gif/forum.gif" />
 
 ## License
 
