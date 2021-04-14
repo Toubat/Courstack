@@ -59,10 +59,12 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.ViewHold
             tvUsername = itemView.findViewById(R.id.tvUsername);
             tvMajor = itemView.findViewById(R.id.tvMajor);
             tvBio = itemView.findViewById(R.id.tvBio);
+            ivHead =itemView.findViewById(R.id.ivHead);
         }
 
         public void bind(Student student) {
             tvUsername.setText(student.getUsername());
+            tvMajor.setText(student.getMajor());
             tvBio.setText(student.getDescription());
             ParseFile image = student.getImage();
             if (image != null) {

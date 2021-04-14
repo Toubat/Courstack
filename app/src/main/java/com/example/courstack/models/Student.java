@@ -8,10 +8,10 @@ import com.parse.ParseObject;
 public class Student extends ParseObject {
     public static final String KEY_USERNAME = "username";
     public static final String KEY_PASSWORD = "password";
+    public static final String KEY_EMAILVERIFIED = "emailVerified";
     public static final String KEY_DESCRIPTION = "self_description";
-    public static final String KEY_MAJOR = "major";    public static final String KEY_IMAGE = "profile_image";
-    public static final String KEY_NUM_FANS = "num_fans";
-    public static final String KEY_NUM_STACK_COIN = "stack_coin";
+    public static final String KEY_MAJOR = "major";
+    public static final String KEY_IMAGE = "profile_image";
 
     public String getUsername() {
         return getString(KEY_USERNAME);
@@ -51,14 +51,6 @@ public class Student extends ParseObject {
 
     public void setImage(ParseFile image) {
         put(KEY_IMAGE, image);
-    }
-
-    public int getNumFans() {
-        return getInt(KEY_NUM_FANS);
-    }
-
-    public int getNumStackCoin() {
-        return getInt(KEY_NUM_STACK_COIN);
     }
 
 }

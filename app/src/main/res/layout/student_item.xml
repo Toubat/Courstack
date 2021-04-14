@@ -30,13 +30,13 @@
         android:text="Major"
         android:textSize="14sp" />
 
-    <EditText
+    <TextView
         android:id="@+id/tvBio"
         android:layout_width="310dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvUsername"
         android:layout_marginStart="85dp"
-        android:layout_marginTop="2dp"
+        android:layout_marginTop="10dp"
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine"
