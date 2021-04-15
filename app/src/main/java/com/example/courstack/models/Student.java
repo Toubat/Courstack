@@ -3,9 +3,14 @@ package com.example.courstack.models;
 import com.parse.ParseClassName;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
+import com.parse.ParseUser;
 
-@ParseClassName("User")
-public class Student extends ParseObject {
+@ParseClassName("_User")
+public class Student extends ParseUser {
+
+    public Student(){
+    }
+
     public static final String KEY_USERNAME = "username";
     public static final String KEY_PASSWORD = "password";
     public static final String KEY_EMAILVERIFIED = "emailVerified";

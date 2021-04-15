@@ -8,6 +8,80 @@
     android:foregroundTint="@color/black"
     tools:context=".MainActivity">
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layout3"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/layout2"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="30dp"
+        android:textColorHint="@color/white"
+        app:boxBackgroundColor="@color/white"
+        app:endIconTint="#FFFFFF"
+        app:hintTextColor="@color/white"
+        app:placeholderTextColor="@color/white"
+        app:prefixTextColor="@color/white"
+        app:suffixTextColor="@color/white">
+
+        <EditText
+            android:id="@+id/etDescription"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginRight="0dp"
+            android:background="@android:color/transparent"
+            android:drawableStart="@drawable/ic_baseline_description_24"
+            android:drawablePadding="5dp"
+            android:foregroundTint="@color/white"
+            android:gravity="start"
+            android:hint="description"
+            android:inputType="text"
+            android:textColor="@color/white"
+            android:textColorHighlight="@color/white"
+            android:textColorHint="@color/white"
+            android:textColorLink="@color/white" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layout4"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/layout3"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="30dp"
+        android:textColorHint="@color/white"
+        app:boxBackgroundColor="@color/white"
+        app:endIconTint="#FFFFFF"
+        app:hintTextColor="@color/white"
+        app:placeholderTextColor="@color/white"
+        app:prefixTextColor="@color/white"
+        app:suffixTextColor="@color/white">
+
+        <EditText
+            android:id="@+id/etMajor"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginRight="0dp"
+            android:background="@android:color/transparent"
+            android:drawableStart="@drawable/ic_baseline_description_24"
+            android:drawablePadding="5dp"
+            android:foregroundTint="@color/white"
+            android:gravity="start"
+            android:hint="major"
+            android:inputType="text"
+            android:textColor="@color/white"
+            android:textColorHighlight="@color/white"
+            android:textColorHint="@color/white"
+            android:textColorLink="@color/white" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
     <TextView
         android:id="@+id/text"
         android:layout_width="wrap_content"
@@ -26,7 +100,7 @@
         android:layout_height="50dp"
         android:layout_below="@id/text"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="10dp"
         android:layout_marginRight="30dp"
         android:textColorHint="@color/white"
         app:boxBackgroundColor="@color/white"
@@ -64,7 +138,7 @@
         android:layout_height="50dp"
         android:layout_below="@id/layout1"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
         android:layout_marginRight="30dp"
         android:textColorHint="@color/white"
         app:boxBackgroundColor="@color/white"
@@ -124,6 +198,27 @@
         android:text="Sign in?"
         android:textColor="#d3d8e3"
         android:textSize="18sp" />
+
+    <ImageView
+        android:id="@+id/ivAvatar"
+        android:layout_width="86dp"
+        android:layout_height="96dp"
+        android:layout_below="@+id/layout4"
+        android:layout_alignParentStart="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="51dp"
+        android:layout_marginTop="25dp"
+        app:srcCompat="@drawable/ic_default_profile_image" />
+
+    <Button
+        android:id="@+id/btAvatar"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/ivAvatar"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="23dp"
+        android:layout_toEndOf="@+id/ivAvatar"
+        android:text="Change Avatar" />
 
 
 </RelativeLayout>
