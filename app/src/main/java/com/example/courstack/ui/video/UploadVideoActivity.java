@@ -37,7 +37,7 @@ import java.io.File;
 public class UploadVideoActivity extends AppCompatActivity {
 
     public static final String TAG = "UploadVideoActivity";
-    public static final String AUTHORITY = "com.codepath.fileprovider.courstack";
+    public static final String AUTHORITY = "com.codepath.fileprovider";
     private static final int CAPTURE_VIDEO_ACTIVITY_REQUEST_CODE = 1;
     public static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 1034;
     private String videoFileName = "video.mp4";

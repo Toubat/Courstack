@@ -20,6 +20,7 @@ import com.example.courstack.models.Student;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +34,7 @@ public class ClassmateFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private RecyclerView rvStudent;
     private StudentAdapter adapter;
-    private List<Student> allStudents;
+    private List<ParseUser> allStudents;
     private Course course;
 
     public ClassmateFragment() {
@@ -83,17 +84,17 @@ public class ClassmateFragment extends Fragment {
     }
 
     protected void queryPosts() {
-        ParseQuery<Student> query = ParseQuery.getQuery(Student.class);
-        query.include(Student.KEY_USERNAME);
-        query.include(Student.KEY_MAJOR);
-        query.include(Student.KEY_DESCRIPTION);
+        ParseQuery<ParseUser> query = ParseQuery.getQuery(ParseUser.class);
+        query.include("username");
+        query.include("major");
+        query.include("description");
         query.setLimit(20);
-        query.findInBackground(new FindCallback<Student>() {
+        query.findInBackground(new FindCallback<ParseUser>() {
             @Override
-            public void done(List<Student> students, ParseException e) {
+            public void done(List<ParseUser> students, ParseException e) {
                 if (e == null) {
-                    for (Student student : students) {
-                        Log.i(TAG, "Student: " + student.getDescription() + "; User: " + student.getUsername());
+                    for (ParseUser student : students) {
+                        Log.i(TAG, "Student: " + student.get("description") + "; User: " + student.getUsername());
                     }
                 } else {
                     // Something went wrong.

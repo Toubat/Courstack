@@ -16,15 +16,16 @@ import com.bumptech.glide.Glide;
 import com.example.courstack.R;
 import com.example.courstack.models.Student;
 import com.parse.ParseFile;
+import com.parse.ParseUser;
 
 import java.util.List;
 
 public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.ViewHolder> {
 
     private Context context;
-    private List<Student> students;
+    private List<ParseUser> students;
 
-    public StudentAdapter(Context context, List<Student> students) {
+    public StudentAdapter(Context context, List<ParseUser> students) {
         this.context = context;
         this.students = students;
     }
@@ -38,7 +39,7 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Student student = students.get(position);
+        ParseUser student = students.get(position);
         holder.bind(student);
     }
 
@@ -62,13 +63,13 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.ViewHold
             ivHead =itemView.findViewById(R.id.ivHead);
         }
 
-        public void bind(Student student) {
-            tvUsername.setText(student.getUsername());
-            tvMajor.setText(student.getMajor());
-            tvBio.setText(student.getDescription());
-            ParseFile image = student.getImage();
+        public void bind(ParseUser student) {
+            tvUsername.setText(student.getString("username"));
+            tvMajor.setText(student.getString("major"));
+            tvBio.setText(student.getString("description"));
+            ParseFile image = student.getParseFile("profile_image");
             if (image != null) {
-                Glide.with(context).load(student.getImage().getUrl()).into(ivHead);
+                Glide.with(context).load(student.getParseFile("profile_image").getUrl()).into(ivHead);
             }
         }
     }
