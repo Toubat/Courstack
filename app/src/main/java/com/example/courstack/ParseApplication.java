@@ -23,8 +23,8 @@ public class ParseApplication extends Application {
         ParseObject.registerSubclass(Course.class);
 
         Parse.initialize(new Parse.Configuration.Builder(this)
-                .applicationId("2MWgHMk9KvqaZPEZeyQux036CxYwsA1BLOs8vTuD")
-                .clientKey("hfzUfy4bQik1G2e4I2AzbEzUDIposcszA3thWxBz")
+                .applicationId("h8yUjNaHoahgvreSdqeLtlYWEwwdMpEQoZkkanVz")
+                .clientKey("S2lr1qlB0mY8G1pGovsxJ0dUuVPkv0ZfVezEBacu")
                 .server("https://parseapi.back4app.com")
                 .build()
         );
