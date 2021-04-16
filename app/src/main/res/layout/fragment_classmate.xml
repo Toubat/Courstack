@@ -9,7 +9,7 @@
     <EditText
         android:id="@+id/etSearch"
         android:layout_width="263dp"
-        android:layout_height="40dp" />
+        android:layout_height="wrap_content" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvStudent"
