@@ -11,7 +11,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.courstack.LoginActivity;
 import com.example.courstack.R;
 import com.example.courstack.models.Course;
@@ -34,6 +37,11 @@ public class ProfileFragment extends Fragment {
     private String mParam2;
     private Course course;
     private Button btnLogout;
+    private ImageView ivAvatar;
+    private TextView tvProfileName;
+    private TextView tvProfileMajor;
+    private TextView tvProfileDescription;
+
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -69,6 +77,17 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        ivAvatar = view.findViewById(R.id.ivProfileAvatar);
+        tvProfileName = view.findViewById(R.id.tvProfileName);
+        tvProfileDescription = view.findViewById(R.id.tvProfileDescription);
+        tvProfileMajor = view.findViewById(R.id.tvProfileMajor);
+
+        Glide.with(this).load(ParseUser.getCurrentUser().getParseFile("profile_image").getUrl()).into(ivAvatar);
+        tvProfileName.setText(ParseUser.getCurrentUser().getUsername());
+        tvProfileDescription.setText(ParseUser.getCurrentUser().getString("description"));
+        tvProfileMajor.setText(ParseUser.getCurrentUser().getString("major"));
+
+
         btnLogout = view.findViewById(R.id.btnLogout);
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override

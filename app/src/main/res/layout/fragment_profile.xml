@@ -1,20 +1,125 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.profile.ProfileFragment">
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@mipmap/background3"
+    android:foregroundTint="@color/black"
+    tools:context=".MainActivity">
 
-    <!-- TODO: Update blank fragment layout -->
+
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:id="@+id/text3"
+        android:layout_width="126dp"
+        android:layout_height="56dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="336dp"
+        android:gravity="center"
+        android:text="Major:"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvProfileDescription"
+        android:layout_width="248dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="153dp"
+        android:layout_marginTop="428dp"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        tools:text="Alibaba Alibaba Alibaba Alibaba Alibaba Alibaba Alibaba Alibaba Alibaba" />
+
+    <TextView
+        android:id="@+id/tvProfileMajor"
+        android:layout_width="244dp"
+        android:layout_height="56dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="155dp"
+        android:layout_marginTop="336dp"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        tools:text="Computer Science" />
+
+    <ImageView
+        android:id="@+id/ivProfileAvatar"
+        android:layout_width="86dp"
+        android:layout_height="96dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="158dp"
+        android:layout_marginTop="81dp"
+        app:srcCompat="@drawable/ic_default_profile_image" />
+
+    <Button
+        android:id="@+id/btAvatar"
+        android:layout_width="211dp"
+        android:layout_height="52dp"
+        android:layout_below="@+id/text6"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="-145dp"
+        android:layout_marginTop="41dp"
+        android:layout_marginEnd="101dp"
+        android:layout_toEndOf="@+id/ivProfileAvatar"
+        android:backgroundTint="#FFFFFF"
+        android:text="Change Avatar"
+        android:textColorHighlight="#00BCD4" />
 
     <Button
         android:id="@+id/btnLogout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Logout" />
+        android:layout_width="211dp"
+        android:layout_height="52dp"
+        android:layout_below="@+id/btAvatar"
+        android:layout_alignStart="@+id/btAvatar"
+        android:layout_alignEnd="@+id/btAvatar"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="0dp"
+        android:backgroundTint="#FFFFFF"
+        android:text="Logout"
+        android:visibility="visible" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/tvProfileName"
+        android:layout_width="184dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ivProfileAvatar"
+        android:layout_alignParentStart="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="113dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        tools:text="Alibaba" />
+
+    <TextView
+        android:id="@+id/text6"
+        android:layout_width="126dp"
+        android:layout_height="56dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="428dp"
+        android:gravity="center"
+        android:text="Description:"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+</RelativeLayout>
+
+
+

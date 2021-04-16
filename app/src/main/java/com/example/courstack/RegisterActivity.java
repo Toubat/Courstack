@@ -2,10 +2,7 @@ package com.example.courstack;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-import androidx.core.content.res.ResourcesCompat;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -25,23 +22,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.courstack.models.Course;
-import com.example.courstack.models.ForumPost;
-import com.example.courstack.models.Student;
-import com.example.courstack.ui.forum.ComposeActivity;
-import com.parse.FindCallback;
-import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
-import com.parse.ParseObject;
-import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 import com.parse.SignUpCallback;
 
 import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.util.List;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -65,7 +52,7 @@ public class RegisterActivity extends AppCompatActivity {
         btnSignup = findViewById(R.id.btCreate);
         btnReturn = findViewById(R.id.btReturn);
         btnAvatar = findViewById(R.id.btAvatar);
-        ivAvatar = findViewById(R.id.ivAvatar);
+        ivAvatar = findViewById(R.id.ivProfileAvatar);
         etDescription = findViewById(R.id.etDescription);
         etMajor = findViewById(R.id.etMajor);
 

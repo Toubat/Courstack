@@ -200,7 +200,7 @@
         android:textSize="18sp" />
 
     <ImageView
-        android:id="@+id/ivAvatar"
+        android:id="@+id/ivProfileAvatar"
         android:layout_width="86dp"
         android:layout_height="96dp"
         android:layout_below="@+id/layout4"
@@ -214,10 +214,10 @@
         android:id="@+id/btAvatar"
         android:layout_width="190dp"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/ivAvatar"
+        android:layout_alignTop="@+id/ivProfileAvatar"
         android:layout_marginStart="28dp"
         android:layout_marginTop="23dp"
-        android:layout_toEndOf="@+id/ivAvatar"
+        android:layout_toEndOf="@+id/ivProfileAvatar"
         android:text="Change Avatar" />
 
 
