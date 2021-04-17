@@ -12,10 +12,11 @@
         android:id="@+id/etUsername"
         android:layout_width="363dp"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/logo"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="25dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="25dp"
         android:hint="@string/username"
         android:lines="1"
@@ -61,5 +62,18 @@
         android:text="Sign up?"
         android:textSize="18sp"
         android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/logo"
+        android:layout_width="194dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:text="Courstack"
+        android:textColor="#BFEFF4"
+        android:textSize="42dp"
+        android:textStyle="bold|italic"
+        tools:layout_centerHorizontal="true" />
 
 </RelativeLayout>
