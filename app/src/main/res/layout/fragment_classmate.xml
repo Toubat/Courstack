@@ -1,28 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.classmate.ClassmateFragment">
 
-
-    <EditText
-        android:id="@+id/etSearch"
-        android:layout_width="263dp"
-        android:layout_height="wrap_content" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvStudent"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_container_forum"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="45dp" />
+        android:layout_below="@id/forum_bar">
 
-    <Button
-        android:id="@+id/btnSearch"
-        android:layout_width="wrap_content"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvStudent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="45dp" />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/forum_bar"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="315dp"
-        android:layout_marginTop="0dp"
-        android:text="@string/search" />
+        android:background="#00BCD4"
+        android:fitsSystemWindows="true"
+        android:minHeight="?attr/actionBarSize"
+        app:title="Classmates"
+        app:titleTextColor="@android:color/white" />
 
-</FrameLayout>
+</RelativeLayout>

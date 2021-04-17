@@ -54,7 +54,7 @@
             android:layout_marginStart="2dp"
             android:layout_marginTop="20dp"
             android:layout_toEndOf="@+id/tvUsername"
-            android:background="#D1D1D1"
+            android:background="#DADADA"
             android:fontFamily="@font/cutive"
             android:text="Major"
             android:textSize="14sp" />

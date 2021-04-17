@@ -135,8 +135,6 @@ public class ForumFragment extends Fragment {
         queryForumPost(course);
     }
 
-
-
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.forum_toolbar, menu);

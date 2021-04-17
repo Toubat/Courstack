@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="wrap_content"
     tools:context=".ui.forum.ForumFragment">
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipe_container_forum"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@id/forum_bar">
 
         <androidx.recyclerview.widget.RecyclerView
@@ -17,7 +17,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginStart="0dp"
-            android:layout_marginTop="0dp" />
+            android:layout_marginTop="0dp">
+
+        </androidx.recyclerview.widget.RecyclerView>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <androidx.appcompat.widget.Toolbar
@@ -27,8 +29,8 @@
         android:background="#00BCD4"
         android:fitsSystemWindows="true"
         android:minHeight="?attr/actionBarSize"
-        app:titleTextColor="@android:color/white"
-        app:title="Forum"/>
+        app:title="Forum"
+        app:titleTextColor="@android:color/white" />
 
     <!-- TODO: Update blank fragment layout -->
 
