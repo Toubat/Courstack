@@ -98,11 +98,15 @@ List of network requests by screen
 <img src='Model Workflow.png' title='Model Worklow' width='' alt='Model Worklow' />
 
 ## Latest Updated Progress
-<img src="https://github.com/Toubat/Courstack/blob/master/head_images/signup.gif" />
-<img src="https://github.com/Toubat/Courstack/blob/master/head_images/VideoPost.gif" />
-<img src="https://github.com/Toubat/Courstack/blob/master/head_images/UploadVideo.gif" />
-<img src="https://github.com/Toubat/Courstack/blob/master/head_images/ForumPost.gif" />
-<img src="https://github.com/Toubat/Courstack/blob/master/head_images/Classmate.gif" />
+<p float="left">
+    <img src="https://github.com/Toubat/Courstack/blob/master/head_images/signup.gif" />
+    <img src="https://github.com/Toubat/Courstack/blob/master/head_images/VideoPost.gif" />
+    <img src="https://github.com/Toubat/Courstack/blob/master/head_images/UploadVideo.gif" />
+</p>
+<p float="left">
+    <img src="https://github.com/Toubat/Courstack/blob/master/head_images/ForumPost.gif" />
+    <img src="https://github.com/Toubat/Courstack/blob/master/head_images/Classmate.gif" />
+</p>
 
 ## License
 
