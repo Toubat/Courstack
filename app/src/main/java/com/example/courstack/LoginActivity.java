@@ -32,7 +32,7 @@ public class LoginActivity extends AppCompatActivity {
 
         // Automatic Login
         if (ParseUser.getCurrentUser() != null) {
-            goSelectCourseActivity();
+            // goSelectCourseActivity();
         }
         etUsername = findViewById(R.id.etUsername);
         etPassword = findViewById(R.id.etPassword);
