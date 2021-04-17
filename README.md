@@ -3,9 +3,9 @@
 
 ## User Stories
 - [X] User can login with username and password.
-- [ ] User can signup by filling out basic personal information. 
+- [x] User can signup by filling out basic personal information. 
 - [x] User can choose a specfic course forum to join in.
-- [ ] Once user discover a piece of useful information he or she appreciate, he or she can offer "stack coin" to the contributor.
+- [x] Once user discover a piece of useful information he or she appreciate, he or she can offer "stack coin" to the contributor.
 - [X] User can watch a list of short video discussing about certain course content created by other students.
     - [X] User can leave comments or reply to other's comments.
     - [ ] User can swipe between videos easily.
@@ -16,8 +16,8 @@
     - [x] User can search for a specific title or course material they would like to query.
     - [x] Under each question post, use can view a list of comments and follow-up of comments, and can give each comment a thumb-up, thumb-down, reward coins, and subscribe.
 - [x] User can search for classmate and send private message.
-    - [ ] User can filter classmate by courses they are currently taking.
-    - [ ] User can view a list of classmate in certain course and read their self-description.
+    - [x] User can filter classmate by courses they are currently taking.
+    - [x] User can view a list of classmate in certain course and read their self-description.
 
 ## Optional Stories
 - [ ] User can type Markdown text to stylize their answer posts.
