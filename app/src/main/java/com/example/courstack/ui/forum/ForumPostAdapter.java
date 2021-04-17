@@ -23,6 +23,8 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
+import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
+
 public class ForumPostAdapter extends RecyclerView.Adapter<ForumPostAdapter.ForumPostViewHolder> {
 
     private Context context;
@@ -86,7 +88,9 @@ public class ForumPostAdapter extends RecyclerView.Adapter<ForumPostAdapter.Foru
 
             ParseFile image = forumPost.getStudent().getParseFile("profile_image");
             if (image != null) {
-                Glide.with(context).load(image.getUrl()).into(ivProfile);
+                int radius = 25;
+                int margin = 10;
+                Glide.with(context).load(image.getUrl()).transform(new RoundedCornersTransformation(radius, margin)).into(ivProfile);
             }
 
             relativeLayout.setOnClickListener(new View.OnClickListener() {

@@ -31,6 +31,8 @@ import com.parse.ParseQuery;
 import java.util.ArrayList;
 import java.util.List;
 
+import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
+
 public class PostActivity extends AppCompatActivity implements ResponseDialogFragment.ResponseDialogListener, CommentDialogFragment.CommentDialogListener  {
 
     public static final String TAG = "postActivity";
@@ -67,7 +69,9 @@ public class PostActivity extends AppCompatActivity implements ResponseDialogFra
 
         ParseFile profile = intent.getParcelableExtra("image");
         if ( profile!= null) {
-            Glide.with(PostActivity.this).load(profile.getUrl()).into(ivProfileRvAnswer);
+            int radius = 25;
+            int margin = 10;
+            Glide.with(PostActivity.this).load(profile.getUrl()).transform(new RoundedCornersTransformation(radius, margin)).into(ivProfileRvAnswer);
         }
 
 

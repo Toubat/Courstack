@@ -19,6 +19,8 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
+import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
+
 public class AnswerAdapter extends RecyclerView.Adapter<AnswerAdapter.AnswerViewHolder> {
 
     public static final int BRIEF = 1;
@@ -130,7 +132,9 @@ public class AnswerAdapter extends RecyclerView.Adapter<AnswerAdapter.AnswerView
 
             ParseFile profile = answer.getStudent().getParseFile("profile_image");
             if (profile != null) {
-                Glide.with(context).load(profile.getUrl()).into(ivProfile);
+                int radius = 25;
+                int margin = 10;
+                Glide.with(context).load(profile.getUrl()).transform(new RoundedCornersTransformation(radius, margin)).into(ivProfile);
             }
         }
     }
