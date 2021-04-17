@@ -17,6 +17,8 @@ import com.example.courstack.R;
 import com.example.courstack.models.ForumPost;
 import com.parse.ParseFile;
 
+import org.w3c.dom.Text;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -58,6 +60,7 @@ public class ForumPostAdapter extends RecyclerView.Adapter<ForumPostAdapter.Foru
         private final TextView tvQuestionTitle;
         private final TextView tvQuestion;
         private final TextView tvLateUpdate;
+        private final TextView tvUsername;
         private final RelativeLayout relativeLayout;
 
         public ForumPostViewHolder(@NonNull View itemView) {
@@ -65,13 +68,15 @@ public class ForumPostAdapter extends RecyclerView.Adapter<ForumPostAdapter.Foru
             ivProfile = itemView.findViewById(R.id.ivProfileForumPost);
             tvQuestionTitle = itemView.findViewById(R.id.tvQuestionTitle);
             tvQuestion = itemView.findViewById(R.id.tvDescription);
-            tvLateUpdate = itemView.findViewById(R.id.tvLastUpdate);
+            tvLateUpdate = itemView.findViewById(R.id.tvLastUpdateForum);
             relativeLayout = itemView.findViewById(R.id.relativeLayout);
+            tvUsername = itemView.findViewById(R.id.tvUsernameForum);
         }
 
         public void bind(ForumPost forumPost) {
             tvQuestionTitle.setText(forumPost.getTitle());
             tvQuestion.setText(forumPost.getDescription());
+            tvUsername.setText(forumPost.getStudent().getString("username"));
 
             //date
             DateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy");
