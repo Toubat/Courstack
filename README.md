@@ -99,13 +99,13 @@ List of network requests by screen
 
 ## Latest Updated Progress
 <p float="left">
-    <img src="https://github.com/Toubat/Courstack/blob/master/head_images/signup.gif" />
-    <img src="https://github.com/Toubat/Courstack/blob/master/head_images/VideoPost.gif" />
-    <img src="https://github.com/Toubat/Courstack/blob/master/head_images/UploadVideo.gif" />
+    <img src="https://github.com/Toubat/Courstack/blob/master/head_images/signup.gif" height="100"/>
+    <img src="https://github.com/Toubat/Courstack/blob/master/head_images/VideoPost.gif" height="100"/>
+    <img src="https://github.com/Toubat/Courstack/blob/master/head_images/UploadVideo.gif" height="100"/>
 </p>
 <p float="left">
-    <img src="https://github.com/Toubat/Courstack/blob/master/head_images/ForumPost.gif" />
-    <img src="https://github.com/Toubat/Courstack/blob/master/head_images/Classmate.gif" />
+    <img src="https://github.com/Toubat/Courstack/blob/master/head_images/ForumPost.gif" height="100"/>
+    <img src="https://github.com/Toubat/Courstack/blob/master/head_images/Classmate.gif" height="100"/>
 </p>
 
 ## License
