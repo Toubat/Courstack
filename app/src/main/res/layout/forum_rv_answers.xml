@@ -28,14 +28,14 @@
                 android:id="@+id/tvQuestionTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
+                android:layout_alignBottom="@+id/ivProfileRvAnswer"
                 android:layout_alignParentEnd="true"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="11dp"
+                android:layout_marginStart="5dp"
                 android:layout_marginEnd="-3dp"
+                android:layout_marginBottom="0dp"
                 android:layout_toEndOf="@+id/ivProfileRvAnswer"
-                android:textSize="20dp"
-                android:textStyle="bold"
+                android:textSize="18sp"
+                android:textStyle="bold|italic"
                 tools:text="I am having a very good question!" />
 
             <TextView
@@ -44,31 +44,34 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tvQuestionTitle"
                 android:layout_alignParentStart="true"
-                android:layout_marginStart="1dp"
-                android:layout_marginTop="25dp"
-                android:textSize="15dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:textSize="16sp"
                 tools:text=" So I am trying to use the Huffman algorithm we did in class notes and modifying it, but I am not sure how. Doesn't the huffman alg that we did in class already do what question is asking for? i.e. doesn't solving for the codes naturally grant us the minimal cost because there would not be any reason to give a code a length greater than what was needed." />
 
             <TextView
                 android:id="@+id/updateText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/by"
-                android:layout_alignParentEnd="true"
+                android:layout_alignBottom="@+id/tvLastUpdate"
                 android:layout_marginTop="0dp"
-                android:layout_marginEnd="92dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="0dp"
+                android:layout_toStartOf="@+id/tvLastUpdate"
                 android:text="Last Update At:"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tvLastUpdate"
-                android:layout_width="97dp"
+                android:layout_width="86dp"
                 android:layout_height="wrap_content"
-                android:layout_alignTop="@+id/updateText"
+                android:layout_above="@+id/tvQuestionTitle"
                 android:layout_alignParentEnd="true"
-                android:layout_marginTop="0dp"
-                android:layout_marginEnd="-16dp"
-                tools:text="03/20/2021" />
+                android:layout_marginEnd="0dp"
+                android:layout_marginBottom="0dp"
+                tools:text="03-20-2021" />
 
             <ImageView
                 android:id="@+id/ivProfileRvAnswer"
@@ -81,24 +84,15 @@
                 tools:srcCompat="@tools:sample/avatars" />
 
             <TextView
-                android:id="@+id/by"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tvDescription"
-                android:layout_alignParentStart="true"
-                android:layout_marginStart="222dp"
-                android:layout_marginTop="1dp"
-                android:text="By:"
-                android:textStyle="bold" />
-
-            <TextView
                 android:id="@+id/tvName"
-                android:layout_width="wrap_content"
+                android:layout_width="85dp"
                 android:layout_height="wrap_content"
-                android:layout_alignTop="@+id/by"
-                android:layout_marginStart="40dp"
+                android:layout_above="@+id/tvQuestionTitle"
+                android:layout_marginStart="5dp"
                 android:layout_marginTop="0dp"
-                android:layout_toEndOf="@+id/by"
+                android:layout_marginBottom="0dp"
+                android:layout_toEndOf="@+id/ivProfileRvAnswer"
+                android:textSize="18sp"
                 tools:text="Alibaba" />
 
         </RelativeLayout>

@@ -17,6 +17,31 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <TextView
+            android:id="@+id/tvLastUpdateForum"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/tvVideoTitle"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="9dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginBottom="0dp"
+            android:textSize="12sp"
+            tools:text="03-20-2021" />
+
+        <TextView
+            android:id="@+id/updateText4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/tvQuestionTitle"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="0dp"
+            android:layout_toStartOf="@+id/tvLastUpdateForum"
+            android:text="Last Update At:"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
         <ImageView
             android:id="@+id/ivProfileForumPost"
             android:layout_width="50dp"
@@ -25,52 +50,45 @@
 
         <TextView
             android:id="@+id/tvQuestionTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
+            android:layout_width="341dp"
+            android:layout_height="24dp"
+            android:layout_alignBottom="@+id/ivProfileForumPost"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="9dp"
-            android:layout_marginTop="0dp"
-            android:layout_marginEnd="-1dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginBottom="0dp"
             android:layout_toEndOf="@+id/ivProfileForumPost"
             android:lines="2"
-            android:textSize="20dp"
-            android:textStyle="bold"
+            android:textSize="18sp"
+            android:textStyle="bold|italic"
             tools:text="I am having a very good question!" />
 
         <TextView
             android:id="@+id/tvDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tvQuestionTitle"
+            android:layout_below="@+id/ivProfileForumPost"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
-            android:layout_centerInParent="true"
-            android:layout_marginStart="1dp"
-            android:layout_marginTop="6dp"
-            android:layout_marginEnd="1dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="7dp"
+            android:layout_marginEnd="5dp"
             android:lines="3"
             android:textSize="15dp"
             tools:text="So I am trying to use the Huffman algorithm we did in class notes and modifying it, but I am not sure how. Doesn't the huffman alg that we did in class already do what question is asking for? i.e. doesn't solving for the codes naturally grant us the minimal cost because there would not be any reason to give a code a length greater than what was needed." />
 
         <TextView
-            android:id="@+id/updateText"
+            android:id="@+id/tvUsernameForum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tvDescription"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="89dp"
-            android:text="Last Update At:" />
-
-        <TextView
-            android:id="@+id/tvLastUpdate"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/updateText"
-            android:layout_alignParentEnd="true"
+            android:layout_above="@+id/tvQuestionTitle"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="5dp"
             android:layout_marginTop="0dp"
-            android:layout_marginEnd="-23dp"
-            tools:text="03/20/2021" />
+            android:layout_marginBottom="0dp"
+            android:layout_toEndOf="@+id/ivProfileForumPost"
+            android:textSize="18sp"
+            tools:text="Username" />
     </RelativeLayout>
 </androidx.cardview.widget.CardView>
