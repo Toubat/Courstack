@@ -95,7 +95,7 @@ List of network requests by screen
   * (Read/GET) userQuery()
 
 ## Model Workflow
-<img src='Model Workflow.png' title='Model Worklow' width='' alt='Model Worklow' />
+<img src='Model Workflow.png' title='Model Worklow' width='' alt='Model Worklow' height="1000"/>
 
 ## Latest Updated Progress
 <p float="left">
