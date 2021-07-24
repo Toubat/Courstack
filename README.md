@@ -108,7 +108,7 @@ List of network requests by screen
 
 ## License
 
-    Copyright [2021] [Yin, Boquan; Lucheng, Qin; Yang, Xu]
+    Copyright [2021] [Yin, Boquan; Lucheng, Qing; Yang, Xu]
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
